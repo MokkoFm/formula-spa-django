@@ -3,4 +3,4 @@ django-crispy-forms==1.9.2
 mysqlclient==1.4.6
 environs==8.0.0
 Pillow==8.0.0
-wheel-0.35.1
+wheel==0.35.1
