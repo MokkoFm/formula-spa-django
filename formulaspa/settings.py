@@ -80,11 +80,12 @@ WSGI_APPLICATION = 'formulaspa.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'formulaspa',
-        'USER': 'root',
+        'USER': 'postgres',
         'PASSWORD': env('PASSWORD'),
-        'HOST': 'localhost'
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
