@@ -4,7 +4,11 @@ from spaweb.models import Product, ProductCategory
 
 
 def index(request):
-    return render(request, "index.html")
+    last_products = Product.objects.filter(is_new=True)
+    context = {
+        "last_products": last_products,
+    }
+    return render(request, "index.html", context)
 
 
 def contact(request):
