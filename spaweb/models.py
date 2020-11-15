@@ -3,15 +3,16 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 
 class Customer(models.Model):
-    firstname = models.CharField(max_length=50)
-    lastname = models.CharField(max_length=50)
-    phonenumber = models.CharField(max_length=20, blank=True)
-    email = models.CharField(max_length=100, blank=True)
+    firstname = models.CharField(max_length=50, verbose_name="имя")
+    lastname = models.CharField(max_length=50, verbose_name="фамилия")
+    phonenumber = models.CharField(max_length=20, blank=True, verbose_name="телефон")
+    email = models.CharField(max_length=100, blank=True, verbose_name="эл. почта")
     user = models.OneToOneField(
-        User, blank=True, on_delete=models.CASCADE)
+        User, blank=True, on_delete=models.CASCADE, verbose_name="юзернейм")
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
@@ -23,6 +24,7 @@ class Customer(models.Model):
 
 class ProductCategory(models.Model):
     name = models.CharField('название', max_length=50)
+    slug = models.SlugField(null=True, unique=True)
 
     class Meta:
         verbose_name = 'категория'
@@ -42,10 +44,14 @@ class City(models.Model):
     def __str__(self):
         return self.name
 
+    @property
+    def absolute_url(self):
+        return reverse('product-listing', kwargs={'slug': self.slug})
+
 
 class Product(models.Model):
     name = models.CharField('название', max_length=50)
-    description = models.TextField('описание')
+    description = HTMLField(verbose_name='описание', blank=True)
     category = models.ManyToManyField(
         ProductCategory, verbose_name='категория',
         related_name='category_products')
@@ -53,9 +59,9 @@ class Product(models.Model):
         City, verbose_name='город', related_name='city_products')
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to="images", verbose_name="фото товара")
-    ingredients = models.CharField(
-        verbose_name='что включено', max_length=200, blank=True)
-    slug = models.SlugField(null=True)
+    duration = models.CharField(
+        verbose_name='Продолжительность', max_length=50, blank=True)
+    slug = models.SlugField(null=True, unique=True)
 
     def __str__(self):
         return self.name
