@@ -63,7 +63,7 @@ class Product(models.Model):
         verbose_name='Продолжительность', max_length=50, blank=True)
     is_bestseller = models.BooleanField(
         default=False, db_index=True, verbose_name="популярные товары")
-    is_news = models.BooleanField(
+    is_new = models.BooleanField(
         default=False, db_index=True, verbose_name="новый товар")
     slug = models.SlugField(null=True, unique=True)
 
