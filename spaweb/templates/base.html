@@ -64,7 +64,7 @@
                 </ul>
             </div>
             <div class="col-6 text-center nav-logo pt-3">
-                <a href="index-shop.html" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}" alt="img"></a>
+                <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}" alt="img"></a>
             </div>
 
             <div class="col-3 nav-utility text-right d-flex justify-content-end align-items-center pt-3">
@@ -172,13 +172,13 @@
                 <header class="site-header" id="header">
                     <nav class="navbar navbar-expand-md  static-nav">
                         <div class="container position-relative megamenu-custom">
-                            <a class="navbar-brand center-brand" href="index.html">
+                            <a class="navbar-brand center-brand" href="{% url 'index' %}">
                                 <img src="{% static 'img/logo.jpg' %}" alt="logo" class="logo-scrolled">
                             </a>
                             <div class="collapse navbar-collapse">
                                 <ul class="navbar-nav ml-auto mr-auto">
                                     <li class="nav-item">
-                                        <a class="nav-link" href="index.html">HOME</a>
+                                        <a class="nav-link" href="{% url 'index' %}">HOME</a>
                                     </li>
                                     <li class="nav-item dropdown static">
                                         <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> WOMEN </a>
@@ -346,7 +346,7 @@
                                         </div>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="contact.html">CONTACT</a>
+                                        <a class="nav-link" href="{% url 'contact' %}">CONTACT</a>
                                     </li>
 
                                 </ul>
