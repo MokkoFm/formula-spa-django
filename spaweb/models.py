@@ -61,6 +61,8 @@ class Product(models.Model):
     image = models.ImageField(upload_to="images", verbose_name="фото товара")
     duration = models.CharField(
         verbose_name='Продолжительность', max_length=50, blank=True)
+    is_bestseller = models.BooleanField(
+        default=False, db_index=True, verbose_name="популярные товары")
     slug = models.SlugField(null=True, unique=True)
 
     def __str__(self):
