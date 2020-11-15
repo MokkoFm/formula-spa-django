@@ -138,12 +138,17 @@ class OrderItem(models.Model):
 
 class ShippingAddress(models.Model):
     customer = models.ForeignKey(
-        Customer, on_delete=models.CASCADE)
+        Customer, on_delete=models.CASCADE, related_name="address")
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE)
+        Order, on_delete=models.CASCADE, related_name="address")
     address = models.TextField(verbose_name="адрес для доставки")
     city = models.ForeignKey(
-        City, on_delete=models.CASCADE, verbose_name='город доставки')
+        City, on_delete=models.CASCADE,
+        verbose_name='город доставки', related_name="address")
 
     def __str__(self):
         return self.address
+
+    class Meta:
+        verbose_name = "адрес доставки"
+        verbose_name_plural = "адреса доставки"
