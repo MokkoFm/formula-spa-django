@@ -1,8 +1,14 @@
 from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from spaweb.models import Product, ProductCategory
 
 
 def index(request):
-    return render(request, "index.html")
+    last_products = Product.objects.filter(is_new=True)
+    context = {
+        "last_products": last_products,
+    }
+    return render(request, "index.html", context)
 
 
 def contact(request):
@@ -13,12 +19,20 @@ def login(request):
     return render(request, "login.html")
 
 
-def product_detail(request):
-    return render(request, "product-detail.html")
+def product_detail(request, slug):
+    context = {
+        "product": get_object_or_404(Product, slug=slug)
+    }
+    return render(request, "product-detail.html", context)
 
 
-def product_listing(request):
-    return render(request, 'product-listing.html')
+def product_listing(request, slug):
+    category = get_object_or_404(ProductCategory, slug=slug)
+    products_by_category = Product.objects.filter(category=category)
+    context = {
+        'products_by_category': products_by_category,
+    }
+    return render(request, 'product-listing.html', context)
 
 
 def register(request):
