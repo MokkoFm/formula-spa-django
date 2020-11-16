@@ -615,23 +615,23 @@
             <div class="col-12">
                 <div class="lastest_featured_products owl-carousel owl-theme">
 
-                    {% for last_product in last_products %}
+                    {% for new_product in new_products %}
                         <div class="lastest_arrival_items item">
                             <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
                             <div class="card">
                                 <span class="product-type">NEW</span>
                                 <div class="image-holder">
-                                <a href="{{last_product.image_url}}"  data-fancybox="lastest_product"  data-title="Shirt Name">
-                                    <img src="{{last_product.image_url}}" class="card-img-top" alt="Lastest Arrivals 1">
+                                <a href="{{new_product.image_url}}"  data-fancybox="lastest_product"  data-title="Shirt Name">
+                                    <img src="{{new_product.image_url}}" class="card-img-top" alt="Lastest Arrivals 1">
                                 </a>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <h5 class="card-title">{{last_product.name}}</h5>
+                                            <h5 class="card-title">{{new_product.name}}</h5>
                                         </div>
                                         <div class="col-12 text-center">
-                                            <p class="card-text"> {{last_product.price}} ₽</p>
+                                            <p class="card-text"> {{new_product.price}} ₽</p>
                                         </div>
                                     </div>
                                 </div>
