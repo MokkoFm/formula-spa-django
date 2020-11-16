@@ -1,6 +1,7 @@
 from django.contrib import admin
 from spaweb.models import Customer, ProductCategory, City
 from spaweb.models import Product, Order, ShippingAddress, OrderItem
+from spaweb.models import BusinessDirection, Topic
 
 
 admin.site.register(Customer)
@@ -8,6 +9,8 @@ admin.site.register(ProductCategory)
 admin.site.register(City)
 admin.site.register(Product)
 admin.site.register(ShippingAddress)
+admin.site.register(BusinessDirection)
+admin.site.register(Topic)
 
 
 class OrderItemInline(admin.TabularInline):

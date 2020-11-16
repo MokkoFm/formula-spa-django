@@ -6,6 +6,31 @@ from django.urls import reverse
 from tinymce.models import HTMLField
 
 
+class BusinessDirection(models.Model):
+    title = models.CharField('название', max_length=50)
+    slug = models.SlugField(null=True, unique=True)
+
+    class Meta:
+        verbose_name_plural = "направления"
+
+    def __str__(self):
+        return self.title
+
+
+class Topic(models.Model):
+    title = models.CharField('название', max_length=50)
+    business_direction = models.ForeignKey(
+        BusinessDirection, on_delete=models.CASCADE,
+        related_name='topics', null=True)
+    slug = models.SlugField(null=True, unique=True)
+
+    class Meta:
+        verbose_name_plural = "группы категорий"
+
+    def __str__(self):
+        return self.title
+
+
 class Customer(models.Model):
     firstname = models.CharField(max_length=50, verbose_name="имя")
     lastname = models.CharField(max_length=50, verbose_name="фамилия")
@@ -24,6 +49,9 @@ class Customer(models.Model):
 
 class ProductCategory(models.Model):
     name = models.CharField('название', max_length=50)
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE,
+        related_name='products_categories', null=True)
     slug = models.SlugField(null=True, unique=True)
 
     class Meta:
