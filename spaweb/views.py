@@ -4,9 +4,9 @@ from spaweb.models import Product, ProductCategory
 
 
 def index(request):
-    last_products = Product.objects.filter(is_new=True)
+    new_products = Product.objects.filter(is_new=True)
     context = {
-        "last_products": last_products,
+        "new_products": new_products,
     }
     return render(request, "index.html", context)
 
