@@ -66,228 +66,32 @@
 
                         <!-- START DISPLAY PRODUCT -->
                         <div class="product-list row">
-
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                            <img src="{% static 'img/product-listing/p36.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
+                            {% for product in products_by_category %}
+                                <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
+                                    <div class="product-item owl-theme product-listing-carousel owl-carousel">
+                                        <div class="item p-item-img">
+                                                <img src="{{ product.image.url }}" alt="images">
+                                            <div class="text-center d-flex justify-content-center align-items-center">
+                                                <a class="listing-cart-icon" href="shop-cart.html">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="item p-item-img">
+                                            <img src="{% static 'img/product-listing/p41.jpg' %}" alt="images">
+                                            <div class="text-center d-flex justify-content-center align-items-center">
+                                                <a class="listing-cart-icon" href="shop-cart.html">
+                                                    <i class="fa fa-shopping-cart"></i>
+                                                </a>
+                                            </div>
                                         </div>
                                     </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p41.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
+                                    <div class="p-item-detail">
+                                        <h4 class="text-center p-item-name"><a href="{% url 'product-detail' product.slug %}">{{ product.name }}</a></h4>
+                                        <p class="text-center p-item-price">{{ product.price }}р.</p>
                                     </div>
                                 </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                            <img src="{% static 'img/product-listing/p47.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                            <img src="{% static 'img/product-listing/p48.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p50.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p49.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p57.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p56.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p53.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p54.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p30.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p31.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p24.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p25.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p45.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p46.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
-                                <div class="product-item owl-theme product-listing-carousel owl-carousel">
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p32.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="item p-item-img">
-                                        <img src="{% static 'img/product-listing/p33.jpg' %}" alt="images">
-                                        <div class="text-center d-flex justify-content-center align-items-center">
-                                            <a class="listing-cart-icon" href="shop-cart.html">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="p-item-detail">
-                                    <h4 class="text-center p-item-name"><a href="product-detail.html"> Fusion Top </a></h4>
-                                    <p class="text-center p-item-price">$100.00</p>
-                                </div>
-                            </div>
-
-
-
+                            {% endfor %}
                         </div>
                         <!-- END DISPLAY PRODUCT -->
 
