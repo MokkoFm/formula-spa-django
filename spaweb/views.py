@@ -1,15 +1,17 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from spaweb.models import Product, ProductCategory
+from spaweb.models import Product, ProductCategory, Topic
 
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
     bestsellers = Product.objects.filter(is_bestseller=True)
+    topics = Topic.objects.all()
 
     context = {
         "new_products": new_products,
         "bestsellers": bestsellers,
+        "topics": topics,
     }
     return render(request, "index.html", context)
 
