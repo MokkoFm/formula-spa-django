@@ -1,20 +1,16 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from spaweb.models import Product, ProductCategory
-from spaweb.models import BusinessDirection, Topic
-from more_itertools import chunked
+from spaweb.models import BusinessDirection
 
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
-    business_directions = BusinessDirection.objects.all()
-    topics = Topic.objects.all()
-    topics_row = list(chunked(topics, 2))
+    programs = BusinessDirection.objects.filter(title="ПРОГРАММЫ")
 
     context = {
-        "business_directions": business_directions,
-        "topics_row": topics_row,
         "new_products": new_products,
+        'programs': programs,
     }
     return render(request, "index.html", context)
 
