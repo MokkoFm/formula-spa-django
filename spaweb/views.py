@@ -5,9 +5,11 @@ from spaweb.models import Product, ProductCategory
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
+    bestsellers = Product.objects.filter(is_bestseller=True)
 
     context = {
         "new_products": new_products,
+        "bestsellers": bestsellers,
     }
     return render(request, "index.html", context)
 
