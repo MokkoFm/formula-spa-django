@@ -182,46 +182,44 @@
                                     </li>
                                     <!-- start business direction -->
                                     {% for business_direction in business_directions %}
-                                    <li class="nav-item dropdown static">
-                                        <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{business_direction}}</a>
-                                        <ul class="dropdown-menu megamenu flexable-megamenu">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row" style="width: 100%;">
-                                                        {% for topics in topics_row %}
-                                                            <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
-                                                                {% for topic in topics %}
+                                        <li class="nav-item dropdown static">
+                                            <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{business_direction}}</a>
+                                            <ul class="dropdown-menu megamenu flexable-megamenu">
+                                                <li>
+                                                    <div class="container">
+                                                        <div class="row" style="width: 100%;">
+                                                            {% for topic in business_direction.topics.all %}
+                                                                <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
                                                                     <h5 class="dropdown-title">{{topic.title}}</h5>
                                                                     <ul>
                                                                         {% for category in topic.products_categories.all %}
                                                                             <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">{{category.name}}</a></li>
                                                                         {% endfor %}
                                                                     </ul>
-                                                                {% endfor %}
-                                                            </div>
-                                                        {% endfor %}
-                                                        <div class="col-lg-6 col-md-12 col-sm-12">
-                                                            <h5 class="dropdown-title text-left">Featured Items </h5>
-                                                            <div class="carousel-menu mt-4">
-                                                                <div class="featured-megamenu-carousel owl-carousel owl-theme">
-                                                                    <div class="item ">
-                                                                        <img src="{% static 'img/shop1.jpg' %}" alt="shop-image" >
-                                                                    </div>
-                                                                    <div class="item">
-                                                                        <img src="{% static 'img/shop2.jpg' %}"  alt="shop-image">
-                                                                    </div>
                                                                 </div>
-                                                                <i class="lni-chevron-left ini-customPrevBtn"></i>
-                                                                <i class="lni-chevron-right ini-customNextBtn"></i>
+                                                            {% endfor %}
+                                                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                                                <h5 class="dropdown-title text-left">Featured Items </h5>
+                                                                <div class="carousel-menu mt-4">
+                                                                    <div class="featured-megamenu-carousel owl-carousel owl-theme">
+                                                                        <div class="item ">
+                                                                            <img src="{% static 'img/shop1.jpg' %}" alt="shop-image" >
+                                                                        </div>
+                                                                        <div class="item">
+                                                                            <img src="{% static 'img/shop2.jpg' %}"  alt="shop-image">
+                                                                        </div>
+                                                                    </div>
+                                                                    <i class="lni-chevron-left ini-customPrevBtn"></i>
+                                                                    <i class="lni-chevron-right ini-customNextBtn"></i>
+                                                                </div>
+                                                                <p class="mt-4 megamenu-slider-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+                                                                <a href="product-listing.html" class="btn trans-pink-color-gradient-btn slider-btn text-left">Shop Now</a>
                                                             </div>
-                                                            <p class="mt-4 megamenu-slider-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
-                                                            <a href="product-listing.html" class="btn trans-pink-color-gradient-btn slider-btn text-left">Shop Now</a>
                                                         </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
+                                                </li>
+                                            </ul>
+                                        </li>
                                     {% endfor %}
                                     <!-- <li class="nav-item dropdown static">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> CLOTHES </a>
