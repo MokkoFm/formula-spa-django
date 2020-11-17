@@ -195,7 +195,7 @@
                                                                 <h5 class="dropdown-title">{{topic.title}}</h5>
                                                                 <ul>
                                                                     {% for category in topic.products_categories.all %}
-                                                                        <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">{{category.name}}</a></li>
+                                                                        <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'product-listing' category.slug %}">{{category.name}}</a></li>
                                                                     {% endfor %}
                                                                 </ul>
                                                             </div>
