@@ -7,7 +7,7 @@ from spaweb.models import BusinessDirection, Topic
 admin.site.register(Customer)
 admin.site.register(ProductCategory)
 admin.site.register(City)
-admin.site.register(Product)
+
 admin.site.register(ShippingAddress)
 admin.site.register(BusinessDirection)
 admin.site.register(Topic)
@@ -25,3 +25,8 @@ class OrderAdmin(admin.ModelAdmin):
         'is_complete', 'is_digital', 'payment_method',
     ]
     inlines = [OrderItemInline]
+
+
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin):
+    list_filter = ['category']
