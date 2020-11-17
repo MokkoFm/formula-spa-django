@@ -1,16 +1,13 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 from spaweb.models import Product, ProductCategory
-from spaweb.models import BusinessDirection
 
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
-    programs = BusinessDirection.objects.filter(title="ПРОГРАММЫ")
 
     context = {
         "new_products": new_products,
-        'programs': programs,
     }
     return render(request, "index.html", context)
 
@@ -33,6 +30,7 @@ def product_detail(request, slug):
 def product_listing(request, slug):
     category = get_object_or_404(ProductCategory, slug=slug)
     products_by_category = Product.objects.filter(category=category)
+
     context = {
         'products_by_category': products_by_category,
     }
