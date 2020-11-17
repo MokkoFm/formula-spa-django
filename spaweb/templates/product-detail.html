@@ -23,7 +23,7 @@
                     </nav>
                     <div class="pro-detail-sec row">
                         <div class="col-12">
-                            <h4 class="pro-heading text-center text-lg-left">Sports  Collection</h4>
+                            <h4 class="pro-heading text-center text-lg-left">{{ product.name }}</h4>
                             <p class="pro-text text-center text-lg-left">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
                         </div>
                     </div>
@@ -50,16 +50,10 @@
 
                         <div class="col-12 col-lg-6 text-center text-lg-left">
                             <div class="product-single-price">
-                                <h4><span class="real-price">$249</span> <span><del>$450</del></span></h4>
-                                <p class="pro-description">Cotton-blend fabric, with hood, concealed zip and snap button fastening, flap pockets, loops on the cuffs, inner lining.</p>
-                            </div>
-
-                            <div class="product-checklist">
-                                <ul>
-                                    <li><i class="fas fa-check"></i> Satisfaction 100% Guaranteed</li>
-                                    <li><i class="fas fa-check"></i> free shipping on orders over $99</li>
-                                    <li><i class="fas fa-check"></i> 14 days easy Return</li>
-                                </ul>
+                                <h4><span class="real-price">>{{ product.price }}₽</span> <span><del>>{{ product.price }}₽</del></span></h4>
+                                <div class="pro-description">
+                                    {{ product.description|safe }}
+                                </div>
                             </div>
 
                             <div class="row product-quantity input_plus_mins no-gutters">
@@ -80,8 +74,14 @@
                             <div class="product-tags-list">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><p class="d-inline">SKU: <span>00012</span></p></li>
-                                        <li class="breadcrumb-item"><span class="d-inline">Categories: <a href="#">Sports</a><span class="comma-separtor">,</span><a href="#">Footwear</a></span></li>
+                                        <li class="breadcrumb-item">
+                                            <span class="d-inline">Категории: 
+                                                {% for category in product.category.all %}
+                                                    <a href="{% url 'product-listing' category.slug }">{{ category.name }}</a>
+                                                    <span> </span>
+                                                {% endfor %}
+                                            </span>
+                                        </li>
                                         <li class="breadcrumb-item" aria-current="page"><p class="d-inline">Tags: <a href="#">Sports</a><span class="comma-separtor">,</span><a href="#">Shoes</a></li>
                                     </ol>
                                 </nav>
