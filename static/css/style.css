@@ -45,11 +45,11 @@
 
 
 
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800|Open+Sans:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 body {
     font-size: 16px;
     font-weight: normal;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     overflow-x: hidden;
 }
 
@@ -104,7 +104,7 @@ h4,
 h5,
 .button,
 .numbered .tp-bullet .tp-count {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /*Center block*/
@@ -287,7 +287,7 @@ END scroll-top-arrow
 
 .black-btn-with-border{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #000000;
     color: #FFFFFF ;
@@ -306,7 +306,7 @@ END scroll-top-arrow
 
 .white-btn-with-border{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #000000;
     color: #000000 ;
@@ -326,7 +326,7 @@ END scroll-top-arrow
 
 .black-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #000000;
     color: #FFFFFF ;
@@ -344,7 +344,7 @@ END scroll-top-arrow
 }
 .white-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px white !important;
     color: #000000;
@@ -363,7 +363,7 @@ END scroll-top-arrow
 
 .white-with-black-hover-color{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px white !important;
     color: #000000;
@@ -381,7 +381,7 @@ END scroll-top-arrow
 }
 .trans-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #FFFFFF;
     color: #FFFFFF;
@@ -400,7 +400,7 @@ END scroll-top-arrow
 
 .trans-black-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #000000;
     color: #000000;
@@ -420,7 +420,7 @@ END scroll-top-arrow
 
 .white-into-black-trans-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px #FFFFFF !important;
     color: #000000;
@@ -441,7 +441,7 @@ END scroll-top-arrow
 
 .white-trans-btn-with-white-border{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 10px 25px;
     border: solid 1px white !important;
     background-color: transparent !important;
@@ -462,7 +462,7 @@ END scroll-top-arrow
 /*Small Button*/
 .black-sm-btn{
     font-size: 12px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     padding: 6px 12px;
     border: solid 1px #000000;
     color: #000000;
@@ -483,31 +483,31 @@ END scroll-top-arrow
 
 /*color to gradient*/
 /*Slide 2 First Gradient Button*/
-.pink-color-gradient-btn{font-size: 12px;font-family: 'Poppins', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #000000;font-weight: 600;background-color: white;border-radius: 0;position: relative;z-index: 2;}
+.pink-color-gradient-btn{font-size: 12px;font-family: 'Open Sans', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #000000;font-weight: 600;background-color: white;border-radius: 0;position: relative;z-index: 2;}
 .pink-color-gradient-btn:after {position: absolute;top: 0;left: 0;content: '';width: 100%;height: 100%;opacity: 0;color: #FFFFFF !important;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border: solid 1px transparent;z-index: -1;}
 .pink-color-gradient-btn:hover:after {opacity: 1;}
 .btn.pink-color-gradient-btn:hover{color: #FFFFFF;border:solid 1px transparent;}
 
 /*Slide 2 Gradient Button*/
-.trans-pink-color-gradient-btn{font-size: 12px;font-family: 'Poppins', sans-serif;padding: 10px 25px;border: solid 1px #000000;color: #000000;font-weight: 600;background-color: transparent;-webkit-transition: .3s ease-in-out !important;-o-transition: .3s ease-in-out !important;transition: .3s ease-in-out !important;border-radius: 0;position: relative;z-index: 2;}
+.trans-pink-color-gradient-btn{font-size: 12px;font-family: 'Open Sans', sans-serif;padding: 10px 25px;border: solid 1px #000000;color: #000000;font-weight: 600;background-color: transparent;-webkit-transition: .3s ease-in-out !important;-o-transition: .3s ease-in-out !important;transition: .3s ease-in-out !important;border-radius: 0;position: relative;z-index: 2;}
 .trans-pink-color-gradient-btn:after {position: absolute;top: 0;left: 0;content: '';width: 100%;height: 100%;opacity: 0;color: #FFFFFF !important;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border: solid 1px transparent;z-index: -1;}
 .trans-pink-color-gradient-btn:hover:after {opacity: 1;}
 .btn.trans-pink-color-gradient-btn:hover{border: 1px solid transparent;color: white;}
 
 /*Cart Drop Down First btn Gradient Button*/
-.pink-color-black-gradient-btn{font-size: 12px;font-family: 'Poppins', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background-color:#000000;border-radius: 0;position: relative;z-index: 2;}
+.pink-color-black-gradient-btn{font-size: 12px;font-family: 'Open Sans', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background-color:#000000;border-radius: 0;position: relative;z-index: 2;}
 .pink-color-black-gradient-btn:after {position: absolute;top: 0;left: 0;content: '';width: 100%;height: 100%;opacity: 0;color: #FFFFFF !important;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border: solid 1px transparent;z-index: -1;}
 .pink-color-black-gradient-btn:hover:after {opacity: 1;}
 .btn.pink-color-black-gradient-btn:hover{color: #FFFFFF;border: 1px solid pink;}
 
 /*Gradient to color*/
 /*Registera Gradient Button Into Black*/
-.pink-gradient-btn-into-black{font-size: 12px;font-family: 'Poppins', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border-radius: 0;position: relative;z-index: 2;}
+.pink-gradient-btn-into-black{font-size: 12px;font-family: 'Open Sans', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border-radius: 0;position: relative;z-index: 2;}
 .pink-gradient-btn-into-black:after {position: absolute;top: 0;left: 0;content: '';width: 100%;height: 100%;opacity: 0;color: #FFFFFF !important;background:#000000;border: solid 1px transparent;z-index: -1;}
 .pink-gradient-btn-into-black:hover:after {opacity: 1;}
 .btn.pink-gradient-btn-into-black:hover{color: #FFFFFF;border: 1px solid pink;}
 
-.pink-gradient-btn-into-transparent{font-size: 12px;font-family: 'Poppins', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border-radius: 0;position: relative;z-index: 2;}
+.pink-gradient-btn-into-transparent{font-size: 12px;font-family: 'Open Sans', sans-serif;padding: 10px 25px;border: solid 1px #FFFFFF;color: #FFFFFF;font-weight: 600;background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);border-radius: 0;position: relative;z-index: 2;}
 .pink-gradient-btn-into-transparent:after {position: absolute;top: 0;left: 0;content: '';width: 100%;height: 100%;opacity: 0;color: #000000 !important;background-color:#FFFFFF;border: solid 1px #000000;z-index: -1;}
 .pink-gradient-btn-into-transparent:hover:after {opacity: 1;}
 .btn.pink-gradient-btn-into-transparent:hover{}
@@ -528,7 +528,7 @@ END scroll-top-arrow
 }
 
 .product-listing .product-filter-nav .filter-heading{
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 24px;
     font-weight: 500;
     color: #000000;
@@ -556,7 +556,7 @@ END scroll-top-arrow
     font-size: 16px;
     color: #000000;
     opacity: .8;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
@@ -579,13 +579,13 @@ END scroll-top-arrow
 }
 .product-listing .product-filter-nav .product-price .price-num{
     font-size: 14px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
     margin-bottom: 15px;
 }
 .product-listing .product-filter-nav .product-price .price-num #min-p,.product-section-body .product-filter-nav .product-price .price-num #max-p{
     color: #03a9f5;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
 }
 
@@ -615,7 +615,7 @@ END scroll-top-arrow
 }
 
 .product-listing-heading .heading{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-size: 40px;
     font-weight: normal;
     margin-bottom: 15px;
@@ -648,7 +648,7 @@ END scroll-top-arrow
 .product-listing-products .product-list .p-item-detail  .p-item-name{
     font-size: 18px;
     color: #000000;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     margin-bottom: 8px;
     -webkit-transition: .8s ease;
@@ -659,7 +659,7 @@ END scroll-top-arrow
 .product-listing-products .product-list .p-item-detail .p-item-price{
     font-size: 15px;
     color: deeppink;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     text-align: center;
     -webkit-transition: .8s ease;
@@ -827,7 +827,7 @@ END scroll-top-arrow
 
 }
 .search-box input[type="text"]{
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: normal;
     width: 150px;
@@ -951,7 +951,7 @@ END scroll-top-arrow
 .outlet-title{
     font-size: 18px;
     margin-bottom: 12px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: 600;
 }
 .brand-search-box .media .brand-box-holder{
@@ -1013,7 +1013,7 @@ END scroll-top-arrow
 }
 
 .navbar{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 
@@ -1068,12 +1068,12 @@ END scroll-top-arrow
 }
 
 .portfolio-section .cbp-l-filters-button{
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .portfolio-section .cbp-l-filters-button .cbp-filter-item {
 
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .portfolio-section .cbp-l-filters-button .cbp-filter-item.cbp-filter-item-active {
@@ -1143,7 +1143,7 @@ END scroll-top-arrow
 .portfolio-title{
     color:#000000 !important;
     font-size: 20px !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Open Sans', sans-serif !important;
     margin-top: 0px !important;
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
@@ -1153,7 +1153,7 @@ END scroll-top-arrow
 .portfolio-des{
     color:#f11fad !important;
     font-size: 20px !important;
-    font-family: 'Poppins', sans-serif !important;
+    font-family: 'Open Sans', sans-serif !important;
     margin-top: 6px !important;
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
@@ -1274,7 +1274,7 @@ END scroll-top-arrow
 
 .banner-section .banner-content-wrapper span{
     color: #000000;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 10px;
     font-weight: bold;
 }
@@ -1282,7 +1282,7 @@ END scroll-top-arrow
 
 .banner-section .banner-content-wrapper h1{
     color: #000000;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 40px;
     font-weight: bold;
 }
@@ -1290,7 +1290,7 @@ END scroll-top-arrow
 
 .banner-section .banner-content-wrapper p{
     color: #000000;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     margin-top: 5px;
 }
@@ -1406,7 +1406,7 @@ END scroll-top-arrow
     color: black;
     font-size: 15px;
     display: inline-block;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
     transition: .8s ease;
@@ -1416,7 +1416,7 @@ END scroll-top-arrow
     color:#f11fad;
     font-size: 14px;
     display: inline-block;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
     transition: .8s ease;
@@ -1464,7 +1464,7 @@ END scroll-top-arrow
 .footer .f-sec1 p{
     color:#888888;
     font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin-top: 20px;
     margin-bottom: 5px;
 }
@@ -1472,12 +1472,12 @@ END scroll-top-arrow
     text-decoration: none;
     color:#FFFFFF;
     font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 .footer h4{
     color:white;
     font-size: 18px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     padding-top: 20px;
 }
@@ -1487,7 +1487,7 @@ END scroll-top-arrow
 }
 .footer .f-sec2 ul li{
     font-size: 14px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     list-style: none;
     line-height: 2rem;
 
@@ -1512,7 +1512,7 @@ END scroll-top-arrow
     border: 1px solid #a9a9a9;
     margin-right: 5px;
     margin-bottom: 10px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size:13px;
     color:#a9a9a9;
     cursor: pointer;
@@ -1521,7 +1521,7 @@ END scroll-top-arrow
 .footer .f-sec3 h4{
     color:white;
     font-size: 18px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
     padding-top: 20px;
 }
@@ -1549,7 +1549,7 @@ END scroll-top-arrow
     background: -o-linear-gradient(left, #ffcc00 0%, #ffb211 100%);
     background: linear-gradient(to right, #ffcc00 0%, #ffb211 100%);
     font-size: 13px;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Open Sans', sans-serif;
     border:solid 1px #3e3f41;
     padding:8px 40px 8px 40px;
     background-size: 300% 100%;
@@ -1634,7 +1634,7 @@ END scroll-top-arrow
 }
 
 .logincontainer h3{
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
     color: #000000;
 }
@@ -1686,19 +1686,19 @@ END scroll-top-arrow
 
 .register-btn {
     font-size: 16px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 
 .getin_form  p{
     margin-top: 20px;
     margin-bottom: 16px;
-    font-family:"Poppins", sans-serif;
+    font-family:'Open Sans', sans-serif;
     font-weight: 400;
 }
 .getin_form  p a{
     text-decoration: none;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
 }
 
@@ -1715,21 +1715,21 @@ END scroll-top-arrow
     margin-top: 15px;
 }
 .registeration-detail .sub-title{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-size: 14px;
     font-weight: normal;
     color: deeppink;
     margin-bottom: 20px;
 }
 .registeration-detail  .title{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-size: 28px;
     font-weight: 600;
     color: #000000;
     margin-bottom: 35px;
 }
 .registeration-detail  .paragraph{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-size: 16px;
     font-weight: normal;
     margin-bottom: 35px;
@@ -1752,7 +1752,7 @@ END scroll-top-arrow
 .registeration-detail  .about-list li span{
     display: inline-block;
     font-size: 16px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
     color: #000000;
 }
@@ -1784,7 +1784,7 @@ END scroll-top-arrow
 .darkcolor{
     color:#000000;
     font-weight: normal;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
 }
 
 .border-radius {
@@ -1805,7 +1805,7 @@ END scroll-top-arrow
 .cart_table .table-responsive thead tr>th {
     padding: 15px 20px;
     border-bottom-width: 1px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight:bold;
 }
 
@@ -1818,7 +1818,7 @@ END scroll-top-arrow
     display: inline-block;
     vertical-align: middle;
     font-size: 18px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: bolder;
     background: -webkit-gradient(linear, left top, right top, color-stop(-50%, #FC2548), color-stop(93%, #f11fad));
     background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);
@@ -1829,13 +1829,13 @@ END scroll-top-arrow
 .cart_table .product-des{
     color: #000000;
     font-size: 14px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 
 .cart_table .amount{
     font-size: 20px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #000000;
 }
@@ -1968,7 +1968,7 @@ form.findus .form-control, form.findus textarea {
     color: #9c9c9c;
     border: 1px solid #d1d1d1;
     margin-bottom: 0;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 .shop-cart .calculate-shipping form .select:after {
     content: "\EA45";
@@ -1991,31 +1991,31 @@ form.findus .form-control, form.findus textarea {
 
 .shop-cart .calculate-shipping form input::-webkit-input-placeholder {
     color: #9c9c9c;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
 }
 
 .shop-cart .calculate-shipping form input::-moz-placeholder {
     color: #9c9c9c;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
 }
 
 .shop-cart .calculate-shipping form input:-ms-input-placeholder {
     color: #9c9c9c;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
 }
 
 .shop-cart .calculate-shipping form input::-ms-input-placeholder {
     color: #9c9c9c;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
 }
 
 .shop-cart .calculate-shipping form input::placeholder {
     color: #9c9c9c;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 100;
 }
 .shop-cart .card-total{
@@ -2025,7 +2025,7 @@ form.findus .form-control, form.findus textarea {
 .shop-cart .card-total h4{
     font-size: 24px;
     margin-bottom: 10px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     color: #000000;
 }
 .shop-cart .card-total table tr{
@@ -2037,7 +2037,7 @@ form.findus .form-control, form.findus textarea {
 }
 .shop-cart .card-total table tr td{
     font-size: 14px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 400;
     border: solid 1px transparent;
     padding-bottom: 17.5px;
@@ -2046,7 +2046,7 @@ form.findus .form-control, form.findus textarea {
 .shop-cart .card-total table tr td:first-child{
     font-size: 14px;
     font-weight: 600;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #000000;
 }
 .shop-cart .card-total table tr td ul li{
@@ -2070,12 +2070,12 @@ form.findus .form-control, form.findus textarea {
 .product-body .breadcrumb .breadcrumb-item a{
     color: #000000;
     font-size: 14px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 .product-body .pro-detail-sec .pro-heading{
     font-size: 40px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #000000;
     margin-bottom: 15px;
@@ -2126,7 +2126,7 @@ form.findus .form-control, form.findus textarea {
 .product-body .product-list .product-item .p-item-name{
     font-size: 14px;
     color: #000000;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     margin-top: 15px;
     margin-bottom: 8px;
@@ -2134,7 +2134,7 @@ form.findus .form-control, form.findus textarea {
 .product-body .product-list .product-item .p-item-price{
     font-size: 16px;
     color: #03a9f5;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     text-align: center;
 }
@@ -2142,18 +2142,18 @@ form.findus .form-control, form.findus textarea {
 .product-section-body .product-body .p-featured-footer p{
     font-size: 16px;
     color: #000000;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: lighter;
     margin-bottom: 20px;
 }
 .product-section-body .product-body .p-featured-footer .terms h4{
     font-size: 18px;
     color: #000000;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 600;
 }
 .product-section-body .product-body .p-featured-footer .terms p{
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     font-weight: normal;
     letter-spacing: 1.5px;
@@ -2177,7 +2177,7 @@ form.findus .form-control, form.findus textarea {
 
 .product-body .product-list .product-single-price h4{
     font-size: 18px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #d9d9d9;
     margin-bottom: 10px;
@@ -2189,7 +2189,7 @@ form.findus .form-control, form.findus textarea {
 
 .pro-description{
     font-size: 10px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
     color: #000000;
 }
@@ -2206,7 +2206,7 @@ form.findus .form-control, form.findus textarea {
     list-style: none;
     color: #000000;
     font-size: 12px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
 }
 
@@ -2223,7 +2223,7 @@ form.findus .form-control, form.findus textarea {
 
 .product-body .product-list .product-tags-list .breadcrumb .breadcrumb-item p{
     font-size: 12px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     color: #000000;
     font-weight: normal;
 }
@@ -2231,7 +2231,7 @@ form.findus .form-control, form.findus textarea {
 .product-body .product-list .product-tags-list .breadcrumb .breadcrumb-item a{
     color: deeppink;
     font-size: 12px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .comma-separtor{
@@ -2246,7 +2246,7 @@ form.findus .form-control, form.findus textarea {
 .product-body .product-list  .share-product-details .share-product-icons li p{
     color: #000000;
     font-size: 14px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: normal;
 }
 
@@ -2315,7 +2315,7 @@ form.findus .form-control, form.findus textarea {
     border: none;
     border-top-left-radius: 0px !important;
     border-top-right-radius: 0px !important;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 14px;
     font-weight: normal;
     color: #8b8d96;
@@ -2362,7 +2362,7 @@ form.findus .form-control, form.findus textarea {
 }
 
 .tab-content .reviews .media .media-body span{
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 12px;
     color: lightgrey;
     font-weight: lighter;
@@ -2372,7 +2372,7 @@ form.findus .form-control, form.findus textarea {
 /*form*/
 .tab-content .text-nowrap{
     font-size: 18px;
-    font-family: Poppins, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-weight: 500;
 }
 
@@ -2398,7 +2398,7 @@ textarea:focus{
     min-width: 35px;
     text-align: center;
     margin-bottom: 0px;
-    font-family: "Poppins", sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 .input_plus_mins .qty .plus {
     cursor: pointer;
@@ -2547,7 +2547,7 @@ textarea:focus{
     color: deeppink;
     left: -49px;
     font-size: 14px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     margin-bottom: 8px;
 }
 .contact-sec .contact-detail .small-text{
@@ -2598,12 +2598,12 @@ textarea:focus{
 }
 .contact-sec .contact-box .small-heading{
     font-size: 24px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: 500;
     margin-bottom: 20px;
 }
 .contact-sec .contact-box .small-text{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     margin-bottom: 25px;
 }
 .contact-sec .contact-form .my-form{
@@ -2668,7 +2668,7 @@ textarea:focus{
 @media (max-width: 575.98px) {
 
     .mini-cart-header h4 {
-        font-family: Poppins, "sans-serif";
+        font-family: 'Open Sans', "sans-serif";
         font-weight: normal;
         color: #000;
         font-size: 18px;
