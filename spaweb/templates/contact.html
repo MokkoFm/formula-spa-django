@@ -15,30 +15,30 @@
                 <div class="col-12 col-lg-6 contact-description wow slideInLeft" data-wow-delay=".8s">
                     <div class="contact-detail wow fadeInLeft">
                         <div class="ex-detail">
-                            <span class="fly-text">CONTACT US</span>
+                            <span class="fly-text">НАШИ КОНТАКТЫ</span>
                             <h4 class="large-heading">
-                                <span class="heading-1">Get</span>
-                                <span class="heading-2">In Touch</span>
+                                <span class="heading-1">Как нас найти</span>
                             </h4>
                         </div>
                         <p class="small-text text-center text-md-left">
-                            Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry’s standard.
+                            Если у вас появились вопросы, то можете написать нам или позвонить. Мы с радостью проконсультируем вас!
                         </p>
                         <div class="row location-details text-center text-md-left">
                             <div class="col-12 col-md-6 country-1">
-                                <h4 class="heading-text text-left">United States</h4>
+                                <h4 class="heading-text text-left">Сыктывкар</h4>
                                 <ul>
-                                    <li><i class="fas fa-mobile-alt"></i><a href="#">+(34) 609 33 17 54</a></li>
-                                    <li><i class="fas fa-envelope"></i><a href="#">email@website.com</a></li>
-                                    <li><i class="fas fa-map-marker"></i><a href="#">201 Oak Street 27 Manchester, USA</a></li>
+                                    <li><i class="fas fa-mobile-alt"></i><a href="#">559-335, + 7-908-697-16-53</a></li>
+                                    <li><i class="fas fa-envelope"></i><a href="#">formulaspa11@mail.ru</a></li>
+                                    <li><i class="fas fa-map-marker"></i><a href="#">ул. Свободы, 21</a></li>
+                                    <li><i class="fas fa-map-marker"></i><a href="#">ул. Коммунистическая, 67</a></li>
                                 </ul>
                             </div>
                             <div class="col-12 col-md-6 couuntry-1">
-                                <h4 class="heading-text text-left">Australia</h4>
+                                <h4 class="heading-text text-left">Ухта</h4>
                                 <ul>
-                                    <li><i class="fas fa-mobile-alt"></i><a href="#">+(34) 609 33 17 54</a></li>
-                                    <li><i class="fas fa-envelope"></i><a href="#">email@website.com</a></li>
-                                    <li><i class="fas fa-map-marker"></i><a href="#">201 Oak Street 27 Manchester, USA</a></li>
+                                    <li><i class="fas fa-mobile-alt"></i><a href="#">71-07-37</a></li>
+                                    <li><i class="fas fa-envelope"></i><a href="#">formulaspa11@mail.ru</a></li>
+                                    <li><i class="fas fa-map-marker"></i><a href="#">наб. Газовиков, 5</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -46,30 +46,31 @@
                 </div>
                 <div class="col-12 col-lg-6 contact-box text-center text-md-left wow slideInRight" data-wow-delay=".8s">
                     <div class="c-box wow fadeInRight">
-                        <h4 class="small-heading">Leave Message</h4>
+                        <h4 class="small-heading">Напишите нам</h4>
 <!--                        <p class="small-text">Lorem ipsum is simply dummy text of the printing and typesetting industry. </p>-->
-                        <form class="contact-form" id="contact-form-data">
+                        <form action="https://formspree.io/f/xoqplkwj" method="POST" class="contact-form" id="contact-form-data">
+                            {% csrf_token %}
                             <div class="row my-form">
                                 <div class="col-md-12 col-sm-12">
                                     <div id="result"></div>
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <input type="text" class="form-control" id="candidate_fname" name="firstName" placeholder="First Name" required="required">
+                                    <input type="text" class="form-control" id="candidate_fname" name="firstName" placeholder="Ваше имя" required="required">
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <input type="text" class="form-control" id="candidate_lname" name="lastName" placeholder="Last Name" required="required">
+                                    <input type="text" class="form-control" id="candidate_lname" name="lastName" placeholder="Ваша фамилия" required="required">
                                 </div>
                                 <div class="col-12 col-md-6">
                                     <input type="email" class="form-control" id="user_email" name="userEmail" placeholder="Email" required="required">
                                 </div>
                                 <div class="col-12 col-md-6">
-                                    <input type="text" class="form-control" id="user_subject" name="userSubject" placeholder="Subject" required="required">
+                                    <input type="tel" class="form-control" id="user_phone" name="tel" placeholder="Номер телефона">
                                 </div>
                                 <div class="col-12">
-                                    <textarea class="form-control" id="user_message" name="userMessage" placeholder="Message" rows="7" required="required"></textarea>
+                                    <textarea class="form-control" id="user_message" name="userMessage" placeholder="Ваше сообщение" rows="7" required="required"></textarea>
                                 </div>
                                 <div class="col-12">
-                                    <button type="button" class="btn pink-gradient-btn-into-black user-contact contact_btn" type="button">SUBMIT</button>
+                                    <button class="btn pink-gradient-btn-into-black" type="submit">ОТПРАВИТЬ</button>
                                 </div>
                             </div>
                         </form>
