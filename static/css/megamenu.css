@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800|Open+Sans:300,400,600,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700');
 
 /* transitions common*/
 
@@ -1209,7 +1209,7 @@ a.dropdown-toggle::after {
     box-shadow: 0px -1px 10px #e1e1e1;
 }
 .mini-cart-header h4{
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
     color: #000;
     font-size: 22px;
@@ -1269,19 +1269,19 @@ color: deeppink;
     text-transform: capitalize;
     margin-bottom: 0;
     margin-top: 3px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     transition: .1s ease;
     cursor: pointer;
 }
 .mini-cart-body .media-body p{
     font-size: 14px;
     margin-bottom: 0;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
 }
 .mini-cart-body .media-body p span{
     font-weight: 600;
     margin-right: 5px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
 }
 .mini-cart-body .media-body p i{
     margin-left: 9%;
@@ -1302,7 +1302,7 @@ color: deeppink;
     font-size: 14px;
     color:black;
     font-weight: 600;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
 }
  .subtotal .total-price {
     font-size: 20px;
@@ -1343,7 +1343,7 @@ color: deeppink;
 
 .user-utiliity-title{
     font-size: 14px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
     color: #000000;
     text-align: left;
@@ -1392,7 +1392,7 @@ color: deeppink;
 .user-utiliity ul li a{
     font-size: 12px !important;
     padding: 0 0 !important;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     font-weight: normal;
 }
 .user-utiliity ul li:hover a{
@@ -1405,12 +1405,12 @@ color: deeppink;
 
 .side-nav .navbar-nav .nav-link {
     font-size: 16px;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     cursor: pointer;
 }
 .side-nav .navbar-nav .nav-item ul li.nav-item .nav-link{
     font-size: 12px !important;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
     background: #000;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -1427,5 +1427,5 @@ color: deeppink;
     margin-top: 15px;
     margin-bottom: 15px;
     font-weight: 500;
-    font-family: Poppins, "sans-serif";
+    font-family: 'Open Sans', "sans-serif";
 }
