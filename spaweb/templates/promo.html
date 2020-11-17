@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Slider Start-->
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
+<!--Slider End-->
+
+
+<!-- START HEADING SECTION -->
+<div class="about_content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12  text-center wow slideInUp" data-wow-duration="2s">
+                <h1 class="heading">Акции в спа-центрах "Формула SPA"</h1>
+                <p class="para_text">Акции не распространяются на подарочные сертификаты и дисконтные карты, не суммируются между собой и с другими предложениями, действуют при оплате за наличный расчёт.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--content-->
+<div class="standalone-area">
+    <div class="container">
+
+        <div class="row standalone-row align-items-center">
+            <div class="col-lg-6">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <img src="{% static 'img/promo1.jpg' %}" alt="image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-inline-block">
+                    <h2 class="gradient-text1 pb-3">Скидка на день рождения</h2>
+                    <p>Скидки именинникам! Мы дарим скидку -10% за 3 дня до и 3 дня после вашего дня рождения.</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!--content-->
+        <div class="row standalone-row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <img src="{% static 'img/promo2.jpg' %}" alt="image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-inline-block">
+                    <h2 class="gradient-text1 pb-3">Скидка 300 рублей на все процедуры в UDS</h2>
+                    <p>
+                        В нашем SPA-центре действует программа лояльности с накопительной системой.
+                        Накопленными баллами можно оплатить 50% от суммы Вашего чека (1 балл = 1 рубль).
+                        <br><br>
+                        Перейдите по ссылке 👉🏻 https://promo.uds.app/apps/?code=ujxp8954 или введите промокод вручную 👉🏻 ujxp8954
+                        <br><br>
+                        Вы получили 300 приветственных бонусов на свой баланс и теперь у Вас есть cashback в размере 8% от суммы Ваших покупок, которые начисляются Вам в виде бонусов и для VIP клиентов кэшбэк 10%,
+                        а также +300 баллов ко дню рождения!
+                        <br><br>
+                        Получайте также бонусы от оплат Ваших друзей, которым Вы порекомендуете «Центр Формула SPA» через приложение UDS.<br>
+                        Больше рекомендаций = больше баллов!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!--content-->
+        <div class="row standalone-row align-items-center">
+            <div class="col-lg-6">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <img src="{% static 'img/standalone1.jpg' %}" alt="image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-inline-block">
+                    <h2 class="gradient-text1 pb-3">Горящее время - это 20% скидка!</h2>
+                    <p>Мы регулярно размещаем спа-программы со скидкой 20% в нашей группе <a href="https://vk.com/clubformulaspa" style="color:blue">ВКонтакте</a>. Подписывайтесь и следите за обновлениями!</p>
+                </div>
+            </div>
+        </div>
+        <!--content-->
+    </div>
+</div>
+
+</div>
+
+<!-- END HEADING SECTION -->
+{% endblock %}
