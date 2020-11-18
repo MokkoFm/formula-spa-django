@@ -654,7 +654,7 @@ END scroll-top-arrow
     -webkit-transition: .8s ease;
     -o-transition: .8s ease;
     transition: .8s ease;
-    margin-top: -10px;
+    margin-top: 10px;
 }
 .product-listing-products .product-list .p-item-detail .p-item-price{
     font-size: 15px;
