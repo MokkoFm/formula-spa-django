@@ -36,7 +36,7 @@ def product_listing(request, slug):
     context = {
         'products_by_category': products_by_category,
     }
-    return render(request, 'product-listing.html', context)
+    return render(request, 'category.html', context)
 
 
 def register(request):
