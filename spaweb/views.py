@@ -33,7 +33,12 @@ def product_detail(request, slug):
 
 def product_listing(request, slug):
     category = get_object_or_404(ProductCategory, slug=slug)
-    products_by_category = Product.objects.filter(category=category)
+    if request.method == "POST":
+        minprice = request.POST.get('minprice')
+        maxprice = request.POST.get('maxprice')
+        products_by_category = Product.objects.filter(category=category, price__range=(minprice, maxprice))
+    else:
+        products_by_category = Product.objects.filter(category=category)
 
     context = {
         'products_by_category': products_by_category,

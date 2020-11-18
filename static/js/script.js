@@ -340,36 +340,36 @@ jQuery(function ($) {
               Price Range
     ======================================*/
 
-    if ($("#slider-range").length) {
-        var marginSlider = document.getElementById('slider-range');
+    // if ($("#slider-range").length) {
+    //     var marginSlider = document.getElementById('slider-range');
 
-        noUiSlider.create(marginSlider, {
-            start: [0, 800],
-            margin: 30,
-            step: 1,
-            connect: true,
-            range: {
-                'min': 0,
-                'max': 1000
-            },
+    //     noUiSlider.create(marginSlider, {
+    //         start: [0, 5000],
+    //         margin: 30,
+    //         step: 10,
+    //         connect: true,
+    //         range: {
+    //             'min': 0,
+    //             'max': 10000
+    //         },
 
-        });
+    //     });
 
-        var marginMin = document.getElementById('min-p'),
-            marginMax = document.getElementById('max-p');
+    //     var marginMin = document.getElementById('min-p'),
+    //         marginMax = document.getElementById('max-p');
 
-        marginSlider.noUiSlider.on('update', function (values, handle) {
-            if (handle) {
-                var str = values[handle]
-                var res = str.split(".");
-                marginMax.innerHTML = "$" + res[0];
-            } else {
-                var str = values[handle]
-                var res = str.split(".");
-                marginMin.innerHTML = "$" + res[0] + " - ";
-            }
-        });
-    }
+    //     marginSlider.noUiSlider.on('update', function (values, handle) {
+    //         if (handle) {
+    //             var str = values[handle]
+    //             var res = str.split(".");
+    //             marginMax.innerHTML = "₽" + res[0];
+    //         } else {
+    //             var str = values[handle]
+    //             var res = str.split(".");
+    //             marginMin.innerHTML = "₽" + res[0] + " - ";
+    //         }
+    //     });
+    // }
 
 
     /* ===================================

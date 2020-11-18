@@ -26,14 +26,19 @@
                             <li><a href="#">May </a><span>(9)</span></li>
                         </ul>
                     </div>
+        
                     <div class="product-price mt-1">
-                        <h5 class="filter-heading">Shop By</h5>
+                        <h5 class="filter-heading">По цене</h5>
                         <div id="slider-range"></div>
-                        <p class="price-num" style="color: #0b2e13;">Price: <span id="min-p"></span>  <span id="max-p"></span></p>
+                        <form method="POST">
+                            {% csrf_token %}
+                            
+                            Min: <input type="text" id="min-p" name="minprice" class="price-num" placeholder="0"><br>
+                            Max: <input type="text" id="max-p" name="maxprice" class="price-num" placeholder="5000"><br>
+                            <input type="submit" value="Найти" class="btn pink-gradient-btn-into-black mt-1">
+                        </form>
+                        <!--<p class="price-num" style="color: #0b2e13;">Price: <span id="min-p"></span>  <span id="max-p"></span></p>-->
                     </div>
-
-
-                    <button class="btn pink-gradient-btn-into-black mt-1">Filter</button>
 
                     <div class="product-add mt-4">
                         <div class="row no-gutters">

@@ -35,6 +35,8 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <!-- Custom Css  -->
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
 
 </head>
 <body>
@@ -686,18 +688,34 @@
 <script>
     const anchors = document.querySelectorAll('a[href*="#"]')
 
-for (let anchor of anchors) {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault()
-    
-    const blockID = anchor.getAttribute('href').substr(1)
-    
-    document.getElementById(blockID).scrollIntoView({
-      behavior: 'smooth',
-      block: 'start'
+    for (let anchor of anchors) {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault()
+        
+        const blockID = anchor.getAttribute('href').substr(1)
+        
+        document.getElementById(blockID).scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+        })
     })
-  })
-}
+    }
+</script>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script>
+    $( function() {
+        $( "#slider-range" ).slider({
+        range: true,
+        min: 0,
+        max: 10000,
+        step: 10,
+        values: [ 0, 5000 ],
+        slide: function( event, ui ) {
+            $( "#min-p" ).val( ui.values[ 0 ]) + $( "#max-p" ).val( ui.values[ 1 ] );
+        }
+        });
+    } );
 </script>
 </body>
 </html>
