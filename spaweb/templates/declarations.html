@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Slider Start-->
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
+<!--Slider End-->
+
+
+<!-- START HEADING SECTION -->
+<div class="about_content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12  text-center wow slideInUp" data-wow-duration="2s">
+                <h1 class="heading">Декларации на продукцию</h1>
+                <p class="para_text">Вся косметика, используемая в работе наших спа-центров, сертифицирована. Ниже вы можете ознакомиться с декларациями.</p>
+            </div>
+        </div>
+    </div>
+
+    <!--content-->
+<div class="standalone-area">
+    <div class="container">
+
+        <div class="row standalone-row align-items-center">
+            <div class="col-lg-4">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <div class="item"> <a href="{% static 'img/declaration1.jpg' %}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="{% static 'img/declaration1.jpg' %}" alt=""></a></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <div class="item"> <a href="{% static 'img/declaration2.jpg' %}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="{% static 'img/declaration2.jpg' %}" alt=""></a></div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <div class="item"> <a href="{% static 'img/declaration3.jpg' %}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="{% static 'img/declaration3.jpg' %}" alt=""></a></div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <!--content-->
+        <div class="row standalone-row align-items-center">
+            <div class="col-lg-6 order-lg-2">
+                <div class="blog-image wow hover-effect fadeInLeft">
+                    <img src="{% static 'img/fs-cosmetics.jpg' %}" alt="image">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="d-inline-block">
+                    <h2 class="gradient-text1 pb-3">О косметике "Формула SPA"</h2>
+                    <p>
+                        Формула каждого продукты была тщательно продумана в лабораторных условиях. На протяжении 10 лет сотрудники нашей компании собирали рецепты по всему миру, тестируя различные компоненты. Мы выбирали самое лучшее, чтобы создать уникальную формулу красоты и здоровья.<br><br>
+                        Это 100% натуральные составляющие: водоросли, природные минералы, лекарственные травы, СО2 экстракты, натуральные эфирные и растительные масла, произведенные методом холодного прессования. Это сухая форма выпуска продукции. Все маски и скрабы находятся в порошкообразном виде, что позволяет продлить сроки хранения без консервантов, благодаря отсутствию в составе влаги.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<!-- END HEADING SECTION -->
+{% endblock %}

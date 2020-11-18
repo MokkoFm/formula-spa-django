@@ -51,3 +51,7 @@ def cart(request):
 
 def promo(request):
     return render(request, "promo.html")
+
+
+def declarations(request):
+    return render(request, "declarations.html")
