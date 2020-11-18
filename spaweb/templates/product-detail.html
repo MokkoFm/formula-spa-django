@@ -78,7 +78,7 @@
                                         <li class="breadcrumb-item">
                                             <span class="d-inline">Категория: 
                                                 {% for category in product.category.all %}
-                                                    <a href="{% url 'product-listing' category.slug }">{{ category.name }}</a>
+                                                    <a href="{% url 'category' category.slug }">{{ category.name }}</a>
                                                     <span class="comma-separtor">,</span>
                                                 {% endfor %}
                                             </span>

@@ -193,7 +193,7 @@
                                                                     <h5 class="dropdown-title">{{topic.title}}</h5>
                                                                     <ul>
                                                                         {% for category in topic.products_categories.all %}
-                                                                            <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'product-listing' category.slug %}">{{category.name}}</a></li>
+                                                                            <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
                                                                         {% endfor %}
                                                                     </ul>
                                                                 </div>
@@ -213,7 +213,7 @@
                                                                     <i class="lni-chevron-right ini-customNextBtn"></i>
                                                                 </div>
                                                                 <p class="mt-4 megamenu-slider-para">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
-                                                                <a href="product-listing.html" class="btn trans-pink-color-gradient-btn slider-btn text-left">Shop Now</a>
+                                                                <a href="category.html" class="btn trans-pink-color-gradient-btn slider-btn text-left">Shop Now</a>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -221,92 +221,6 @@
                                             </ul>
                                         </li>
                                     {% endfor %}
-                                    <!-- <li class="nav-item dropdown static">
-                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> CLOTHES </a>
-                                        <ul class="dropdown-menu megamenu flexable-megamenu">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
-                                                            <h5 class="dropdown-title bottom10"> General </h5>
-
-                                                            <ul>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Dresses</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Hoodies & Sweatshirts</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Top</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Shoes & Trainers</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Jeans</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Shorts</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Loungewear</a></li>
-
-                                                            </ul>
-
-                                                        </div>
-                                                        <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
-                                                            <h5 class="dropdown-title opacity-10"> Others </h5>
-                                                            <ul>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">All Clothing</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i> <a class="dropdown-item" href="product-listing.html">Shoes</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i> <a class="dropdown-item" href="product-listing.html">ActiveWear</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Treading Now</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Accessories
-                                                                </a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Face + Body</a></li>
-                                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="product-listing.html">Back in stock</a></li>
-                                                            </ul>
-
-                                                        </div>
-                                                        <div class="col-lg-3 col-md-6 col-sm-12 mengmenu_border">
-                                                            <h5 class="dropdown-title bottom10"> Outlet </h5>
-
-                                                            <div class="media outlet-media mt-3">
-                                                                <div class="box">
-                                                                    <img class="align-self-start" src="{% static 'img/product-listing/p42.1.jpg' %}" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="mt-3 ml-3"><a href="product-listing.html">Modest Fashion</a></h6>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="media outlet-media">
-                                                                <div class="box">
-                                                                    <img class="align-self-start" src="{% static 'img/product-listing/p54.jpg' %}" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="mt-3 ml-3"><a href="product-listing.html">Responsible Edit</a></h6>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="media outlet-media">
-                                                                <div class="box">
-                                                                    <img class="align-self-start" src="{% static 'img/product-listing/p49.jpg' %}" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="mt-3 ml-3"><a href="product-listing.html">Going Out</a></h6>
-                                                                </div>
-                                                            </div>
-
-
-                                                            <div class="media outlet-media">
-                                                                <div class="box">
-                                                                    <img class="align-self-start" src="{% static 'img/product-listing/p6.jpg' %}" alt="Generic placeholder image">
-                                                                </div>
-                                                                <div class="media-body">
-                                                                    <h6 class="mt-3 ml-3"><a href="product-listing.html">Holiday</a></h6>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="col-lg-3 col-md-6 col-sm-12 pt-3">
-
-                                                            <a href="javascript:void(0);"><img src="{% static 'img/product-listing/p10.jpg' %}" alt="image"></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li> -->
-                                    <!-- end of business direction -->
                                     <li class="nav-item dropdown position-relative">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">PAGES</a>
                                         <div class="dropdown-menu">
