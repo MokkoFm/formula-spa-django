@@ -1,16 +1,17 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
-from spaweb.models import Product, ProductCategory
-from spaweb.models import BusinessDirection, Topic
-from more_itertools import chunked
+from spaweb.models import Product, ProductCategory, Topic
 
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
-    business_directions = BusinessDirection.objects.all()
+    bestsellers = Product.objects.filter(is_bestseller=True)
+    topics = Topic.objects.all()
+
     context = {
-        "business_directions": business_directions,
         "new_products": new_products,
+        "bestsellers": bestsellers,
+        "topics": topics,
     }
     return render(request, "index.html", context)
 
@@ -33,6 +34,7 @@ def product_detail(request, slug):
 def product_listing(request, slug):
     category = get_object_or_404(ProductCategory, slug=slug)
     products_by_category = Product.objects.filter(category=category)
+
     context = {
         'products_by_category': products_by_category,
     }
@@ -47,5 +49,5 @@ def cart(request):
     return render(request, "shop-cart.html")
 
 
-def standalone(request):
-    return render(request, "standalone.html")
+def promo(request):
+    return render(request, "promo.html")

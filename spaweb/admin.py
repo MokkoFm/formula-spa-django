@@ -25,6 +25,7 @@ class OrderAdmin(admin.ModelAdmin):
     ]
     inlines = [OrderItemInline]
 
+
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ['category']

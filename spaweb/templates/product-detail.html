@@ -50,7 +50,7 @@
 
                         <div class="col-12 col-lg-6 text-center text-lg-left">
                             <div class="product-single-price">
-                                <h4><span class="real-price">{{ product.price }}р.</span> <span><del>{{ product.price }}р.</del></span></h4>
+                                <h4><span class="real-price">>{{ product.price }}₽</span> <span><del>>{{ product.price }}₽</del></span></h4>
                                 <div class="pro-description">
                                     {{ product.description|safe }}
                                 </div>
@@ -74,12 +74,11 @@
                             <div class="product-tags-list">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
-                                        <li class="breadcrumb-item"><p class="d-inline">SKU: <span>00012</span></p></li>
                                         <li class="breadcrumb-item">
-                                            <span class="d-inline">Категория: 
+                                            <span class="d-inline">Категории: 
                                                 {% for category in product.category.all %}
-                                                    <a href="{% url 'category' category.slug }">{{ category.name }}</a>
-                                                    <span class="comma-separtor">,</span>
+                                                    <a href="{% url 'product-listing' category.slug }">{{ category.name }}</a>
+                                                    <span> </span>
                                                 {% endfor %}
                                             </span>
                                         </li>

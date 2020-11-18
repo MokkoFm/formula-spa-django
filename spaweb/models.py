@@ -6,12 +6,38 @@ from django.urls import reverse
 from tinymce.models import HTMLField
 
 
+class BusinessDirection(models.Model):
+    title = models.CharField('название', max_length=50)
+    slug = models.SlugField(null=True, unique=True)
+
+    class Meta:
+        verbose_name_plural = "направления"
+
+    def __str__(self):
+        return self.title
+
+
+class Topic(models.Model):
+    title = models.CharField('название', max_length=50)
+    business_direction = models.ForeignKey(
+        BusinessDirection, on_delete=models.CASCADE,
+        related_name='topics', null=True)
+    slug = models.SlugField(null=True, unique=True)
+
+    class Meta:
+        verbose_name_plural = "группы категорий"
+
+    def __str__(self):
+        return self.title
+
+
 class Customer(models.Model):
     firstname = models.CharField(max_length=50, verbose_name="имя")
     lastname = models.CharField(max_length=50, verbose_name="фамилия")
     phonenumber = models.CharField(max_length=20, blank=True, verbose_name="телефон")
     email = models.CharField(max_length=100, blank=True, verbose_name="эл. почта")
-    user = models.OneToOneField(User, blank=True, on_delete=models.CASCADE, verbose_name="юзернейм")
+    user = models.OneToOneField(
+        User, blank=True, on_delete=models.CASCADE, verbose_name="юзернейм")
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
@@ -19,34 +45,13 @@ class Customer(models.Model):
     class Meta:
         verbose_name = "клиент"
         verbose_name_plural = "клиенты"
-    
-
-class BusinessDirection(models.Model):
-    title = models.CharField('название', max_length=50)
-    slug = models.SlugField(null=True, unique=True)
-
-    class Meta:
-        verbose_name_plural = "направления"
-    
-    def __str__(self):
-        return self.title
-
-
-class Topic(models.Model):
-    title = models.CharField('название', max_length=50)
-    business_direction = models.ForeignKey(BusinessDirection, on_delete=models.CASCADE, related_name='topics', null=True)
-    slug = models.SlugField(null=True, unique=True)
-
-    class Meta:
-        verbose_name_plural = "группы категорий"
-    
-    def __str__(self):
-        return self.title
 
 
 class ProductCategory(models.Model):
     name = models.CharField('название', max_length=50)
-    topic = models.ForeignKey(Topic, on_delete=models.CASCADE, related_name='products_categories', null=True)
+    topic = models.ForeignKey(
+        Topic, on_delete=models.CASCADE,
+        related_name='products_categories', null=True)
     slug = models.SlugField(null=True, unique=True)
 
     class Meta:
@@ -75,13 +80,19 @@ class City(models.Model):
 class Product(models.Model):
     name = models.CharField('название', max_length=50)
     description = HTMLField(verbose_name='описание', blank=True)
-    category = models.ManyToManyField(ProductCategory, verbose_name='категория', related_name='category_products')
-    city = models.ManyToManyField(City, verbose_name='город', related_name='city_products')
+    category = models.ManyToManyField(
+        ProductCategory, verbose_name='категория',
+        related_name='category_products')
+    city = models.ManyToManyField(
+        City, verbose_name='город', related_name='city_products')
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to="images", verbose_name="фото товара")
-    duration = models.CharField(verbose_name='Продолжительность', max_length=50, blank=True)
-    is_bestseller = models.BooleanField(default=False, db_index=True, verbose_name="популярные товары")
-    is_new = models.BooleanField(default=False, db_index=True, verbose_name="новый товар")
+    duration = models.CharField(
+        verbose_name='Продолжительность', max_length=50, blank=True)
+    is_bestseller = models.BooleanField(
+        default=False, db_index=True, verbose_name="популярные товары")
+    is_new = models.BooleanField(
+        default=False, db_index=True, verbose_name="новый товар")
     slug = models.SlugField(null=True, unique=True)
 
     def __str__(self):
@@ -110,12 +121,19 @@ class Order(models.Model):
         ('Card', 'По карте'),
     ]
 
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='orders', verbose_name="клиент")
-    registrated_at = models.DateTimeField(default=timezone.now, verbose_name='дата регистрации')
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE,
+        related_name='orders', verbose_name="клиент")
+    registrated_at = models.DateTimeField(
+        default=timezone.now, verbose_name='дата регистрации')
     comment = models.TextField(verbose_name='комментарий', blank=True)
-    is_digital = models.BooleanField(default=False, db_index=True, verbose_name="эл. сертификат")
-    is_complete = models.BooleanField(default=False, db_index=True, verbose_name="статус")
-    payment_method = models.CharField(max_length=4, choices=PAYMENT_METHOD, default='Неизвестно', verbose_name='способ оплаты')
+    is_digital = models.BooleanField(
+        default=False, db_index=True, verbose_name="эл. сертификат")
+    is_complete = models.BooleanField(
+        default=False, db_index=True, verbose_name="статус")
+    payment_method = models.CharField(
+        max_length=4, choices=PAYMENT_METHOD,
+        default='Неизвестно', verbose_name='способ оплаты')
 
     def __str__(self):
         return f" Order number - {self.id}"
@@ -134,9 +152,15 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='product_items')
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name='order_items')
-    quantity = models.IntegerField(validators=[MinValueValidator(1), MaxValueValidator(25)], verbose_name='количество', default=0)
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE,
+        related_name='product_items')
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE,
+        related_name='order_items')
+    quantity = models.IntegerField(
+        validators=[MinValueValidator(1), MaxValueValidator(25)],
+        verbose_name='количество', default=0)
 
     def __str__(self):
         return f"{self.product}: {self.quantity}"
@@ -151,10 +175,14 @@ class OrderItem(models.Model):
 
 
 class ShippingAddress(models.Model):
-    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name="address")
-    order = models.ForeignKey(Order, on_delete=models.CASCADE, related_name="address")
+    customer = models.ForeignKey(
+        Customer, on_delete=models.CASCADE, related_name="address")
+    order = models.ForeignKey(
+        Order, on_delete=models.CASCADE, related_name="address")
     address = models.TextField(verbose_name="адрес для доставки")
-    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='город доставки', related_name="address")
+    city = models.ForeignKey(
+        City, on_delete=models.CASCADE,
+        verbose_name='город доставки', related_name="address")
 
     def __str__(self):
         return self.address
