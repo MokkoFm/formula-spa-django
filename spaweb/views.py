@@ -45,7 +45,12 @@ def product_listing(request, slug):
     if request.method == "POST":
         minprice = request.POST.get('minprice')
         maxprice = request.POST.get('maxprice')
-        products_by_category = Product.objects.filter(category=category, price__range=(minprice, maxprice))
+        if minprice or maxprice:
+            products_by_category = Product.objects.filter(category=category, price__range=(minprice, maxprice))
+        else:
+            minprice = "0"
+            maxprice = "10000"
+            products_by_category = Product.objects.filter(category=category, price__range=(minprice, maxprice))
     else:
         products_by_category = Product.objects.filter(category=category)
 
