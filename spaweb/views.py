@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from spaweb.models import Product, ProductCategory, Topic
 
@@ -77,6 +77,13 @@ def cart(request):
         'cart_products': cart_products,
     }
     return render(request, "shop-cart.html", context)
+
+
+def remove_cart_item(request, pk):
+    cart = request.session['cart']
+    cart.pop(pk, None)
+    request.session['cart'] = cart
+    return redirect(reverse('cart'))
 
 
 def promo(request):
