@@ -1,6 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from spaweb.models import Product, ProductCategory, Topic
+
+from spaweb.cart import add_to_cart
 
 
 def index(request):
@@ -25,10 +27,17 @@ def login(request):
 
 
 def product_detail(request, slug):
-    context = {
-        "product": get_object_or_404(Product, slug=slug)
-    }
-    return render(request, "product-detail.html", context)
+    product = get_object_or_404(Product, slug=slug)
+
+    if request.method == 'GET':
+        context = {
+            "product": get_object_or_404(Product, slug=slug)
+        }
+        return render(request, "product-detail.html", context)
+
+    if request.method == 'POST':
+        add_to_cart(request)
+        return redirect ('product-detail', slug=product.slug)
 
 
 def product_listing(request, slug):
@@ -42,6 +51,7 @@ def product_listing(request, slug):
 
     context = {
         'products_by_category': products_by_category,
+        'category_slug': slug
     }
     return render(request, 'category.html', context)
 
@@ -51,7 +61,22 @@ def register(request):
 
 
 def cart(request):
-    return render(request, "shop-cart.html")
+    cart = request.session['cart']
+    cart_products = []
+    for key in cart:
+        product = get_object_or_404(Product, pk=key)
+        total_price = product.price * cart[key]
+        
+        cart_products.append({
+            'product': product,
+            'quantity': cart[key],
+            'total_price': total_price,
+        })
+
+    context = {
+        'cart_products': cart_products,
+    }
+    return render(request, "shop-cart.html", context)
 
 
 def promo(request):
