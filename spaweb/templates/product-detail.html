@@ -64,7 +64,11 @@
                                     <span class="plus bg-dark"><i class="lni-plus"></i></span>
                                 </div>
                                 <div class="col-12 col-lg-9">
-                                    <button class="btn pink-gradient-btn-into-black">ADD TO CART</button>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <input type="text" name="add_product_id" value="{{ product.id }}">
+                                        <button class="btn pink-gradient-btn-into-black">ADD TO CART</button>
+                                    </form>
                                 </div>
                             </div>
 

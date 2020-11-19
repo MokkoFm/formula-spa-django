@@ -37,6 +37,7 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for cart_product in cart_products %}
                             <tr>
                                 <td>
                                     <div class="d-table product-detail-cart">
@@ -50,7 +51,7 @@
 
                                                 <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
                                                     <div class="media-body ml-lg-3">
-                                                        <h4 class="product-name"><a href="product-detail.html">Leather Purse</a></h4>
+                                                        <h4 class="product-name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{cart_product.product.name}}</a></h4>
                                                         <p class="product-des">We offer the most complete in the country</p>
                                                     </div>
                                                 </div>
@@ -59,55 +60,23 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 class="text-center amount">$130.00</h4>
+                                    <h4 class="text-center amount">{{cart_product.product.price}}</h4>
                                 </td>
                                 <td class="text-center">
-                                    <div class="quote text-center mt-1">
-                                        <input type="number" placeholder="1" class="quote" min="1" max="100">
-                                    </div>
+                                    <h4 class="text-center amount">{{cart_product.quantity}}</h4>
                                 </td>
                                 <td>
-                                    <h4 class="text-center amount">$136.00</h4>
-                                </td>
-                                <td class="text-center"><a class="btn-close" href="#."><i class="lni-trash"></i></a></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-table product-detail-cart">
-
-                                        <div class="media">
-                                            <div class="row no-gutters">
-
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                    <a class="shopping-product" href="#"><img src="{% static 'img/shop-cart-thumb2.jpg' %}" alt="Generic placeholder image"></a>
-                                                </div>
-
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3">
-                                                        <h4 class="product-name"><a href="product-detail.html">Leather Purse</a></h4>
-                                                        <p class="product-des">We offer the most complete in the country</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h4 class="text-center d-table-price amount">$130.00</h4>
+                                    <h4 class="text-center amount">{{cart_product.total_price}}</h4>
                                 </td>
                                 <td class="text-center">
-                                    <div class="quote text-center mt-1">
-                                        <input type="number" placeholder="1" class="quote" min="1" max="100">
-                                    </div>
+                                    <a class="btn-close" href="{% url 'remove_item' cart_product.product.id %}"><i class="lni-trash"></i></a>
                                 </td>
-                                <td>
-                                    <h4 class="text-center amount">$136.00</h4>
-                                </td>
-                                <td class="text-center"><a class="btn-close" href="#."><i class="lni-trash"></i></a></td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>
+                    <!-- END MAIN TABLE -->
                     <div class="apply_coupon">
                         <div class="row">
                             <div class="col-12 text-left">
