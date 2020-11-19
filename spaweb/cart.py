@@ -11,4 +11,3 @@ def add_to_cart(request):
         cart = {}
         cart[product_id] = 1
     request.session['cart'] = cart
-    print(request.session['cart'])
