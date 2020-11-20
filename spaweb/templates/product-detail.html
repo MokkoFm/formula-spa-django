@@ -15,10 +15,10 @@
                 <div class="product-body">
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb text-center text-lg-left">
-                            <li class="breadcrumb-item"><a href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a href="#">categories</a></li>
-                            <li class="breadcrumb-item" aria-current="page"><a href="#">sports</a></li>
-                            <li class="breadcrumb-item"><a href="#">Shoes M29</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                            <li class="breadcrumb-item"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+                            <!-- <li class="breadcrumb-item" aria-current="page"><a href="#">sports</a></li> -->
+                            <li class="breadcrumb-item">{{ product.name }}</li>
                         </ol>
                     </nav>
                     <div class="pro-detail-sec row">
@@ -33,9 +33,9 @@
                             <div class="wrapper">
                                 <div class="Gallery swiper-container img-magnifier-container" id="gallery">
                                     <div class="swiper-wrapper myimgs">
-                                        <div class="swiper-slide"> <a href="{% static 'img/detail-slider1.jpg' %}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{% static 'img/detail-slider1.jpg' %}" alt="gallery"/></a></div>
-                                        <div class="swiper-slide"> <a href="{% static 'img/detail-slider2.jpg' %}" data-fancybox="2" title="Zoom In"><img class="myimage" src="{% static 'img/detail-slider2.jpg' %}" alt="thumnails"/></a></div>
-                                        <div class="swiper-slide"> <a href="{% static 'img/detail-slider3.jpg' %}" data-fancybox="3" title="Zoom In"><img class="myimage" src="{% static 'img/detail-slider3.jpg' %}" alt="thumnails"/></a></div>
+                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="gallery"/></a></div>
+                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="2" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="thumnails"/></a></div>
+                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="3" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="thumnails"/></a></div>
                                     </div>
                                 </div>
                                 <div class="Thumbs swiper-container" id="thumbs">
