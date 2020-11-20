@@ -81,7 +81,7 @@
                                         <li class="breadcrumb-item">
                                             <span class="d-inline">Категории: 
                                                 {% for category in product.category.all %}
-                                                    <a href="{% url 'category' category.slug }">{{ category.name }}</a>
+                                                    <a href="{% url 'category' category.slug %}">{{ category.name }}</a>
                                                     <span> </span>
                                                 {% endfor %}
                                             </span>
