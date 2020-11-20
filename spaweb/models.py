@@ -94,6 +94,7 @@ class Product(models.Model):
     is_new = models.BooleanField(
         default=False, db_index=True, verbose_name="новый товар")
     slug = models.SlugField(null=True, unique=True)
+    number_users = models.IntegerField('количество пользователей', default=1)
 
     def __str__(self):
         return self.name
