@@ -498,37 +498,37 @@ jQuery(function ($) {
     /*===================================
               Swiper Sync Slider
     ======================================*/
-    if ($("#gallery").length) {
-        var galleryTop = new Swiper('#gallery', {
-            effect: 'fade',
-            direction: 'vertical',
-            spaceBetween: 10,
-            slidesPerView: 1,
-            slidesPerGroup: 1,
-            loop: true,
-            initialSlide: 0,
-            centeredSlides: true,
-            loopAdditionalSlides: 5,
-            touchRatio: 0.2,
+    // if ($("#gallery").length) {
+    //     var galleryTop = new Swiper('#gallery', {
+    //         effect: 'fade',
+    //         direction: 'vertical',
+    //         spaceBetween: 10,
+    //         slidesPerView: 1,
+    //         slidesPerGroup: 1,
+    //         loop: true,
+    //         initialSlide: 0,
+    //         centeredSlides: true,
+    //         loopAdditionalSlides: 5,
+    //         touchRatio: 0.2,
 
-        });
+    //     });
 
-        var galleryThumbs = new Swiper('#thumbs', {
-            direction: 'vertical',
-            spaceBetween: 10,
-            slidesPerView: 3,
-            slidesPerGroup: 1,
-            loop: true,
-            initialSlide: 0,
-            centeredSlides: true,
-            loopAdditionalSlides: 3,
-            touchRatio: 0.2,
-            slideToClickedSlide: true
-        });
+    //     var galleryThumbs = new Swiper('#thumbs', {
+    //         direction: 'vertical',
+    //         spaceBetween: 10,
+    //         slidesPerView: 3,
+    //         slidesPerGroup: 1,
+    //         loop: true,
+    //         initialSlide: 0,
+    //         centeredSlides: true,
+    //         loopAdditionalSlides: 3,
+    //         touchRatio: 0.2,
+    //         slideToClickedSlide: true
+    //     });
 
-        galleryTop.controller.control = galleryThumbs;
-        galleryThumbs.controller.control = galleryTop;
-    }
+    //     galleryTop.controller.control = galleryThumbs;
+    //     galleryThumbs.controller.control = galleryTop;
+    // }
 
 
     /*===================================

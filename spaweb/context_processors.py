@@ -11,7 +11,7 @@ def send_message(request):
     for key in cart:
         product = get_object_or_404(Product, pk=key)
         total_price += product.price * cart[key]
-        
+
         cart_products.append({
             'product': product,
             'quantity': cart[key],

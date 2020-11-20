@@ -3303,7 +3303,7 @@ textarea:focus{
     padding-left: 5px;
 }
 
-#cart-total{
+.cart-total-amount-dropdown {
 	display: block;
 	text-align: center;
 	color: #ffffff;
