@@ -81,8 +81,8 @@ class Product(models.Model):
     name = models.CharField('название', max_length=50)
     description = HTMLField(verbose_name='описание', blank=True)
     category = models.ForeignKey(
-        ProductCategory, verbose_name='категория',
-        related_name='category_products', on_delete=models.CASCADE)
+        ProductCategory, verbose_name='категория', null=True,
+        related_name='category_products', on_delete=models.SET_NULL)
     city = models.ManyToManyField(
         City, verbose_name='город', related_name='city_products')
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
