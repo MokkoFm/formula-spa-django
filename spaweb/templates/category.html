@@ -17,18 +17,23 @@
             <div class="col-12 col-lg-4 order-2 order-lg-1 sticky">
                 <div id="product-filter-nav" class="product-filter-nav mb-3">
                     <div class="product-category">
-                        <h5 class="filter-heading  text-center text-lg-left">Category</h5>
+                        <h3 class="filter-heading  text-center text-lg-left">По категории</h3>
+                        <hr>
+                        {% for topic in topics %}
                         <ul>
-                            <li><a href="#">June </a><span>(2)</span></li>
-                            <li><a href="#">July </a><span>(4)</span></li>
-                            <li><a href="#">Augest </a><span>(2)</span></li>
-                            <li><a href="#">March </a><span>(7)</span></li>
-                            <li><a href="#">May </a><span>(9)</span></li>
+                            <h5 class="filter-h5 text-center text-lg-left">{{topic.title}}</h5>
+                            {% for category in categories %}
+                            {% if topic == category.topic  %}
+                            <li class="filter-by-category"><a href="{% url 'category' category.slug %}" style="font-size: 14px;">{{category.name}} </a></li>
+                            {% endif %}
+                            {% endfor %}
                         </ul>
+                        {% endfor %}
                     </div>
         
                     <div class="product-price mt-1">
-                        <h5 class="filter-heading">По цене</h5>
+                        <h3 class="filter-heading">По цене</h3>
+                        <hr>
                         <div id="slider-range"></div>
                         <form method="POST">
                             {% csrf_token %}
@@ -60,7 +65,7 @@
 
                     <!-- START LISTING HEADING -->
                     <div class="col-12 product-listing-heading">
-                        <h1 class="heading text-left">Product Listing</h1>
+                        <h1 class="heading text-left">Список программ</h1>
                         <p class="para_text text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit. tellus lacus faucibus lectus, sed cursused eros ligula non odio.</p>
                     </div>
                     <!-- END LISTING HEADING -->
