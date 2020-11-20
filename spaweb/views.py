@@ -28,7 +28,7 @@ def login(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    category = product.category.first()
+    category = product.category
 
     if request.method == 'GET':
         context = {

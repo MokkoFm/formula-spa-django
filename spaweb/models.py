@@ -80,9 +80,9 @@ class City(models.Model):
 class Product(models.Model):
     name = models.CharField('название', max_length=50)
     description = HTMLField(verbose_name='описание', blank=True)
-    category = models.ManyToManyField(
-        ProductCategory, verbose_name='категория',
-        related_name='category_products')
+    category = models.ForeignKey(
+        ProductCategory, verbose_name='категория', null=True,
+        related_name='category_products', on_delete=models.SET_NULL)
     city = models.ManyToManyField(
         City, verbose_name='город', related_name='city_products')
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
@@ -94,8 +94,7 @@ class Product(models.Model):
     is_new = models.BooleanField(
         default=False, db_index=True, verbose_name="новый товар")
     slug = models.SlugField(null=True, unique=True)
-    number_users = models.IntegerField('количество пользователей', default=1)
-
+    
     def __str__(self):
         return self.name
 
