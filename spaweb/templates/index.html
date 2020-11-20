@@ -447,9 +447,9 @@
                 <div class="clearfix d-flex justify-content-center">
                     <div id="js-filters-blog-posts" class="cbp-l-filters-button cbp-1-filters-alignCenter">
                         <div data-filter="*" class="cbp-filter-item-active cbp-filter-item cbp-l-filters-list-first">Все </div>
-                        {% for topic in topics %}
-                            <div data-filter=".{{topic.title}}" class="cbp-filter-item">{{topic.title}}</div>
-                        {% endfor %}
+                            <div data-filter=".single" class="cbp-filter-item">Для одного</div>
+                            <div data-filter=".couple" class="cbp-filter-item">Для двоих</div>
+                            <div data-filter=".others" class="cbp-filter-item">Другие программы</div>
                     </div>
                 </div>
             </div>
@@ -459,13 +459,13 @@
             <div class="col-12">
                 <div id="js-grid-blog-posts" class="cbp">
                     {% for bestseller in bestsellers %}
-                        <div class="cbp-item forSingle forCouples others wow slideInUp">
+                        <div class="cbp-item single couple others wow slideInUp">
                             <a class="portfolio-circle-cart" href="shop-cart.html">
                                 <i class="fa fa-shopping-cart"></i>
                             </a>
                             <div class="cbp-caption-defaultWrap  owl-theme sync-portfolio-carousel owl-carousel">
-                                <div class="item"> <a href="{{bestseller.image_url}}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="{{bestseller.image_url}}" alt=""></a></div>
-                                <div class="item"> <a href="{{bestseller.image_url}}" class="cbp-caption" data-fancybox="gallery1" data-title="Shirt Name"><img src="{{bestseller.image_url}}" alt=""></a></div>
+                                <div class="item"> <a href="{% url 'product-detail' bestseller.slug %}" class="cbp-caption"><img src="{{bestseller.image_url}}" alt=""></a></div>
+                                <div class="item"> <a href="{% url 'product-detail' bestseller.slug %}" class="cbp-caption"><img src="{{bestseller.image_url}}" alt=""></a></div>
                             </div>
                             <div class="row">
                                 <div class="col-12 text-center">
@@ -520,14 +520,14 @@
                             <div class="card">
                                 <span class="product-type">NEW</span>
                                 <div class="image-holder">
-                                <a href="{{new_product.image_url}}"  data-fancybox="lastest_product"  data-title="Shirt Name">
+                                <a href="{% url 'product-detail' new_product.slug %}">
                                     <img src="{{new_product.image_url}}" class="card-img-top" alt="Lastest Arrivals 1">
                                 </a>
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-12 text-center">
-                                            <h5 class="card-title">{{new_product.name}}</h5>
+                                            <a href="{% url 'product-detail' new_product.slug %}"><h5 class="card-title">{{new_product.name}}</h5></a>
                                         </div>
                                         <div class="col-12 text-center">
                                             <p class="card-text"> {{new_product.price}} ₽</p>
