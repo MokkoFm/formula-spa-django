@@ -95,7 +95,7 @@
                                                     </div>
                                                     <div class="media-body mt-auto mb-auto">
                                                         <h5 class="name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a></h5>
-                                                        <p class="category">light wear Lastest</p>
+                                                        <p class="category">{{ cart_product.product.category.topic }}</p>
                                                         <p class="price"><span>{{ cart_product.product.price }}</span>(x{{ cart_product.quantity }}) <a href="#"> <i class="fa fa-trash dustbin"></i></a></p>
                                                     </div>
                                                 </div>
