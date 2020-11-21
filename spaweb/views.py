@@ -105,3 +105,7 @@ def promo(request):
 
 def declarations(request):
     return render(request, "declarations.html")
+
+
+def faq(request):
+    return render(request, "faq.html")

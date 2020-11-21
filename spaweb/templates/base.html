@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="mini-cart-footer">
                                         <div class="subtotal text-center">
-                                            <span class="total-title">Total: </span>
+                                            <span class="total-title">Итого: </span>
                                             <span class="total-price">
                                           <span class="Price-amount">
                                           {{ total_price }}
@@ -276,7 +276,7 @@
                                             <ul>
                                                 <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'promo' %}">Акции</a></li>
                                                 <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'declarations' %}">Декларации на продукцию</a></li>
-                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="standalone.html">FAQ</a></li>
+                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -440,9 +440,9 @@
                     <div class="col-12 col-md-6">
                         <h4 class="text-center text-md-left">Информация</h4>
                         <ul class="text-center text-md-left">
-                            <li><a href="#">Акции</a></li>
-                            <li><a href="#">Юридическая информация</a></li>
-                            <li><a href="#">FAQ - популярные вопросы</a></li>
+                            <li><a href="{% url 'promo' %}">Акции</a></li>
+                            <li><a href="{% url 'declarations' %}">Юридическая информация</a></li>
+                            <li><a href="{% url 'faq' %}">FAQ - популярные вопросы</a></li>
                             <li><a href="{% url 'contact' %}">Контакты</a></li>
                             <li><a href="#">Сертификаты</a></li>
                         </ul>
