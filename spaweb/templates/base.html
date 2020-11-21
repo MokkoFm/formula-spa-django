@@ -79,11 +79,12 @@
                             <li class="d-inline-block mini-menu-card" id="mini-menu-card">
                                 <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages4">
                                     <i class="fas fa-shopping-cart"></i>
+                                    <p class="cart-total-amount-dropdown">{{ cart_products_amount }}</p> 
                                 </a>
                                 <div id="sideNavPages4" class="collapse sideNavPages shopping-cart">
                                     <i class="fas fa-caret-up mini-cart-caret"></i>
                                     <div class="mini-cart-header text-left">
-                                        <h4>Shopping Cart</h4>
+                                        <h4>Ваша Корзина</h4>
                                     </div>
                                     <div class="mini-cart-body">
                                         <div class="inner-card">
@@ -95,7 +96,7 @@
                                                     </div>
                                                     <div class="media-body mt-auto mb-auto">
                                                         <h5 class="name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a></h5>
-                                                        <p class="category">light wear Lastest</p>
+                                                        <p class="category">{{ cart_product.product.category.topic }}</p>
                                                         <p class="price"><span>{{ cart_product.product.price }}</span>(x{{ cart_product.quantity }}) <a href="#"> <i class="fa fa-trash dustbin"></i></a></p>
                                                     </div>
                                                 </div>

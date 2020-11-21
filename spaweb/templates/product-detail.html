@@ -3,7 +3,7 @@
 {% block content %}
 
 <!--Slider Start-->
-<div class="paralax-section-slide-data" style="background-image:url({% static 'img/banner5.jpg' %})"></div>
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
 <!--Slider End-->
 
 <!-- START HEADING SECTION -->
@@ -16,6 +16,7 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb text-center text-lg-left">
                             <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
+                            <li class="breadcrumb-item">{{ category.topic }}</li>
                             <li class="breadcrumb-item"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
                             <!-- <li class="breadcrumb-item" aria-current="page"><a href="#">sports</a></li> -->
                             <li class="breadcrumb-item">{{ product.name }}</li>
@@ -31,18 +32,9 @@
 
                         <div class="col-12 col-lg-6 product-detail-slider">
                             <div class="wrapper">
-                                <div class="Gallery swiper-container img-magnifier-container" id="gallery">
+                                <div class="Gallery swiper-container img-magnifier-container">
                                     <div class="swiper-wrapper myimgs">
                                         <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="gallery"/></a></div>
-                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="2" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="thumnails"/></a></div>
-                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="3" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="thumnails"/></a></div>
-                                    </div>
-                                </div>
-                                <div class="Thumbs swiper-container" id="thumbs">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide"> <img src="{% static 'img/detail-slider1.jpg' %}" alt="thumnails"/></div>
-                                        <div class="swiper-slide"> <img src="{% static 'img/detail-slider2.jpg' %}" alt="thumnails"/></div>
-                                        <div class="swiper-slide"> <img src="{% static 'img/detail-slider3.jpg' %}" alt="thumnails"/></div>
                                     </div>
                                 </div>
                             </div>
