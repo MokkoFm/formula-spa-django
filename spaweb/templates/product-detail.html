@@ -59,7 +59,7 @@
                                     <form method="POST">
                                         {% csrf_token %}
                                         <input type="text" name="add_product_id" value="{{ product.id }}">
-                                        <button class="btn pink-gradient-btn-into-black">ADD TO CART</button>
+                                        <button class="btn pink-gradient-btn-into-black">ДОБАВИТЬ В КОРЗИНУ</button>
                                     </form>
                                 </div>
                             </div>
@@ -72,10 +72,8 @@
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <span class="d-inline">Категории: 
-                                                {% for category in product.category.all %}
-                                                    <a href="{% url 'category' category.slug %}">{{ category.name }}</a>
+                                                    <a href="{% url 'category' category.slug %}">{{ product.category.name }}</a>
                                                     <span> </span>
-                                                {% endfor %}
                                             </span>
                                         </li>
                                         <li class="breadcrumb-item" aria-current="page"><p class="d-inline">Tags: <a href="#">Sports</a><span class="comma-separtor">,</span><a href="#">Shoes</a></li>

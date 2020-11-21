@@ -60,7 +60,8 @@ def product_listing(request, slug):
         'products_by_category': products_by_category,
         'category_slug': slug,
         'categories': categories,
-        'topics': topics
+        'topics': topics,
+        'category': category,
     }
     return render(request, 'category.html', context)
 
