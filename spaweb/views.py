@@ -22,10 +22,6 @@ def contact(request):
     return render(request, "contact.html")
 
 
-def login(request):
-    return render(request, "login.html")
-
-
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
     category = product.category
@@ -64,13 +60,10 @@ def product_listing(request, slug):
         'products_by_category': products_by_category,
         'category_slug': slug,
         'categories': categories,
-        'topics': topics
+        'topics': topics,
+        'category': category,
     }
     return render(request, 'category.html', context)
-
-
-def register(request):
-    return render(request, 'register.html')
 
 
 def cart(request):
@@ -105,3 +98,7 @@ def promo(request):
 
 def declarations(request):
     return render(request, "declarations.html")
+
+
+def faq(request):
+    return render(request, "faq.html")

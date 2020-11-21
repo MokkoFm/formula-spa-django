@@ -1,4 +1,5 @@
 def add_to_cart(request):
+    request.session.set_expiry(86400)
     product_id = request.POST.get('add_product_id')
     cart = request.session.get('cart')
     if cart:
