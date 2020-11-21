@@ -3,7 +3,7 @@
 {% block content %}
 
 <!--Slider Start-->
-<div class="paralax-section-slide-data" style="background-image:url({% static 'img/banner4.jpg' %})"></div>
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
 <!--Slider End-->
 
 <!-- START HEADING SECTION -->
@@ -12,8 +12,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
-                <h1 class="heading">Get Ready For Checkout?</h1>
-                <p class="para_text w-100 w-lg-75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A dolores explicabo laudantium, omnis provident quam reiciendis voluptatum?</p>
+                <h1 class="heading">Ваша корзина</h1>
+                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
             </div>
         </div>
     </div>
@@ -29,10 +29,10 @@
                         <table class="table table-bordered border-radius">
                             <thead>
                             <tr>
-                                <th class="darkcolor">Product</th>
-                                <th class="darkcolor">Price</th>
-                                <th class="darkcolor">Quantity</th>
-                                <th class="darkcolor">Total</th>
+                                <th class="darkcolor">Товар</th>
+                                <th class="darkcolor">Цена</th>
+                                <th class="darkcolor">Количество</th>
+                                <th class="darkcolor">Сумма</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -45,14 +45,14 @@
                                         <div class="media">
                                             <div class="row no-gutters">
 
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
+                                                <div class="col-12 col-lg-2 product-detail-cart-image"">
                                                 <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="Generic placeholder image"></a>
                                                 </div>
 
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3">
+                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data" style="padding-left: 20px;">
+                                                    <div class="media-body ml-lg-3"">
                                                         <h4 class="product-name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{cart_product.product.name}}</a></h4>
-                                                        <p class="product-des">We offer the most complete in the country</p>
+                                                        <p class="product-des">{{ cart_product.product.category.topic }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,8 +84,8 @@
                     <div class="apply_coupon">
                         <div class="row">
                             <div class="col-12 text-left">
-                                <a href="shop-cart.html" class="btn  pink-gradient-btn-into-black">UPDATE</a>
-                                <a href="shop-cart.html" class="btn pink-color-black-gradient-btn ">CHECKOUT</a>
+                                <a href="shop-cart.html" class="btn  pink-gradient-btn-into-black">ВЕРНУТЬСЯ К ПОКУПКАМ</a>
+                                <a href="shop-cart.html" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
                             </div>
 <!--                            <div class="col-6  coupon text-left">-->
 <!--                                <a href="shop-cart.html" class="btn pink-color-black-gradient-btn ">CHECKOUT</a>-->
