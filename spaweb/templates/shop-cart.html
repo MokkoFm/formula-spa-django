@@ -63,7 +63,11 @@
                                     <h4 class="text-center amount">{{cart_product.product.price}}</h4>
                                 </td>
                                 <td class="text-center">
-                                    <h4 class="text-center amount">{{cart_product.quantity}}</h4>
+                                    <div style="display: inline-flex;">
+                                        <button class="minus" style="padding-right: 7px; border: none; background-color: white; font-size: 12px;"><i class="lni-minus"></i></button>
+                                        <h4 class="text-center amount">{{cart_product.quantity}}</h4>
+                                        <button class="plus" style="padding-left: 7px; border: none; background-color: white; font-size: 12px;"><i class="lni-plus"></i></button>
+                                    </div>
                                 </td>
                                 <td>
                                     <h4 class="text-center amount">{{cart_product.total_price}}</h4>
