@@ -24,12 +24,10 @@ def contact(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
-    category = product.category
 
     if request.method == 'GET':
         context = {
             'product': get_object_or_404(Product, slug=slug),
-            'category': category,
         }
         return render(request, "product-detail.html", context)
 
