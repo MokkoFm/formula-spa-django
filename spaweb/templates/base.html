@@ -97,7 +97,7 @@
                                                     <div class="media-body mt-auto mb-auto">
                                                         <h5 class="name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a></h5>
                                                         <p class="category">{{ cart_product.product.category.topic }}</p>
-                                                        <p class="price"><span>{{ cart_product.product.price }}</span>(x{{ cart_product.quantity }}) <a href="#"> <i class="fa fa-trash dustbin"></i></a></p>
+                                                        <p class="price"><span>{{ cart_product.product.price }}</span>(x{{ cart_product.quantity }}) <a href="#"> <i id="cart-item-remove" class="fa fa-trash dustbin"></i></a></p>
                                                     </div>
                                                 </div>
                                             {% endfor %}
@@ -105,7 +105,7 @@
                                     </div>
                                     <div class="mini-cart-footer">
                                         <div class="subtotal text-center">
-                                            <span class="total-title">Total: </span>
+                                            <span class="total-title">Итого: </span>
                                             <span class="total-price">
                                           <span class="Price-amount">
                                           {{ total_price }}
@@ -118,26 +118,6 @@
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                            <li class="d-inline-block simple-dropdown" id="mini-menu">
-                                <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages5">
-                                    <i class="fas fa-th"></i>
-                                </a>
-
-                                <div id="sideNavPages5" class="collapse sideNavPages user-utiliity">
-                                    <i class="fas fa-caret-up user-utiliity-caret"></i>
-                                    <h6 class="user-utiliity-title">Мой аккаунт</h6>
-                                    <hr>
-                                    <ul class="text-left">
-                                        <li>
-                                            <a href="register.html">Регистрация</a>
-                                        </li>
-                                        <li>
-                                            <a href="login.html">Войти</a>
-                                        </li>
-                                    </ul>
-                                </div>
-
                             </li>
                         </ul>
                  </div>
@@ -276,7 +256,7 @@
                                             <ul>
                                                 <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'promo' %}">Акции</a></li>
                                                 <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'declarations' %}">Декларации на продукцию</a></li>
-                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="standalone.html">FAQ</a></li>
+                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
                                             </ul>
                                         </div>
                                     </li>
@@ -440,9 +420,9 @@
                     <div class="col-12 col-md-6">
                         <h4 class="text-center text-md-left">Информация</h4>
                         <ul class="text-center text-md-left">
-                            <li><a href="#">Акции</a></li>
-                            <li><a href="#">Юридическая информация</a></li>
-                            <li><a href="#">FAQ - популярные вопросы</a></li>
+                            <li><a href="{% url 'promo' %}">Акции</a></li>
+                            <li><a href="{% url 'declarations' %}">Юридическая информация</a></li>
+                            <li><a href="{% url 'faq' %}">FAQ - популярные вопросы</a></li>
                             <li><a href="{% url 'contact' %}">Контакты</a></li>
                             <li><a href="#">Сертификаты</a></li>
                         </ul>
