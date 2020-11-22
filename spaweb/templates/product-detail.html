@@ -16,8 +16,8 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb text-center text-lg-left">
                             <li class="breadcrumb-item"><a href="{% url 'index' %}">Главная</a></li>
-                            <li class="breadcrumb-item">{{ category.topic }}</li>
-                            <li class="breadcrumb-item"><a href="{% url 'category' category.slug %}">{{ category.name }}</a></li>
+                            <li class="breadcrumb-item">{{ product.category.topic }}</li>
+                            <li class="breadcrumb-item"><a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a></li>
                             <!-- <li class="breadcrumb-item" aria-current="page"><a href="#">sports</a></li> -->
                             <li class="breadcrumb-item">{{ product.name }}</li>
                         </ol>
@@ -49,11 +49,14 @@
                             </div>
 
                             <div class="row product-quantity input_plus_mins no-gutters">
-
+                                
                                 <div class="qty col-12 col-lg-3 d-lg-flex  align-items-lg-center d-inline-block">
-                                    <span class="minus bg-dark"><i class="lni-minus"></i></span>
-                                    <input type="number" class="count" name="qty" value="1">
-                                    <span class="plus bg-dark"><i class="lni-plus"></i></span>
+                                    <form method="POST">
+                                        {% csrf_token %}
+                                        <span class="minus bg-dark"><i class="lni-minus"></i></span>
+                                        <input type="number" class="count" name="quantity" value="1">
+                                        <span class="plus bg-dark"><i class="lni-plus"></i></span>
+                                    </form>
                                 </div>
                                 <div class="col-12 col-lg-9">
                                     <form method="POST">
@@ -66,13 +69,12 @@
 
 
                             <div class="dropdown-divider"></div>
-
                             <div class="product-tags-list">
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
                                             <span class="d-inline">Категории: 
-                                                    <a href="{% url 'category' category.slug %}">{{ product.category.name }}</a>
+                                                    <a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a>
                                                     <span> </span>
                                             </span>
                                         </li>
