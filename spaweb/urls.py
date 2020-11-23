@@ -10,5 +10,5 @@ urlpatterns = [
     path('promo/', views.promo, name="promo"),
     path('declarations/', views.declarations, name="declarations"),
     path('faq/', views.faq, name="faq"),
-    path('remove/<str:pk>', views.remove_cart_item, name="remove_item")
+    path('remove/<str:pk>', views.remove_cart_item, name="remove_item"),
 ]
