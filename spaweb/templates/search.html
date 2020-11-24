@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Slider Start-->
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
+<!--Slider End-->
+
+
+<!--Product Line Up Start -->
+<div class="product-listing">
+    <div class="container">
+        <div class="row no-gutters">
+
+            <!-- START PRODUCT COL 8 -->
+            <div class="col-md-12 col-lg-8 order-1 order-lg-2">
+                <div class="row">
+
+                    <!-- START LISTING HEADING -->
+                    <div class="col-12 product-listing-heading">
+                        <h1 class="heading text-left">Результаты поиска</h1>
+                        <!-- <p class="para_text text-left">Выберите подходящую вам программу из категории "{{category.name}}".</p> -->
+                    </div>
+                    <!-- END LISTING HEADING -->
+
+
+
+                    <!-- START PRODUCT LISTING SECTION -->
+                    <div class="col-12 product-listing-products">
+
+                        <!-- START DISPLAY PRODUCT -->
+                        <div class="product-list row">
+                            {% if products_by_category %}
+                                {% for product in products_by_category %}
+                                    <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
+                                        <div class="product-item owl-theme product-listing-carousel owl-carousel">
+                                            <div class="item p-item-img">
+                                                    <img src="{{ product.image.url }}" alt="images">
+                                                <div class="text-center d-flex justify-content-center align-items-center">
+                                                    <a class="listing-cart-icon" href="shop-cart.html">
+                                                        <i class="fa fa-shopping-cart"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="p-item-detail">
+                                            <h4 class="text-center p-item-name"><a href="{% url 'product-detail' product.slug %}">{{ product.name }}</a></h4>
+                                            <p class="text-center p-item-price">{{ product.price }}р.</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                  <p class="para_text text-left">К данных товаров или услуг нет в компании</p>
+                            {% endif %}  
+                        </div>
+                        <!-- END DISPLAY PRODUCT -->
+
+
+                    </div>
+                    <!-- END PRODUCT LISTING SECTION -->
+                </div>
+            </div>
+            <!-- END PRODUCT COL 8 -->
+
+        </div>
+    </div>
+</div>
+<!--Product Line Up End-->
+{% endblock %}
