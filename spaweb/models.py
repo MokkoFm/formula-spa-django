@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth.models import User
 from django.utils import timezone
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.urls import reverse
@@ -36,8 +35,6 @@ class Customer(models.Model):
     lastname = models.CharField(max_length=50, verbose_name="фамилия")
     phonenumber = models.CharField(max_length=20, blank=True, verbose_name="телефон")
     email = models.CharField(max_length=100, blank=True, verbose_name="эл. почта")
-    user = models.OneToOneField(
-        User, blank=True, on_delete=models.CASCADE, verbose_name="юзернейм")
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"

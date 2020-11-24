@@ -4,3 +4,4 @@ django-tinymce==3.0.2
 environs==8.0.0
 Pillow==8.0.0
 more-itertools==8.6.0
+django-yandex-kassa-0.9.15
