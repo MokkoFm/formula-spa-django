@@ -1,7 +1,6 @@
 from django.shortcuts import get_object_or_404
 
 from spaweb.models import Product
-from spaweb.search import get_search_product_queryset
 
 
 def get_cart(request):
@@ -34,11 +33,3 @@ def get_cart(request):
             'total_price': total_price,
             'cart_products_amount': cart_products_amount
         }
-
-
-# def get_product_queryset(query=None):
-#     queryset = []
-#     if not query:
-#         return None
-#     return None 
-#     # return get_search_product_queryset(query=query)
