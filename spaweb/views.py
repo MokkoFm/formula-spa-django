@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
+from django.db.models import Q
 from spaweb.models import Product, ProductCategory, Topic
 
 from spaweb.cart import add_to_cart
@@ -62,6 +63,30 @@ def product_listing(request, slug):
         'category': category,
     }
     return render(request, 'category.html', context)
+
+
+def search(request):
+    query = request.POST.get('q')
+    queryset = []
+    if query:
+        queries = query.split(' ')
+        for q in queries:
+            q_upper = q.upper()
+            q_lower = q.lower()
+            products = Product.objects.filter(
+                Q(name__icontains=q_upper) |
+                Q(name__icontains=q_lower) |
+                Q(description__icontains=q_upper) |
+                Q(description__icontains=q_lower)
+            ).distinct()
+
+            for product in products:
+                queryset.append(product)
+
+    context = {
+        'products_by_category': set(queryset),
+    }
+    return render(request, "search.html", context)
 
 
 def cart(request):

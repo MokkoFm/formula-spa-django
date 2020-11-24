@@ -467,16 +467,17 @@
     <div class="container">
         <div class="row">
             <div class="col-12 search-col">
-                <form action="#">
-                <div class="input-group search-box-form">
-                    <input type="text" class="form-control" placeholder="Search Here" aria-label="Search Here">
-                    <div class="input-group-prepend">
-                        <button class="input-group-text" type="submit" id="basic-addon1"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
+                <form method="post" action="/search/">
+                    {% csrf_token %}
+                        <div class="input-group search-box-form">
+                            <input type="text" class="form-control" name="q" placeholder="Search Here" aria-label="Search Here">
+                            <div class="input-group-prepend">
+                                <button class="input-group-text" type="submit" id="basic-addon1"><i class="fas fa-search"></i></button>
+                            </div>
+                        </div>
                 </form>
             </div>
-            <div class="search-listing row">
+            <!-- <div class="search-listing row">
                 <div class="col-12 mb-4">
                     <h4 class="">Filtered Items</h4>
                 </div>
@@ -528,16 +529,16 @@
                     </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12">
+            </div> -->
+            <!-- <div class="col-12">
                 <hr>
             </div>
 
             <div class="col-12">
                 <h4 class="outlet-title text-center"> - Outlets - </h4>
-            </div>
+            </div> -->
 
-            <div class="col-12">
+            <!-- <div class="col-12">
                 <div class="search-box-meida-items owl-carousel owl-theme">
 
                     <div class="item">
@@ -599,7 +600,7 @@
 
 
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
