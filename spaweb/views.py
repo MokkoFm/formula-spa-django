@@ -125,3 +125,7 @@ def declarations(request):
 
 def faq(request):
     return render(request, "faq.html")
+
+
+def checkout(request):
+    return render(request, "checkout.html")

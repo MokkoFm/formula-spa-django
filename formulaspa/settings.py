@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'spaweb.apps.SpawebConfig',
     'tinymce',
-    'yandex_kassa',
 ]
 
 MIDDLEWARE = [
