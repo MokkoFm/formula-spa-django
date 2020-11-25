@@ -90,7 +90,11 @@ def search(request):
 
 
 def cart(request):
-    cart = request.session['cart']
+    try:
+        cart = request.session['cart']
+    except KeyError:
+        cart = {}
+
     cart_products = []
     for key in cart:
         product = get_object_or_404(Product, pk=key)
