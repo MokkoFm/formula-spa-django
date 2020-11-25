@@ -139,16 +139,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
-YANDEX_KASSA_DEBUG = False
-YANDEX_KASSA_SCID = env("YANDEX_KASSA_SCID")
-YANDEX_KASSA_SHOP_ID = env("YANDEX_KASSA_SHOP_ID")
-YANDEX_KASSA_SHOP_PASSWORD = env("YANDEX_KASSA_SHOP_PASSWORD")
-
-YANDEX_KASSA_DISPLAY_FIELDS = ['paymentType', 'cps_email', 'cps_phone']
-
-YANDEX_KASSA_CALLBACK_URL = '/kassa/callback/'
-YANDEX_KASSA_FAIL_URL = '/kassa/fail/'
-YANDEX_KASSA_SUCCESS_URL = '/kassa/success/'
-
-YANDEX_KASSA_PAYMENT_TYPES = ['ab', 'ac', 'gp', 'pb', 'pc', 'wm']
