@@ -281,208 +281,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">
-                    <h1>Related Products</h1>
+                    <h1>Похожие товары</h1>
                 </div>
 
                 <div class="col-12">
                     <div class="lastest_featured_products owl-carousel owl-theme">
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l1.jpg' %}"  data-fancybox="lastest_product"  data-title="Shirt Name">
-                                        <img src="{% static 'img/l1.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Casual Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text"> $999.00</p>
+                        {% for related_product in related_products %}
+                            <div class="lastest_arrival_items item">
+                                <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
+                                <div class="card">
+                                    <span class="product-type">NEW</span>
+                                    <div class="image-holder">
+                                        <a href="{% url 'product-detail' related_product.slug %}">
+                                            <img src="{{ related_product.image_url }}" class="card-img-top" alt="Lastest Arrivals 1">
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-12 text-center">
+                                                <a href="{% url 'product-detail' related_product.slug %}">
+                                                    <h5 class="card-title">{{related_product.name}}</h5>
+                                                </a>
+                                            </div>
+                                            <div class="col-12 text-center">
+                                                <p class="card-text"> ₽{{related_product.price}}</p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">  <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l7.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l7.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Light Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l16.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l16.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Long Frock</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l9.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l9.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Casual Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l10.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l10.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Casual Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l11.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l11.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Light Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l12.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l12.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Light Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l15.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l15.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Light Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="lastest_arrival_items item">
-                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
-                            <div class="card">
-                                <span class="product-type">NEW</span>
-                                <div class="image-holder">
-                                    <a href="{% static 'img/l7.jpg' %}"  data-fancybox="lastest_product"  data-title="Lastest Arrivals 1">
-                                        <img src="{% static 'img/l13.jpg' %}" class="card-img-top" alt="Lastest Arrivals 1">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <div class="row">
-                                        <div class="col-12 text-center">
-                                            <h5 class="card-title">Casual Wear</h5>
-                                        </div>
-                                        <div class="col-12 text-center">
-                                            <p class="card-text text-center"> $999.00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %}
 
                     </div>
                 </div>
