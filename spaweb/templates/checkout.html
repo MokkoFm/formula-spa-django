@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Slider Start-->
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
+<!--Slider End-->
+
+<!-- START HEADING SECTION -->
+<div class="about_content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
+                <h1 class="heading">Информация о заказе</h1>
+                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- START SHOP CART SECTION -->
+    <div class="shop-cart wow slideInUp" data-wow-duration="2s">
+        <div class="container">
+            <a  class="btn pink-gradient-btn-into-black" href="#" style="margin-top: 15px">&#x2190; Вернуться в корзину</a>
+            <!-- START SHOP CART CHECKOUT FORM -->
+            <div class="row pt-5">
+                <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
+                    <div class="calculate-shipping">
+                        <h4 class="heading">Введите данные для заказа</h4>
+                        <form class="contact-form">
+                            {% csrf_token %}
+                            <div class="row my-form">
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="candidate_fname" name="firstName" placeholder="Ваше имя" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="candidate_lname" name="lastName" placeholder="Ваша фамилия" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="email" class="form-control" id="user_email" name="userEmail" placeholder="Email" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="tel" class="form-control" id="user_phone" name="tel" placeholder="Номер телефона">
+                                </div>
+
+                                <hr>
+
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="candidate_city" name="city" placeholder="Ваш город" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="candidate_address" name="address" placeholder="Ваш адрес" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="payment" name="payment" placeholder="Способ оплаты" required="required">
+                                </div>
+                                <div class="col-12 col-md-6" style="padding-top: 15px;">
+                                    <label for="scales">Электронный сертификат</label>
+                                    <input type="checkbox" id="scales" name="scales">
+                                </div>
+                                <a  class="btn pink-gradient-btn-into-black" href="#" style="margin: auto; margin-top: 15px">Оплатить</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6 wow slideInRight" data-wow-duration="2s">
+                    <div class="card-total">
+                        <h4 class="heading">Проверьте ваш заказ</h4>
+                        <table>
+                            <table>
+                                <tr>
+                                    <td>фото товара</td>
+                                    <td>Массаж</td>
+                                    <td>5000 руб.</td>
+                                    <td>x2</td>
+                                </tr>
+                                <tr>
+                                    <td>фото товара номер 2</td>
+                                    <td>Маникюр</td>
+                                    <td>2000 руб.</td>
+                                    <td>x1</td>
+                                </tr>
+                            </table>
+                            <tr>
+                                <td>Итого</td>
+                                <td>Р300.00</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <!-- END SHOP CART CHECKOUT FORM -->
+
+        </div>
+    </div>
+    <!-- END SHOP CART SECTION-->
+
+</div>
+<!-- END HEADING SECTION -->
+{% endblock %}

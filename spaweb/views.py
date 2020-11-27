@@ -25,10 +25,13 @@ def contact(request):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug)
+    product_category = product.category
+    related_products = Product.objects.filter(category=product_category)
 
     if request.method == 'GET':
         context = {
             'product': get_object_or_404(Product, slug=slug),
+            'related_products': related_products,
         }
         return render(request, "product-detail.html", context)
 
@@ -129,3 +132,7 @@ def declarations(request):
 
 def faq(request):
     return render(request, "faq.html")
+
+
+def checkout(request):
+    return render(request, "checkout.html")
