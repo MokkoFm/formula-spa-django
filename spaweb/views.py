@@ -135,4 +135,25 @@ def faq(request):
 
 
 def checkout(request):
+    try:
+        cart = request.session['cart']
+    except KeyError:
+        return redirect(reverse('index'))
+    cart_products = []
+    total_price = 0
+    for key in cart:
+        product = get_object_or_404(Product, pk=key)
+        price = product.price
+        quantity = cart[key]
+        cart_products.append({
+            'product': product,
+            'quantity': quantity,
+            'price': price,
+        })
+        total_price += price * quantity
+
+    context = {
+        'cart_products': cart_products,
+        'total_price': total_price,
+    }
     return render(request, "checkout.html")
