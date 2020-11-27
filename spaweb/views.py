@@ -119,7 +119,14 @@ def remove_cart_item(request, pk):
     cart = request.session['cart']
     cart.pop(pk, None)
     request.session['cart'] = cart
-    return redirect(reverse('cart'))
+    if request.method == 'POST':
+        button_spot = request.POST.get('trash')
+        if button_spot == 'header_trash':
+            return redirect(reverse('index'))
+        if button_spot == 'cart_trash':
+            return redirect(reverse('cart'))
+    
+    return render(request, "index.html")
 
 
 def promo(request):
