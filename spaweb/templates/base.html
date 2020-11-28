@@ -97,7 +97,12 @@
                                                     <div class="media-body mt-auto mb-auto">
                                                         <h5 class="name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a></h5>
                                                         <p class="category">{{ cart_product.product.category.topic }}</p>
-                                                        <p class="price"><span>{{ cart_product.product.price }}</span>(x{{ cart_product.quantity }}) <a href="#"> <i id="cart-item-remove" class="fa fa-trash dustbin"></i></a></p>
+                                                        <p class="price">
+                                                            <span>{{ cart_product.product.price }}</span>
+                                                            (x{{ cart_product.quantity }}) 
+                                                                <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {% csrf_token %}
+                                                                    <button class="btn" type="submit" name="trash" value="header_trash"><i class="fa fa-trash dustbin"></i></button>
+                                                                </form>
                                                     </div>
                                                 </div>
                                             {% endfor %}
@@ -468,8 +473,6 @@
         <div class="row">
             <div class="col-12 search-col">
                 <form method="post" action="/search/">
-                    {% csrf_token %}
-                        <div class="input-group search-box-form">
                             <input type="text" class="form-control" name="q" placeholder="Поиск по имени или описанию товара" aria-label="Search Here">
                             <div class="input-group-prepend">
                                 <button class="input-group-text" type="submit" id="basic-addon1"><i class="fas fa-search"></i></button>

@@ -22,7 +22,7 @@
     <!-- START SHOP CART SECTION -->
     <div class="shop-cart wow slideInUp" data-wow-duration="2s">
         <div class="container">
-            <a  class="btn pink-gradient-btn-into-black" href="#" style="margin-top: 15px">&#x2190; Вернуться в корзину</a>
+            <a  class="btn pink-gradient-btn-into-black" href="{% url 'cart' %}" style="margin-top: 15px">&#x2190; Вернуться в корзину</a>
             <!-- START SHOP CART CHECKOUT FORM -->
             <div class="row pt-5">
                 <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
@@ -66,25 +66,20 @@
                 </div>
                 <div class="col-12 col-lg-6 wow slideInRight" data-wow-duration="2s">
                     <div class="card-total">
-                        <h4 class="heading">Проверьте ваш заказ</h4>
+                        <h4 class="heading">Ваш заказ</h4>
                         <table>
                             <table>
-                                <tr>
-                                    <td>фото товара</td>
-                                    <td>Массаж</td>
-                                    <td>5000 руб.</td>
-                                    <td>x2</td>
-                                </tr>
-                                <tr>
-                                    <td>фото товара номер 2</td>
-                                    <td>Маникюр</td>
-                                    <td>2000 руб.</td>
-                                    <td>x1</td>
-                                </tr>
+                                {% for cart_product in cart_products %}
+                                    <tr>
+                                        <td>{{cart_product.product.name}}</td>
+                                        <td>{{cart_product.price}}</td>
+                                        <td>x{{cart_product.quantity}}</td>
+                                    </tr>
+                                {% endfor %}
                             </table>
                             <tr>
                                 <td>Итого</td>
-                                <td>Р300.00</td>
+                                <td>{{total_price}}</td>
                             </tr>
                         </table>
                     </div>
