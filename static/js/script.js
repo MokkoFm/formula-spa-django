@@ -59,6 +59,37 @@ $(window).on("load", function () {
         displayTypeSpeed: 400,
     });
 
+    $('#js-grid-blog-posts-1').cubeportfolio({
+        filters: '#js-filters-blog-posts',
+        search: '#js-search-blog-posts',
+        defaultFilter: '*',
+        animationType: '3dflip',
+        gapHorizontal: 70,
+        gapVertical: 30,
+        gridAdjustment: 'responsive',
+        mediaQueries: [{
+            width: 1500,
+            cols: 3,
+        }, {
+            width: 1100,
+            cols: 3,
+        }, {
+            width: 800,
+            cols: 3,
+        }, {
+            width: 481,
+            cols: 2,
+            options: {}
+        }, {
+            width: 320,
+            cols: 1,
+            options: {}
+        }],
+        caption: 'none',
+        displayType: 'fadeIn',
+        displayTypeSpeed: 400,
+    });
+
     /*===================================
         sync-portfolio- and Owl Carousel
 ======================================*/
