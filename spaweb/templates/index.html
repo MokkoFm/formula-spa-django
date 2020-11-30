@@ -436,29 +436,17 @@
             <!-- START PORTFOLIO HEADING -->
             <div class="col-12">
                 <div class="portfolioHeading text-center">
-                    <h1 class="high-lighted-heading">Бестселлеры</h1>
+                    <h1 class="high-lighted-heading">Популярные программы для одного</h1>
                     <p>Самые популярные программы в спа-центре "Формула SPA"</p>
                 </div>
             </div>
             <!-- END PORTFOLIO HEADING -->
 
-                <!-- START FILTERS -->
-            <div class="col-12">
-                <div class="clearfix d-flex justify-content-center">
-                    <div id="js-filters-blog-posts" class="cbp-l-filters-button cbp-1-filters-alignCenter">
-                        <div data-filter="*" class="cbp-filter-item-active cbp-filter-item cbp-l-filters-list-first">Все </div>
-                            <div data-filter=".single" class="cbp-filter-item">Для одного</div>
-                            <div data-filter=".couple" class="cbp-filter-item">Для двоих</div>
-                            <div data-filter=".others" class="cbp-filter-item">Другие программы</div>
-                    </div>
-                </div>
-            </div>
-                <!-- END FILTERS -->
-
                 <!-- START PORTFOLIO IMAGES -->
             <div class="col-12">
                 <div id="js-grid-blog-posts" class="cbp">
                     {% for bestseller in bestsellers %}
+                        {% if bestseller.category.topic.title == "Для одного" %}
                         <div class="cbp-item single couple others wow slideInUp">
                             <a class="portfolio-circle-cart" href="shop-cart.html">
                                 <i class="fa fa-shopping-cart"></i>
@@ -475,6 +463,7 @@
                                 </div>
                             </div>
                         </div>
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -484,6 +473,68 @@
     </div>
 </div>
 <!-- END PORTOLIO SECTION -->
+
+<!--START BANNER SECTION-->
+<div class="banner-section parallax-slide">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-6 offset-lg-5 text-center">
+                <div class="banner-content-wrapper">
+                <span>СЛОЖНО ВЫБРАТЬ ПРОГРАММУ?</span>
+                <h1>ПОДАРОЧНЫЕ СЕРТИФИКАТЫ</h1>
+                <p>Сертификаты от 1000 до 10000 рублей</p>
+                 <button type="button" class="btn black-btn-with-border">ПОСМОТРЕТЬ</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END BANNER SECTION-->
+
+<!-- START PORTOLIO SECTION -->
+<div class="portfolio-section" style="padding-top: 0;">
+    <div class="container">
+        <div class="row">
+
+            <!-- START PORTFOLIO HEADING -->
+            <div class="col-12">
+                <div class="portfolioHeading text-center">
+                    <h1 class="high-lighted-heading">Популярные программы для двоих</h1>
+                    <p>Самые популярные программы в спа-центре "Формула SPA"</p>
+                </div>
+            </div>
+            <!-- END PORTFOLIO HEADING -->
+
+                <!-- START PORTFOLIO IMAGES -->
+            <div class="col-12">
+                <div id="js-grid-blog-posts-1" class="cbp">
+                    {% for bestseller in bestsellers %}
+                        {% if bestseller.category.topic.title == "Для двоих" %}
+                        <div class="cbp-item single couple others wow slideInUp">
+                            <a class="portfolio-circle-cart" href="shop-cart.html">
+                                <i class="fa fa-shopping-cart"></i>
+                            </a>
+                            <div>
+                                <div class="item"> <a href="{% url 'product-detail' bestseller.slug %}" class="cbp-caption"><img src="{{bestseller.image_url}}" alt=""></a></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="{% url 'product-detail' bestseller.slug %}" class="cbp-l-grid-blog-title portfolio-title">{{bestseller.name}}</a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <div class="cbp-l-grid-blog-desc portfolio-des">₽{{bestseller.price}}</div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+                <!-- END PORTFOLIO IMAGES -->
+
+        </div>
+    </div>
+</div>
 
 <!--START BANNER SECTION-->
 <div class="banner-section parallax-slide">
