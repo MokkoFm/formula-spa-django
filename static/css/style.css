@@ -1261,6 +1261,15 @@ END scroll-top-arrow
     min-height: 150px;
 }
 
+.banner-section-1{
+    background-image: url("../img/banner1.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: 100px;
+    min-height: 150px;
+}
+
 .paralax-data{
     background-size: cover !important;
     background-repeat: no-repeat !important;
@@ -1296,7 +1305,36 @@ END scroll-top-arrow
 }
 
 
+
 /*lastest_arrivals*/
+
+.banner-section-1 .banner-content-wrapper{
+    padding-top: 150px;
+    padding-bottom: 150px;
+}
+
+.banner-section-1 .banner-content-wrapper span{
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+
+.banner-section-1 .banner-content-wrapper h1{
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+.banner-section-1 .banner-content-wrapper p{
+    color: #000000;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    margin-top: 5px;
+}
 
 .lastest_arrivals{
     margin-top: 100px;
