@@ -2,6 +2,7 @@ from django.shortcuts import get_object_or_404
 
 from spaweb.models import Product
 
+
 def get_cart(request):
     try:
         cart = request.session['cart']
