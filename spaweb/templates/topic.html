@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!--Slider Start-->
+<div class="paralax-section-slide-data" style="background-image:url({% static 'img/slider-bg-3.jpg' %})"></div>
+<!--Slider End-->
+
+
+<!--Product Line Up Start -->
+<div class="product-listing">
+    <div class="container">
+        <div class="row no-gutters">
+
+            <!-- START STICKY NAV -->
+            {% comment %} <div class="col-12 col-lg-4 order-2 order-lg-1 sticky">
+                <div id="product-filter-nav" class="product-filter-nav mb-3">
+                    <div class="product-category">
+                        <h3 class="filter-heading  text-center text-lg-left">По категории</h3>
+                        <hr>
+                        {% for topic in topics %}
+                        <ul>
+                            <h5 class="filter-h5 text-center text-lg-left">{{topic.title}}</h5>
+                            {% for category in categories %}
+                            {% if topic == category.topic  %}
+                            <li class="filter-by-category"><a href="{% url 'category' category.slug %}" style="font-size: 14px;">{{category.name}} </a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endfor %}
+                    </div>
+        
+                    <div class="product-price mt-1">
+                        <h3 class="filter-heading">По цене</h3>
+                        <hr>
+                        <div id="slider-range"></div>
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div style="display: flex">
+                                <span style="margin-top: 7px;">От:</span><input type="text" id="min-p" name="minprice" class="price-num" placeholder="0" style="border:0"><br>
+                                <span style="margin-top: 7px;">До:</span><input type="text" id="max-p" name="maxprice" class="price-num" placeholder="5000" style="border:0"><br>
+                            </div>
+                            <input type="submit" value="Найти" class="btn pink-gradient-btn-into-black mt-1">
+                        </form>
+                    </div>
+
+                    <div class="product-add mt-4">
+                        <div class="row no-gutters">
+                            <div class="col-12">
+                                <img src="{% static 'img/advertisement.jpg' %}" alt="images">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div> {% endcomment %}
+            <!-- END STICKY NAV -->
+
+            <!-- START PRODUCT COL 8 -->
+            <div class="col-md-12 col-lg-8 order-1 order-lg-2">
+                <div class="row">
+
+                    <!-- START LISTING HEADING -->
+                    <div class="col-12 product-listing-heading">
+                        <h1 class="heading text-left">Список категорий и программ в тематике </h1>
+                        <!-- <p class="para_text text-left">Выберите подходящую вам программу из категории "{{category.name}}".</p> -->
+                    </div>
+                    <!-- END LISTING HEADING -->
+
+
+
+                    <!-- START PRODUCT LISTING SECTION -->
+                    <div class="col-12 product-listing-products">
+                        {% for category in topic.products_categories.all %}
+                        <!-- START DISPLAY PRODUCT -->
+                            <div class="product-list row">
+                                <p class="para_text text-left">Выберите подходящую вам программу из категории "{{category.name}}".</p>
+                                    {% for product in category.category_products.all %}
+                                        <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
+                                            <div class="product-item owl-theme product-listing-carousel owl-carousel">
+                                                <div class="item p-item-img">
+                                                        <img src="{{ product.image.url }}" alt="images">
+                                                    <div class="text-center d-flex justify-content-center align-items-center">
+                                                        <a class="listing-cart-icon" href="shop-cart.html">
+                                                            <i class="fa fa-shopping-cart"></i>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="p-item-detail">
+                                                <h4 class="text-center p-item-name"><a href="{% url 'product-detail' product.slug %}">{{ product.name }}</a></h4>
+                                                <p class="text-center p-item-price">{{ product.price }}р.</p>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                            </div>
+                        <!-- END DISPLAY PRODUCT -->
+                        {% endfor %}
+
+                    </div>
+                    <!-- END PRODUCT LISTING SECTION -->
+                </div>
+            </div>
+            <!-- END PRODUCT COL 8 -->
+
+        </div>
+    </div>
+</div>
+<!--Product Line Up End-->
+{% endblock %}

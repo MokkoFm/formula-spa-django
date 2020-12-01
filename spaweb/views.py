@@ -60,12 +60,21 @@ def product_listing(request, slug):
 
     context = {
         'products_by_category': products_by_category,
-        'category_slug': slug,
         'categories': categories,
         'topics': topics,
         'category': category,
     }
     return render(request, 'category.html', context)
+
+
+def get_topic_listing(request, slug):
+    topic = get_object_or_404(Topic, slug=slug)
+
+    context = {
+        'topic': topic,
+    }
+    
+    return render(request, 'topic.html', context)
 
 
 def search(request):
