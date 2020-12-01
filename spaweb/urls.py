@@ -12,5 +12,6 @@ urlpatterns = [
     path('faq/', views.faq, name="faq"),
     path('remove/<str:pk>', views.remove_cart_item, name="remove_item"),
     path('search/', views.search, name="search"),
-    path('checkout/', views.checkout, name="checkout")
+    path('checkout/', views.checkout, name="checkout"),
+    path('topic/<slug:slug>/', views.get_topic_listing, name="topic"),
 ]
