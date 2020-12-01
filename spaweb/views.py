@@ -106,20 +106,20 @@ def cart(request):
         cart = request.session['cart']
     except KeyError:
         cart = {}
-
+    total_price = 0
     cart_products = []
     for key in cart:
         product = get_object_or_404(Product, pk=key)
-        total_price = product.price * cart[key]
+        total_price += product.price * cart[key]
         
         cart_products.append({
             'product': product,
             'quantity': cart[key],
-            'total_price': total_price,
         })
 
     context = {
         'cart_products': cart_products,
+        'total_price': total_price,
     }
     return render(request, "shop-cart.html", context)
 
@@ -136,6 +136,22 @@ def remove_cart_item(request, pk):
             return redirect(reverse('cart'))
     
     return render(request, "index.html")
+
+
+def change_item_quantity(request, pk):
+    cart = request.session['cart']
+    if request.method == 'POST':
+        quantity_button = request.POST.get('quantity')
+        if quantity_button == 'minus':
+            quantity = cart.get(pk) - 1
+            if quantity == 0:
+                quantity = 1
+        elif quantity_button == 'plus':
+            quantity = cart.get(pk) + 1
+        
+        cart[pk] = quantity
+        request.session['cart'] = cart
+    return redirect(reverse('cart'))
 
 
 def promo(request):
