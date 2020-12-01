@@ -30,20 +30,6 @@ class Topic(models.Model):
         return self.title
 
 
-class Customer(models.Model):
-    firstname = models.CharField(max_length=50, verbose_name="имя")
-    lastname = models.CharField(max_length=50, verbose_name="фамилия")
-    phonenumber = models.CharField(max_length=20, blank=True, verbose_name="телефон")
-    email = models.CharField(max_length=100, blank=True, verbose_name="эл. почта")
-
-    def __str__(self):
-        return f"{self.firstname} {self.lastname}"
-
-    class Meta:
-        verbose_name = "клиент"
-        verbose_name_plural = "клиенты"
-
-
 class ProductCategory(models.Model):
     name = models.CharField('название', max_length=50)
     topic = models.ForeignKey(
@@ -91,7 +77,7 @@ class Product(models.Model):
     is_new = models.BooleanField(
         default=False, db_index=True, verbose_name="новый товар")
     slug = models.SlugField(null=True, unique=True)
-    
+
     def __str__(self):
         return self.name
 
@@ -118,9 +104,6 @@ class Order(models.Model):
         ('Card', 'По карте'),
     ]
 
-    customer = models.ForeignKey(
-        Customer, on_delete=models.CASCADE,
-        related_name='orders', verbose_name="клиент")
     registrated_at = models.DateTimeField(
         default=timezone.now, verbose_name='дата регистрации')
     comment = models.TextField(verbose_name='комментарий', blank=True)
@@ -171,19 +154,23 @@ class OrderItem(models.Model):
         verbose_name_plural = "товары в заказе"
 
 
-class ShippingAddress(models.Model):
-    customer = models.ForeignKey(
-        Customer, on_delete=models.CASCADE, related_name="address")
+class Customer(models.Model):
+    firstname = models.CharField(max_length=50, verbose_name="имя")
+    lastname = models.CharField(max_length=50, verbose_name="фамилия")
+    phonenumber = models.CharField(
+        max_length=20, blank=True, verbose_name="телефон")
+    email = models.CharField(
+        max_length=100, blank=True, verbose_name="эл. почта")
     order = models.ForeignKey(
-        Order, on_delete=models.CASCADE, related_name="address")
-    address = models.TextField(verbose_name="адрес для доставки")
+        Order, on_delete=models.SET_NULL, related_name="customer", null=True)
+    address = models.TextField(verbose_name="адрес для доставки", null=True)
     city = models.ForeignKey(
         City, on_delete=models.CASCADE,
-        verbose_name='город доставки', related_name="address")
+        verbose_name='город доставки', related_name="address", null=True)
 
     def __str__(self):
-        return self.address
+        return f"{self.firstname} {self.lastname}"
 
     class Meta:
-        verbose_name = "адрес доставки"
-        verbose_name_plural = "адреса доставки"
+        verbose_name = "клиент"
+        verbose_name_plural = "клиенты"
