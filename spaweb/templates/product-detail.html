@@ -25,7 +25,7 @@
                     <div class="pro-detail-sec row">
                         <div class="col-12">
                             <h4 class="pro-heading text-center text-lg-left">{{ product.name }}</h4>
-                            <p class="pro-text text-center text-lg-left">Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit.</p>
+                            <p class="pro-text text-center text-lg-left">Спа-программа из категории {{ product.category|lower }}</p>
                         </div>
                     </div>
                     <div class="row product-list product-detail">
@@ -42,10 +42,11 @@
 
                         <div class="col-12 col-lg-6 text-center text-lg-left">
                             <div class="product-single-price">
-                                <h4><span class="real-price">>{{ product.price }}₽</span> <span><del>>{{ product.price }}₽</del></span></h4>
+                                <h4><span class="real-price">Стоимость: {{ product.price }}₽</span></h4>
                                 <div class="pro-description">
                                     {{ product.description|safe }}
                                 </div>
+                                <p>Продолжительность: {{product.duration}}</p>
                             </div>
 
                             <div class="row product-quantity input_plus_mins no-gutters">
@@ -73,199 +74,14 @@
                                 <nav aria-label="breadcrumb">
                                     <ol class="breadcrumb">
                                         <li class="breadcrumb-item">
-                                            <span class="d-inline">Категории: 
+                                            <p class="d-inline">Категория: 
                                                     <a href="{% url 'category' product.category.slug %}">{{ product.category.name }}</a>
-                                                    <span> </span>
-                                            </span>
+                                            </p>
                                         </li>
-                                        <li class="breadcrumb-item" aria-current="page"><p class="d-inline">Tags: <a href="#">Sports</a><span class="comma-separtor">,</span><a href="#">Shoes</a></li>
                                     </ol>
                                 </nav>
                             </div>
 
-                            <div class="share-product-details">
-                                <ul class="share-product-icons">
-                                    <li><p>Share Link:</p></li>
-                                    <li><a href="#" class="facebook-bg-hvr"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="twitter-bg-hvr"><i class="fab fa-twitter" aria-hidden="true"></i></a> </li>
-                                    <li><a href="#" class="linkedin-bg-hvr"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
-                                    <li><a href="#" class="instagram-bg-hvr"><i class="fab fa-instagram" aria-hidden="true"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-12 mt-4 mb-4">
-                            <div class="row no-gutters product-all-details">
-
-                                <ul class="col-12 nav nav-tabs" id="myTab" role="tablist">
-                                    <li class="col-4 nav-item">
-                                        <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Project Description</a>
-                                    </li>
-                                    <li class="col-4 nav-item">
-                                        <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Additional Information</a>
-                                    </li>
-                                    <li class="col-4 nav-item">
-                                        <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Customer Reviews  (2)</a>
-                                    </li>
-                                </ul>
-                                <div class="col-12 tab-content" id="myTabContent">
-                                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                                        <p class="product-tab-description text-center text-lg-left">If you are a small business and you are interested in small rebranding then this is a perfect plan for you, having Five years experience in Blogging, photographing, Disgning and love to cycling,Writting,Singing and Traveling around the world</p>
-                                        <p class="product-tab-description text-center text-lg-left">If you are a small business and you are interested in small rebranding then this is a perfect plan for you, having Five years experience in Blogging, photographing, Disgning and love to cycling,Writting,Singing and Traveling around the world</p>
-                                    </div>
-                                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                    <tr>
-                                                        <th scope="col">#</th>
-                                                        <th scope="col">First</th>
-                                                        <th scope="col">Last</th>
-                                                        <th scope="col">Handle</th>
-                                                    </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <th scope="row">1</th>
-                                                        <td>Mark</td>
-                                                        <td>Otto</td>
-                                                        <td>@mdo</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">2</th>
-                                                        <td>Jacob</td>
-                                                        <td>Thornton</td>
-                                                        <td>@fat</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th scope="row">3</th>
-                                                        <td>Larry</td>
-                                                        <td>the Bird</td>
-                                                        <td>@twitter</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="tab-pane fade reviews" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-
-                                        <div class="media">
-                                            <div class="row no-gutter">
-                                                <div class="col-12 col-lg-2 p-0">
-
-                                                    <div class="row no-gutters">
-                                                        <div class="col-12 d-flex  justify-content-center">
-                                                            <img src="{% static 'img/user.jpg' %}" alt="Generic placeholder image">
-                                                        </div>
-                                                        <div class="col-12 d-flex mt-2 justify-content-center">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-12 col-lg-10 p-0">
-                                                    <div class="media-body ">
-                                                        <span class="text-center text-lg-left d-block">27 Aug 2017</span>
-                                                        <h5 class="mb-2 text-center text-lg-left">Media heading</h5>
-                                                        <p class="text-center text-lg-left">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="media">
-                                            <div class="row no-gutter">
-                                                <div class="col-12 col-lg-2 p-0">
-
-                                                    <div class="row no-gutters">
-                                                        <div class="col-12 d-flex  justify-content-center">
-                                                            <img src="{% static 'img/user2.jpg' %}" alt="Generic placeholder image">
-                                                        </div>
-                                                        <div class="col-12 d-flex mt-2 justify-content-center">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="col-12 col-lg-10 p-0">
-                                                    <div class="media-body ">
-                                                        <span class="text-center text-lg-left d-block">27 Aug 2017</span>
-                                                        <h5 class="mb-2 text-center text-lg-left">Media heading</h5>
-                                                        <p class="text-center text-lg-left">Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam.</p>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="row pl-2 pr-2">
-                                            <div class="col-12 d-flex mb-4 mt-3">
-                                                <h5 class="text-nowrap">Add Review</h5>
-                                                <hr class="w-100 ml-5"/>
-                                            </div>
-                                            <div class="col-12">
-                                                <form class="getin_form border-form" id="register">
-                                                    <div class="row">
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <div class="form-group bottom35">
-                                                                <input type="text" class="form-control"  placeholder="Name*" required="" id="registerName">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 col-sm-12">
-                                                            <div class="form-group bottom35">
-                                                                <input type="email" class="form-control" placeholder="Email*" required="" id="registerEmail">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12 col-lg-2 text-center text-lg-left">
-                                                            <h5 class="text-nowrap">Your Rating</h5>
-                                                        </div>
-                                                        <div class="col-12 col-lg-10 text-center text-lg-left">
-                                                            <ul class="user-rating">
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star-filled"></i></a></li>
-                                                                <li><a href="#"><i class="lni-star"></i></a></li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <!--                                                                            <label for="comment">Your Rating:</label>-->
-                                                                <textarea class="form-control textareaclass" rows="5" id="comment" placeholder="Your Review"></textarea>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="col-12 mt-3">
-                                                            <div class="form-group d-flex justify-content-center d-lg-block">
-                                                                <button class="text-center btn pink-gradient-btn-into-black">Add Review</button>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
 
                     </div>
@@ -277,7 +93,7 @@
         </div>
     </div>
     <!--START LATEST ARRIVALS-->
-    <div class="lastest_arrivals remove-margins">
+    <div class="lastest_arrivals remove-margins" style="margin-top: 40px;">
         <div class="container">
             <div class="row">
                 <div class="col-12 mb-4">

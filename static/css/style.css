@@ -2514,7 +2514,7 @@ textarea:focus{
 
 /*SWIPER SLIDER CODE*/
 .wrapper{
-    max-height: 360px;
+    max-height: 500px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
