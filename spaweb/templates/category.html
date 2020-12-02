@@ -20,18 +20,35 @@
                         <hr>
                         {% for topic in topics %}
                         <ul>
-                            <h5 class="filter-h5 text-center text-lg-left">{{topic.title}}</h5>
+                            <style>
+                                details summary {
+                                  display: block;  /* у summary по умолчанию свойство display в значении list-item, потому поддерживается свойство list-style */
+                                  width: 10em;
+                                  width: -webkit-fit-content;
+                                  width: -moz-fit-content;
+                                  width: fit-content;  /* блок раскрывается при щелчке по кнопке, а не по всей строке */
+                                  border-bottom: 1px dotted;  /* подводка точками или тире часто используется для элементов, с которыми пользователю предлагается взаимодействовать, можно заменить на text-decoration */
+                                  outline-style: none;  /* удалить обводку при фокусе */
+                                  cursor: pointer;
+                                }
+                                details summary::-webkit-details-marker {  /* нестандартный псевдоэлемент Google Chrome */
+                                  display: none;
+                                }
+                                </style>
+                            <details>
+                            <summary><h5 class="filter-h5 text-center text-lg-left">{{topic.title}}</h5></summary>
                             {% for category in categories %}
                             {% if topic == category.topic  %}
                             <li class="filter-by-category"><a href="{% url 'category' category.slug %}" style="font-size: 14px;">{{category.name}} </a></li>
                             {% endif %}
                             {% endfor %}
+                            </details>
                         </ul>
                         {% endfor %}
                     </div>
         
                     <div class="product-price mt-1">
-                        <h3 class="filter-heading">По цене</h3>
+                        <h3 class="filter-heading" style="margin-top: 30px;">По цене</h3>
                         <hr>
                         <div id="slider-range"></div>
                         <form method="POST">
