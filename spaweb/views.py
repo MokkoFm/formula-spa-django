@@ -69,11 +69,30 @@ def product_listing(request, slug):
 
 def get_topic_listing(request, slug):
     topic = get_object_or_404(Topic, slug=slug)
+    categories_by_topic = ProductCategory.objects.filter(topic=topic)
+    if request.method == "POST":
+        minprice = request.POST.get('minprice')
+        maxprice = request.POST.get('maxprice')
+        if minprice or maxprice:
+            products_by_topic = Product.objects.filter(
+                category__in=categories_by_topic,
+                price__range=(minprice, maxprice))
+        else:
+            minprice = "0"
+            maxprice = "10000"
+            products_by_topic = Product.objects.filter(
+                category__in=categories_by_topic,
+                price__range=(minprice, maxprice))
+    else:
+        products_by_topic = Product.objects.filter(
+            category__in=categories_by_topic)
 
     context = {
         'topic': topic,
+        'categories_by_topic': categories_by_topic,
+        'products_by_topic': products_by_topic,
     }
-    
+
     return render(request, 'topic.html', context)
 
 
