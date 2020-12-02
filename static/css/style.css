@@ -1898,9 +1898,8 @@ END scroll-top-arrow
 }
 
 .cart_table .shopping-product {
-    display: inline-block;
-    height: 70px;
-    width: 70px;
+    height: 100px;
+    width: 100px;
     margin-right: 10px;
 }
 
