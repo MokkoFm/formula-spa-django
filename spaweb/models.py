@@ -141,7 +141,6 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(25)],
         verbose_name='количество', default=0)
-    order_cost = models.DecimalField('стоимость', max_digits=8, decimal_places=2, null=True)
 
     def __str__(self):
         return f"{self.product}: {self.quantity}"
