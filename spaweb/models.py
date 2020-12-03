@@ -66,8 +66,8 @@ class Product(models.Model):
     category = models.ForeignKey(
         ProductCategory, verbose_name='категория', null=True,
         related_name='category_products', on_delete=models.SET_NULL)
-    city = models.ManyToManyField(
-        City, verbose_name='город', related_name='city_products')
+    city = models.ForeignKey(
+        City, verbose_name='город', related_name='city_products', on_delete=models.CASCADE, null=True)
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
     image = models.ImageField(upload_to="images", verbose_name="фото товара")
     duration = models.CharField(
@@ -141,6 +141,7 @@ class OrderItem(models.Model):
     quantity = models.IntegerField(
         validators=[MinValueValidator(1), MaxValueValidator(25)],
         verbose_name='количество', default=0)
+    order_cost = models.DecimalField('стоимость', max_digits=8, decimal_places=2, null=True)
 
     def __str__(self):
         return f"{self.product}: {self.quantity}"
@@ -164,9 +165,6 @@ class Customer(models.Model):
     order = models.ForeignKey(
         Order, on_delete=models.SET_NULL, related_name="customer", null=True)
     address = models.TextField(verbose_name="адрес для доставки", null=True)
-    city = models.ForeignKey(
-        City, on_delete=models.CASCADE,
-        verbose_name='город доставки', related_name="address", null=True)
 
     def __str__(self):
         return f"{self.firstname} {self.lastname}"
