@@ -129,20 +129,28 @@ def cart(request):
         cart = {}
     total_price = 0
     cart_products = []
+    cities = []
+
     for key in cart:
         product = get_object_or_404(Product, pk=key)
         product_cost = product.price * cart[key]
         total_price += product_cost
-        
+        if product.city not in cities:
+            cities.append(product.city)
         cart_products.append({
             'product': product,
             'quantity': cart[key],
             'product_cost': product_cost,
         })
+    if len(cities) > 1:
+        is_cities_correct = False
+    else:
+        is_cities_correct = True
 
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
+        'is_cities_correct': is_cities_correct,
     }
     return render(request, "shop-cart.html", context)
 
@@ -210,12 +218,13 @@ def checkout(request):
             'price': price,
         })
         total_price += price * quantity
+        city = product.city
 
-    cities = City.objects.all()
+    
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
-        'cities': cities,
+        'city': city,
     }
     return render(request, "checkout.html", context)
 

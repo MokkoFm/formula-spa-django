@@ -46,13 +46,7 @@
 
                                 <hr>
 
-                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
-                                    <select type="text" class="form-control" id="candidate_city" name="city">
-                                        {% for city in cities %}
-                                            <option value="Cash">{{ city.name }}</option>
-                                        {% endfor %}
-                                    </select>
-                                </div>
+                               
                                 <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
                                     <input type="text" class="form-control" id="candidate_address" name="address" placeholder="Ваш адрес" required="required">
                                 </div>
@@ -87,7 +81,11 @@
                             <table>
                                 <tr>
                                     <td>Итого:</td>
-                                    <td>{{total_price}} ₽</td>
+                                    <td>{{ total_price }} ₽</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;">Город заказа:</td>
+                                    <td>{{ city }}</td>
                                 </tr>
                         </table>
                     </div>

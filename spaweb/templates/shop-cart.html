@@ -13,7 +13,11 @@
         <div class="row">
             <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
                 <h1 class="heading">Ваша корзина</h1>
-                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+                {% if is_cities_correct %}
+                    <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+                {% else %}
+                    <p class="para_text w-100 w-lg-75">Пожалуйста, выберите товары в одном городе.</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -30,6 +34,7 @@
                             <thead>
                             <tr>
                                 <th class="darkcolor">Товар</th>
+                                <th class="darkcolor">Город</th>
                                 <th class="darkcolor">Цена</th>
                                 <th class="darkcolor">Количество</th>
                                 <th class="darkcolor">Сумма</th>
@@ -45,7 +50,7 @@
                                         <div class="media">
                                             <div class="row no-gutters">
 
-                                                <div class="col-12 col-lg-2 product-detail-cart-image"">
+                                                <div class="col-12 col-lg-2 product-detail-cart-image">
                                                 <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="Generic placeholder image"></a>
                                                 </div>
 
@@ -58,6 +63,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    <h4 class="text-center amount">{{cart_product.product.city}}</h4>
                                 </td>
                                 <td>
                                     <h4 class="text-center amount">{{cart_product.product.price}}</h4>
@@ -92,7 +100,11 @@
                             <div class="col-12 text-left">
                                 <a href="{% url 'index' %}" class="btn  pink-gradient-btn-into-black">ВЕРНУТЬСЯ К ПОКУПКАМ</a>
                                 {% if cart_products %}
-                                    <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% if is_cities_correct %}
+                                        <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% else %}
+                                        <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% endif %}
                                 {% else %}
                                     <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
                                 {% endif %}
