@@ -28,7 +28,7 @@
                 <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
                     <div class="calculate-shipping">
                         <h4 class="heading">Введите данные для заказа</h4>
-                        <form class="contact-form">
+                        <form action="{% url 'checkout_data' %}" name="myform" onsubmit="return validateForm()" class="contact-form" method="post">
                             {% csrf_token %}
                             <div class="row my-form">
                                 <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
@@ -46,20 +46,21 @@
 
                                 <hr>
 
-                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
-                                    <input type="text" class="form-control" id="candidate_city" name="city" placeholder="Ваш город" required="required">
-                                </div>
+                               
                                 <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
                                     <input type="text" class="form-control" id="candidate_address" name="address" placeholder="Ваш адрес" required="required">
                                 </div>
                                 <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
-                                    <input type="text" class="form-control" id="payment" name="payment" placeholder="Способ оплаты" required="required">
+                                    <select type="text" class="form-control" id="payment" name="payment">
+                                        <option value="Cash">Наличный расчет</option>
+                                        <option value="Card">Безналичный расчет</option>
+                                    </select>
                                 </div>
                                 <div class="col-12 col-md-6" style="padding-top: 15px;">
                                     <label for="scales">Электронный сертификат</label>
                                     <input type="checkbox" id="scales" name="scales">
                                 </div>
-                                <a  class="btn pink-gradient-btn-into-black" href="#" style="margin: auto; margin-top: 15px">Оплатить</a>
+                                <button  class="btn pink-gradient-btn-into-black" style="margin: auto; margin-top: 15px">Оплатить</button>
                             </div>
                         </form>
                     </div>
@@ -80,7 +81,11 @@
                             <table>
                                 <tr>
                                     <td>Итого:</td>
-                                    <td>{{total_price}} ₽</td>
+                                    <td>{{ total_price }} ₽</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: right;">Город заказа:</td>
+                                    <td>{{ city }}</td>
                                 </tr>
                         </table>
                     </div>
@@ -94,4 +99,34 @@
 
 </div>
 <!-- END HEADING SECTION -->
+{% comment %} <script>
+    function validateForm(){
+        var firstname = document.myform.firstName.value;
+        var lastname = document.forms["myForm"]["lastName"].value;
+        var email = document.forms["myForm"]["userEmail"].value;
+        var phonenumber = document.forms["myForm"]["tel"].value;
+        var city = document.forms["myForm"]["city"].value;
+        var address = document.forms["myForm"]["address"].value;
+
+        if (firstname==null || firstname=="") {
+            alert("Необходимо ввести имя");
+            return false;
+        } else if (lastname==null || lastname==""){
+            alert("Необходимо ввести фамилию");
+            return false;
+        }else if (email==null || email==""){
+            alert("Необходимо ввести email");
+            return false;
+        }else if (phonenumber==null || phonenumber==""){
+            alert("Необходимо ввести телефонный номер");
+            return false;
+        }else if (city==null || city==""){
+            alert("Необходимо ввести город");
+            return false;
+        }else if (address==null || address==""){
+            alert("Необходимо ввести адрес");
+            return false;
+        }
+    } 
+</script> {% endcomment %}
 {% endblock %}

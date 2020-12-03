@@ -1,7 +1,8 @@
+from datetime import datetime
 from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
-from spaweb.models import Product, ProductCategory, Topic
+from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer, City
 
 from spaweb.cart import add_to_cart
 
@@ -93,6 +94,7 @@ def get_topic_listing(request, slug):
         'products_by_topic': products_by_topic,
     }
 
+    
     return render(request, 'topic.html', context)
 
 
@@ -127,18 +129,28 @@ def cart(request):
         cart = {}
     total_price = 0
     cart_products = []
+    cities = []
+
     for key in cart:
         product = get_object_or_404(Product, pk=key)
-        total_price += product.price * cart[key]
-        
+        product_cost = product.price * cart[key]
+        total_price += product_cost
+        if product.city not in cities:
+            cities.append(product.city)
         cart_products.append({
             'product': product,
             'quantity': cart[key],
+            'product_cost': product_cost,
         })
+    if len(cities) > 1:
+        is_cities_correct = False
+    else:
+        is_cities_correct = True
 
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
+        'is_cities_correct': is_cities_correct,
     }
     return render(request, "shop-cart.html", context)
 
@@ -185,6 +197,10 @@ def faq(request):
     return render(request, "faq.html")
 
 
+def payment(request):
+    return render(request, "payment.html")
+
+
 def checkout(request):
     try:
         cart = request.session['cart']
@@ -202,9 +218,58 @@ def checkout(request):
             'price': price,
         })
         total_price += price * quantity
+        city = product.city
 
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
+        'city': city,
     }
-    return render(request, "checkout.html")
+    return render(request, "checkout.html", context)
+
+
+def checkout_user_data(request):
+    try:
+        cart = request.session['cart']
+    except KeyError:
+        return redirect(reverse('index'))
+
+    if request.method == 'POST':
+        firstname = request.POST.get('firstName')
+        lastname = request.POST.get('lastName')
+        email = request.POST.get('userEmail')
+        phonenumber = request.POST.get('tel')
+        address = request.POST.get('address')
+        is_digital = request.POST.get('scales')
+        payment_method = request.POST.get('payment')
+        
+        if is_digital:
+            is_digital = True
+        else:
+            is_digital = False
+        order = Order.objects.create(
+            registrated_at=datetime.now(),
+            comment='We are still thinking...',
+            is_digital=is_digital,
+            payment_method=payment_method,
+        )
+        for product_id in cart:
+            product = get_object_or_404(Product, pk=product_id)
+            order_item = OrderItem(
+                product=product,
+                order=order,
+                quantity=cart[product_id]
+            )
+
+            order_item.save()
+
+        customer, created = Customer.objects.get_or_create(
+            firstname=firstname,
+            lastname=lastname,
+            phonenumber=phonenumber,
+            email=email,
+            order=order,
+            address=address,
+        )
+
+    return redirect(reverse("payment"))
