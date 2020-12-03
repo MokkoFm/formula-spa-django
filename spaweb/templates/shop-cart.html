@@ -74,7 +74,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 class="text-center amount">{{cart_product.total_price}}</h4>
+                                    <h4 class="text-center amount">{{cart_product.product_cost}}</h4>
                                 </td>
                                 <td class="text-center">
                                     <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {% csrf_token %}

@@ -131,11 +131,13 @@ def cart(request):
     cart_products = []
     for key in cart:
         product = get_object_or_404(Product, pk=key)
-        total_price += product.price * cart[key]
+        product_cost = product.price * cart[key]
+        total_price += product_cost
         
         cart_products.append({
             'product': product,
             'quantity': cart[key],
+            'product_cost': product_cost,
         })
 
     context = {
