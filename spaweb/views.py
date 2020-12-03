@@ -220,7 +220,6 @@ def checkout(request):
         total_price += price * quantity
         city = product.city
 
-    
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
@@ -240,7 +239,6 @@ def checkout_user_data(request):
         lastname = request.POST.get('lastName')
         email = request.POST.get('userEmail')
         phonenumber = request.POST.get('tel')
-        city = request.POST.get('city')
         address = request.POST.get('address')
         is_digital = request.POST.get('scales')
         payment_method = request.POST.get('payment')
@@ -262,7 +260,6 @@ def checkout_user_data(request):
                 order=order,
                 quantity=cart[product_id]
             )
-            order_item.order_cost = order_item.total
 
             order_item.save()
 
