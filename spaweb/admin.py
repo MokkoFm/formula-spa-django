@@ -14,14 +14,12 @@ admin.site.register(Topic)
 class OrderItemInline(admin.TabularInline):
     model = OrderItem
     extra = 0
+    list_display = ['product', 'quantity', 'order_cost']
 
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = [
-        'customer', 'registrated_at', 'comment',
-        'is_complete', 'is_digital', 'payment_method',
-    ]
+    list_display = ['registrated_at','is_complete', 'is_digital', 'payment_method']
     inlines = [OrderItemInline]
 
 
