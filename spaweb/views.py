@@ -1,7 +1,8 @@
+from datetime import datetime
 from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
-from spaweb.models import Product, ProductCategory, Topic
+from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer, City
 
 from spaweb.cart import add_to_cart
 
@@ -93,6 +94,7 @@ def get_topic_listing(request, slug):
         'products_by_topic': products_by_topic,
     }
 
+    
     return render(request, 'topic.html', context)
 
 
@@ -185,6 +187,10 @@ def faq(request):
     return render(request, "faq.html")
 
 
+def payment(request):
+    return render(request, "payment.html")
+
+
 def checkout(request):
     try:
         cart = request.session['cart']
@@ -203,8 +209,59 @@ def checkout(request):
         })
         total_price += price * quantity
 
+    cities = City.objects.all()
     context = {
         'cart_products': cart_products,
         'total_price': total_price,
+        'cities': cities,
     }
-    return render(request, "checkout.html")
+    return render(request, "checkout.html", context)
+
+
+def checkout_user_data(request):
+    try:
+        cart = request.session['cart']
+    except KeyError:
+        return redirect(reverse('index'))
+
+    if request.method == 'POST':
+        firstname = request.POST.get('firstName')
+        lastname = request.POST.get('lastName')
+        email = request.POST.get('userEmail')
+        phonenumber = request.POST.get('tel')
+        city = request.POST.get('city')
+        address = request.POST.get('address')
+        is_digital = request.POST.get('scales')
+        payment_method = request.POST.get('payment')
+        
+        if is_digital:
+            is_digital = True
+        else:
+            is_digital = False
+        order = Order.objects.create(
+            registrated_at=datetime.now(),
+            comment='We are still thinking...',
+            is_digital=is_digital,
+            payment_method=payment_method,
+        )
+        for product_id in cart:
+            product = get_object_or_404(Product, pk=product_id)
+            order_item = OrderItem(
+                product=product,
+                order=order,
+                quantity=cart[product_id]
+            )
+            order_item.order_cost = order_item.total
+
+            order_item.save()
+
+        customer, created = Customer.objects.get_or_create(
+            firstname=firstname,
+            lastname=lastname,
+            phonenumber=phonenumber,
+            email=email,
+            order=order,
+            address=address,
+        )
+
+    return redirect(reverse("payment"))
