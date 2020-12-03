@@ -49,8 +49,8 @@
                                                 <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="Generic placeholder image"></a>
                                                 </div>
 
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data" style="padding-left: 20px;">
-                                                    <div class="media-body ml-lg-3"">
+                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
+                                                    <div class="media-body ml-lg-3" style="margin-bottom: 20px;">
                                                         <h4 class="product-name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{cart_product.product.name}}</a></h4>
                                                         <p class="product-des">{{ cart_product.product.category.topic }}</p>
                                                     </div>
