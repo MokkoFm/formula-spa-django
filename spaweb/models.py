@@ -98,6 +98,23 @@ class Product(models.Model):
         verbose_name_plural = 'товары'
 
 
+class Customer(models.Model):
+    firstname = models.CharField(max_length=50, verbose_name="имя")
+    lastname = models.CharField(max_length=50, verbose_name="фамилия")
+    phonenumber = models.CharField(
+        max_length=20, blank=True, verbose_name="телефон")
+    email = models.CharField(
+        max_length=100, blank=True, verbose_name="эл. почта")
+    address = models.TextField(verbose_name="адрес для доставки", null=True)
+
+    def __str__(self):
+        return f"{self.firstname} {self.lastname}"
+
+    class Meta:
+        verbose_name = "клиент"
+        verbose_name_plural = "клиенты"
+
+
 class Order(models.Model):
     PAYMENT_METHOD = [
         ('Cash', 'Наличными'),
@@ -114,6 +131,7 @@ class Order(models.Model):
     payment_method = models.CharField(
         max_length=4, choices=PAYMENT_METHOD,
         default='Неизвестно', verbose_name='способ оплаты')
+    customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='orders', verbose_name='Покупатель', null=True)
 
     def __str__(self):
         return f" Order number - {self.id}"
@@ -152,22 +170,3 @@ class OrderItem(models.Model):
     class Meta:
         verbose_name = "товар в заказе"
         verbose_name_plural = "товары в заказе"
-
-
-class Customer(models.Model):
-    firstname = models.CharField(max_length=50, verbose_name="имя")
-    lastname = models.CharField(max_length=50, verbose_name="фамилия")
-    phonenumber = models.CharField(
-        max_length=20, blank=True, verbose_name="телефон")
-    email = models.CharField(
-        max_length=100, blank=True, verbose_name="эл. почта")
-    order = models.ForeignKey(
-        Order, on_delete=models.SET_NULL, related_name="customer", null=True)
-    address = models.TextField(verbose_name="адрес для доставки", null=True)
-
-    def __str__(self):
-        return f"{self.firstname} {self.lastname}"
-
-    class Meta:
-        verbose_name = "клиент"
-        verbose_name_plural = "клиенты"
