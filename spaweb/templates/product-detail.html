@@ -50,22 +50,15 @@
                                 <p>Город: {{product.city}}</p>
                             </div>
 
-                            <div class="row product-quantity input_plus_mins no-gutters">
+                            <div class="row">
                                 
-                                <div class="qty col-12 col-lg-3 d-lg-flex  align-items-lg-center d-inline-block">
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <span class="minus bg-dark"><i class="lni-minus"></i></span>
-                                        <input type="number" class="count" name="quantity" value="1">
-                                        <span class="plus bg-dark"><i class="lni-plus"></i></span>
-                                    </form>
-                                </div>
-                                <div class="col-12 col-lg-9">
-                                    <form method="POST">
-                                        {% csrf_token %}
-                                        <input type="text" name="add_product_id" value="{{ product.id }}">
-                                        <button class="btn pink-gradient-btn-into-black">ДОБАВИТЬ В КОРЗИНУ</button>
-                                    </form>
+                                <div class="col-12 text-left">
+                                    <a href="{% url 'add_to_cart' product.slug %}" class="btn pink-gradient-btn-into-black">ДОБАВИТЬ В КОРЗИНУ</a>
+                                    {% if is_cart %}
+                                        <a href="{% url 'cart' %}" class="btn pink-color-black-gradient-btn ">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
+                                    {% else %}
+                                        <a href="#" class="btn pink-color-black-gradient-btn ">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
+                                    {% endif %}
                                 </div>
                             </div>
 
