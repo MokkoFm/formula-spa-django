@@ -62,6 +62,16 @@
                                     <input type="checkbox" id="scales" name="scales">
                                 </div>
                                 <button  class="btn pink-gradient-btn-into-black" style="margin: auto; margin-top: 15px">Оплатить</button>
+                                <a onclick="ipayCheckout({
+                                    amount:{{ total_price }},
+                                    currency:'RUB',
+                                    order_number:'',
+                                    description: 'Формула SPA: оплата программы или сертификата'},
+                                    function(order) { showSuccessfulPurchase(order) },
+                                    function(order) { showFailurefulPurchase(order) })"
+                                     
+                                    class="btn btn-xs btn-outline btn-primary pink-gradient-btn-into-black">Купить
+                                </a>
                             </div>
                         </form>
                     </div>
