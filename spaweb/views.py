@@ -25,9 +25,8 @@ def contact(request):
 def product_detail(request, slug):
     try:
         cart = request.session['cart']
-        is_cart = True
     except KeyError:
-        is_cart = False
+        cart = {}
     product = get_object_or_404(Product, slug=slug)
     product_category = product.category
     related_products = Product.objects.filter(category=product_category)
@@ -35,7 +34,7 @@ def product_detail(request, slug):
     context = {
         'product': product,
         'related_products': related_products,
-        'is_cart': is_cart,
+        'cart': cart,
     }
     return render(request, "product-detail.html", context)
 
