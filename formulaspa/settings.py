@@ -92,8 +92,6 @@ DATABASES = {
     }   
 }
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cache" 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -138,5 +136,3 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
-
-SESSION_COOKIE_AGE = 3600
