@@ -4,8 +4,6 @@ from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer, City
 
-from spaweb.cart import add_to_cart
-
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
@@ -25,20 +23,40 @@ def contact(request):
 
 
 def product_detail(request, slug):
+    try:
+        cart = request.session['cart']
+        is_cart = True
+    except KeyError:
+        is_cart = False
     product = get_object_or_404(Product, slug=slug)
     product_category = product.category
     related_products = Product.objects.filter(category=product_category)
 
-    if request.method == 'GET':
-        context = {
-            'product': get_object_or_404(Product, slug=slug),
-            'related_products': related_products,
-        }
-        return render(request, "product-detail.html", context)
+    context = {
+        'product': product,
+        'related_products': related_products,
+        'is_cart': is_cart,
+    }
+    return render(request, "product-detail.html", context)
 
-    if request.method == 'POST':
-        add_to_cart(request)
-        return redirect('product-detail', slug=product.slug)
+
+def add_to_cart(request, slug):
+    request.session.set_expiry(86400)
+    product = get_object_or_404(Product, slug=slug)
+    cart = request.session.get('cart')
+    if cart:
+        quantity = cart.get(product.id)
+        if quantity:
+            cart[product.id] = quantity + 1
+        else:
+            cart[product.id] = 1
+    else:
+        cart = {}
+        cart[product.id] = 1
+
+    request.session['cart'] = cart
+
+    return redirect(reverse('product-detail', kwargs={'slug': slug}))
 
 
 def product_listing(request, slug):
@@ -94,7 +112,6 @@ def get_topic_listing(request, slug):
         'products_by_topic': products_by_topic,
     }
 
-    
     return render(request, 'topic.html', context)
 
 
@@ -157,7 +174,8 @@ def cart(request):
 
 def remove_cart_item(request, pk):
     cart = request.session['cart']
-    cart.pop(pk, None)
+    product_id = int(pk)
+    cart.pop(product_id)
     request.session['cart'] = cart
     if request.method == 'POST':
         button_spot = request.POST.get('trash')
