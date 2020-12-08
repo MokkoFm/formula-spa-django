@@ -13,7 +13,11 @@
         <div class="row">
             <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
                 <h1 class="heading">Ваша корзина</h1>
-                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+                {% if is_cities_correct %}
+                    <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+                {% else %}
+                    <p class="para_text w-100 w-lg-75">Пожалуйста, выберите товары в одном городе.</p>
+                {% endif %}
             </div>
         </div>
     </div>
@@ -30,6 +34,7 @@
                             <thead>
                             <tr>
                                 <th class="darkcolor">Товар</th>
+                                <th class="darkcolor">Город</th>
                                 <th class="darkcolor">Цена</th>
                                 <th class="darkcolor">Количество</th>
                                 <th class="darkcolor">Сумма</th>
@@ -45,12 +50,12 @@
                                         <div class="media">
                                             <div class="row no-gutters">
 
-                                                <div class="col-12 col-lg-2 product-detail-cart-image"">
+                                                <div class="col-12 col-lg-2 product-detail-cart-image">
                                                 <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="Generic placeholder image"></a>
                                                 </div>
 
                                                 <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3"">
+                                                    <div class="media-body ml-lg-3" style="margin-bottom: 20px;">
                                                         <h4 class="product-name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{cart_product.product.name}}</a></h4>
                                                         <p class="product-des">{{ cart_product.product.category.topic }}</p>
                                                     </div>
@@ -58,6 +63,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                </td>
+                                <td>
+                                    <h4 class="text-center amount">{{cart_product.product.city}}</h4>
                                 </td>
                                 <td>
                                     <h4 class="text-center amount">{{cart_product.product.price}}</h4>
@@ -74,7 +82,7 @@
                                     </div>
                                 </td>
                                 <td>
-                                    <h4 class="text-center amount">{{cart_product.total_price}}</h4>
+                                    <h4 class="text-center amount">{{cart_product.product_cost}}</h4>
                                 </td>
                                 <td class="text-center">
                                     <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {% csrf_token %}
@@ -92,7 +100,11 @@
                             <div class="col-12 text-left">
                                 <a href="{% url 'index' %}" class="btn  pink-gradient-btn-into-black">ВЕРНУТЬСЯ К ПОКУПКАМ</a>
                                 {% if cart_products %}
-                                    <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% if is_cities_correct %}
+                                        <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% else %}
+                                        <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                    {% endif %}
                                 {% else %}
                                     <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
                                 {% endif %}
@@ -103,83 +115,6 @@
                 </div>
             </div>
             <!-- END SHOP CART TABLE -->
-
-            <!-- START SHOP CART CHECKOUT FORM -->
-            <div class="row pt-5">
-                <div class="col-12 col-lg-6 wow slideInLeft" data-wow-duration="2s">
-                    <div class="calculate-shipping">
-                        <h4 class="heading">Calculate Shipping</h4>
-                        <form>
-                            <div class="form-group">
-                                <label class="select form-control">
-                                    <select name="country" id="states">
-                                        <option>USA</option>
-                                        <option>Canada</option>
-                                        <option>Chile</option>
-                                        <option>France</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label class="select form-control">
-                                    <select name="country" id="state">
-                                        <option>USA</option>
-                                        <option>Canada</option>
-                                        <option>Chile</option>
-                                        <option>France</option>
-                                    </select>
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Postal/Zip Code">
-                            </div>
-                            <a href="#" class="btn pink-gradient-btn-into-black">Calculate</a>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-6 wow slideInRight" data-wow-duration="2s">
-                    <div class="card-total">
-                        <h4 class="heading">Card Total</h4>
-                        <table>
-                            <tr>
-                                <td>Subtotal</td>
-                                <td>$251.00</td>
-                            </tr>
-                            <tr>
-                                <td>Shipping</td>
-                                <td>
-                                    <ul class="color-grey">
-                                        <li>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="flat-rate" name="shipping" class="custom-control-input" checked="">
-                                                <label class="custom-control-label" for="flat-rate">Flat Rate : $49.00</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="free-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="free-shipping">Free Shipping</label>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="custom-control custom-radio">
-                                                <input type="radio" id="cod-shipping" name="shipping" class="custom-control-input">
-                                                <label class="custom-control-label" for="cod-shipping">Cash on Delivery</label>
-                                            </div>
-                                        </li>
-                                    </ul>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Total</td>
-                                <td>$300.00</td>
-                            </tr>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <!-- END SHOP CART CHECKOUT FORM -->
-
         </div>
     </div>
     <!-- END SHOP CART SECTION-->

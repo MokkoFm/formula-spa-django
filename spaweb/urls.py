@@ -14,5 +14,7 @@ urlpatterns = [
     path('quantity/<str:pk>', views.change_item_quantity, name="change_quantity"),
     path('search/', views.search, name="search"),
     path('checkout/', views.checkout, name="checkout"),
+    path('checkout_data/', views.checkout_user_data, name="checkout_data"),
     path('topic/<slug:slug>/', views.get_topic_listing, name="topic"),
+    path('payment', views.payment, name="payment"),
 ]
