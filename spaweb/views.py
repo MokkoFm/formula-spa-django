@@ -182,7 +182,7 @@ def remove_cart_item(request, pk):
             return redirect(reverse('index'))
         if button_spot == 'cart_trash':
             return redirect(reverse('cart'))
-    
+
     return render(request, "index.html")
 
 
@@ -196,7 +196,7 @@ def change_item_quantity(request, pk):
                 quantity = 1
         elif quantity_button == 'plus':
             quantity = cart.get(pk) + 1
-        
+
         cart[pk] = quantity
         request.session['cart'] = cart
     return redirect(reverse('cart'))
