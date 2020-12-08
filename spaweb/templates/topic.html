@@ -75,10 +75,12 @@
                                 <div class="col-12 col-md-6 col-lg-4 manage-color-hover wow slideInUp" data-wow-delay=".2s">
                                     <div class="product-item owl-theme product-listing-carousel owl-carousel">
                                         <div class="item p-item-img">
-                                                <img src="{{ product.image.url }}" alt="images">
+                                                <a href="{% url 'product-detail' product.slug %}">
+                                                    <img src="{{ product.image.url }}" alt="images">
+                                                </a>
                                             <div class="text-center d-flex justify-content-center align-items-center">
-                                                <a class="listing-cart-icon" href="shop-cart.html">
-                                                    <i class="fa fa-shopping-cart"></i>
+                                                <a class="listing-cart-icon" href="{% url 'product-detail' product.slug %}">
+                                                    <i class="fas fa-eye"></i>
                                                 </a>
                                             </div>
                                         </div>
