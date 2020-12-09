@@ -4,7 +4,6 @@ from spaweb.models import Product, Order, OrderItem
 from spaweb.models import BusinessDirection, Topic
 
 
-admin.site.register(Customer)
 admin.site.register(ProductCategory)
 admin.site.register(City)
 admin.site.register(BusinessDirection)
@@ -19,10 +18,20 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['registrated_at','is_complete', 'is_digital', 'payment_method']
+    list_display = ['registrated_at','is_complete', 'is_digital', 'payment_method', 'customer']
     inlines = [OrderItemInline]
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
     list_filter = ['category']
+
+
+class OrderInline(admin.TabularInline):
+    model = Order
+    list_display = ['registrated_at', 'is_complete', 'payment_method']
+
+
+@admin.register(Customer)
+class CustomerAdmin(admin.ModelAdmin):
+    inlines = [OrderInline]

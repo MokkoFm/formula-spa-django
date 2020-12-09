@@ -188,16 +188,17 @@ def remove_cart_item(request, pk):
 
 def change_item_quantity(request, pk):
     cart = request.session['cart']
+    product_id = int(pk)
     if request.method == 'POST':
         quantity_button = request.POST.get('quantity')
         if quantity_button == 'minus':
-            quantity = cart.get(pk) - 1
+            quantity = cart.get(product_id) - 1
             if quantity == 0:
                 quantity = 1
         elif quantity_button == 'plus':
-            quantity = cart.get(pk) + 1
-
-        cart[pk] = quantity
+            quantity = cart.get(product_id) + 1
+        
+        cart[product_id] = quantity
         request.session['cart'] = cart
     return redirect(reverse('cart'))
 
@@ -259,6 +260,14 @@ def checkout_user_data(request):
         address = request.POST.get('address')
         is_digital = request.POST.get('scales')
         payment_method = request.POST.get('payment')
+
+        customer, created = Customer.objects.get_or_create(
+            firstname=firstname,
+            lastname=lastname,
+            phonenumber=phonenumber,
+            email=email,
+            address=address,
+        )
         
         if is_digital:
             is_digital = True
@@ -269,6 +278,7 @@ def checkout_user_data(request):
             comment='We are still thinking...',
             is_digital=is_digital,
             payment_method=payment_method,
+            customer=customer,
         )
         for product_id in cart:
             product = get_object_or_404(Product, pk=product_id)
@@ -279,14 +289,5 @@ def checkout_user_data(request):
             )
 
             order_item.save()
-
-        customer, created = Customer.objects.get_or_create(
-            firstname=firstname,
-            lastname=lastname,
-            phonenumber=phonenumber,
-            email=email,
-            order=order,
-            address=address,
-        )
 
     return redirect(reverse("payment"))
