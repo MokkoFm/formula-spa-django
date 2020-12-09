@@ -54,10 +54,10 @@
                                 
                                 <div class="col-12 text-left">
                                     <a href="{% url 'add_to_cart' product.slug %}" class="btn pink-gradient-btn-into-black">ДОБАВИТЬ В КОРЗИНУ</a>
-                                    {% if is_cart %}
+                                    {% if product.id in cart %}
                                         <a href="{% url 'cart' %}" class="btn pink-color-black-gradient-btn ">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
                                     {% else %}
-                                        <a href="#" class="btn pink-color-black-gradient-btn ">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
+                                        <a href="#" class="btn pink-color-black-gradient-btn " style="visibility: hidden;">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
                                     {% endif %}
                                 </div>
                             </div>
