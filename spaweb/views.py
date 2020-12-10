@@ -2,18 +2,16 @@ from datetime import datetime
 from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
-from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer, City
+from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer
 
 
 def index(request):
     new_products = Product.objects.filter(is_new=True)
-    bestsellers = Product.objects.filter(is_bestseller=True)
-    topics = Topic.objects.all()
+    bestsellers = Product.objects.filter(is_bestseller=True).prefetch_related('category')
 
     context = {
         "new_products": new_products,
         "bestsellers": bestsellers,
-        "topics": topics,
     }
     return render(request, "index.html", context)
 
@@ -62,19 +60,20 @@ def product_listing(request, slug):
     category = get_object_or_404(ProductCategory, slug=slug)
     categories = ProductCategory.objects.all()
     topics = Topic.objects.all()
+    products = Product.objects.all()
     if request.method == "POST":
         minprice = request.POST.get('minprice')
         maxprice = request.POST.get('maxprice')
         if minprice or maxprice:
-            products_by_category = Product.objects.filter(
+            products_by_category = products.filter(
                 category=category, price__range=(minprice, maxprice))
         else:
             minprice = "0"
             maxprice = "10000"
-            products_by_category = Product.objects.filter(
+            products_by_category = products.filter(
                 category=category, price__range=(minprice, maxprice))
     else:
-        products_by_category = Product.objects.filter(category=category)
+        products_by_category = products.filter(category=category)
 
     context = {
         'products_by_category': products_by_category,
