@@ -38,9 +38,9 @@
                             <details>
                             <summary><h5 class="filter-h5 text-center text-lg-left">{{topic.title}}</h5></summary>
                             {% for category in categories %}
-                            {% if topic == category.topic  %}
-                            <li class="filter-by-category"><a href="{% url 'category' category.slug %}" style="font-size: 14px;">{{category.name}} </a></li>
-                            {% endif %}
+                                {% if topic == category.topic  %}
+                                    <li class="filter-by-category"><a href="{% url 'category' category.slug %}" style="font-size: 14px;">{{category.name}} </a></li>
+                                {% endif %}
                             {% endfor %}
                             </details>
                         </ul>
