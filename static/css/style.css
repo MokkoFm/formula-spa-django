@@ -1862,7 +1862,7 @@ END scroll-top-arrow
     background: -o-linear-gradient(left, #FC2548 -50%, #f11fad 93%);
     background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%);
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #f11fad;
 }
 .cart_table .product-des{
     color: #000000;
