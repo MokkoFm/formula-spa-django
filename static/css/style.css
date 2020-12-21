@@ -2991,6 +2991,11 @@ textarea:focus{
         padding-top: 20px;
    }
 
+   .cart_table .shopping-product>img {
+       width: 150px !important;
+       max-height: 150px;
+   }
+
 
 }
 /*Small devices (landscape phones, 576px and up)*/
@@ -3153,12 +3158,14 @@ textarea:focus{
         margin-right: 20px;
    }
 
-   div.apply_coupon h4 {
+    div.apply_coupon h4 {
         padding-top: 20px;
-}
+    }
 
-
-
+    .cart_table .shopping-product>img {
+        width: 150px !important;
+        max-height: 150px;
+    }
 }
 
 /*Medium devices (tablets, 768px and up)*/
