@@ -44,7 +44,7 @@
                             <tbody>
                             {% for cart_product in cart_products %}
                             <tr>
-                                <td>
+                                <td data-label="Товар">
                                     <div class="d-table product-detail-cart">
 
                                         <div class="media">
@@ -64,13 +64,13 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>
+                                <td data-label="Город">
                                     <h4 class="text-center amount">{{cart_product.product.city}}</h4>
                                 </td>
-                                <td>
+                                <td data-label="Цена">
                                     <h4 class="text-center amount">{{cart_product.product.price}}</h4>
                                 </td>
-                                <td class="text-center">
+                                <td class="text-center" data-label="Количество">
                                     <div style="display: inline-flex;">
                                         <form action="{% url 'change_quantity' cart_product.product.id %}" method="post"> {% csrf_token %}
                                             <button class="minus" type="submit" name="quantity" value="minus" style="padding-right: 7px; border: none; background-color: white; font-size: 12px;"><i class="lni-minus"></i></button>
@@ -81,7 +81,7 @@
                                         </form>
                                     </div>
                                 </td>
-                                <td>
+                                <td data-label="Сумма товара">
                                     <h4 class="text-center amount">{{cart_product.product_cost}}</h4>
                                 </td>
                                 <td class="text-center">

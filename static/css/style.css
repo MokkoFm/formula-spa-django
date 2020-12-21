@@ -2896,7 +2896,7 @@ textarea:focus{
     .shop-cart .product-detail-cart .product-detail-cart-image{
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex;
+        display: block;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -2907,7 +2907,7 @@ textarea:focus{
         display: -ms-flexbox;
         display: flex;
         justify-content: left;
-        font-size: 14px;
+        font-size: 24px;
         margin-top: 10px;
     }
 
@@ -2967,6 +2967,29 @@ textarea:focus{
         -o-transition: 0.3s all;
         transition: 0.3s all;
     }
+
+    .table-responsive table thead {
+        display: none;
+    }
+
+    .table-responsive table tr {
+        display: block;
+    }
+
+    .table-responsive table td {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table-responsive table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 20px;
+   }
+
+   div.apply_coupon h4 {
+        padding-top: 20px;
+   }
 
 
 }
@@ -3055,7 +3078,7 @@ textarea:focus{
     .shop-cart .product-detail-cart .product-detail-cart-image{
         display: -webkit-box;
         display: -ms-flexbox;
-        display: flex;
+        display: block;
         -webkit-box-pack: center;
         -ms-flex-pack: center;
         justify-content: center;
@@ -3110,6 +3133,30 @@ textarea:focus{
     .manage-icons ul li a i{
         font-size: 14px;
     }
+
+    .table-responsive table thead {
+        display: none;
+    }
+
+    .table-responsive table tr {
+        display: block;
+    }
+
+    .table-responsive table td {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .table-responsive table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 20px;
+   }
+
+   div.apply_coupon h4 {
+        padding-top: 20px;
+}
+
 
 
 }
