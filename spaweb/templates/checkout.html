@@ -72,7 +72,7 @@
                         
                             {% for cart_product in cart_products %}
                                 <div style="display: flex; margin-top: 20px;">
-                                    <img src="{{cart_product.product.image_url}}" style="width: 100px;"></img>
+                                    <img src="{{cart_product.product.image_url}}" style="width: 100px; max-height: 100px;"></img>
                                     <p style="margin: auto; width: 20%;">{{cart_product.product.name}}</p>
                                     <p style="margin: auto;">{{cart_product.product.price}}</p>
                                     <p style="margin: auto;">x{{cart_product.quantity}}</p>
