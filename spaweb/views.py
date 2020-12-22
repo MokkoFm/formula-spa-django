@@ -38,7 +38,7 @@ def product_detail(request, slug):
 
 
 def add_to_cart(request, slug):
-    request.session.set_expiry(86400)
+    request.session.set_expiry(60 * 60)
     product = get_object_or_404(Product, slug=slug)
     cart = request.session.get('cart')
     if cart:
