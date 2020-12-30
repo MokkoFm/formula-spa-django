@@ -98,16 +98,6 @@ DATABASES = {
 }  
 
 
-CACHES = {
-    'default': {
-        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
-        'LOCATION': 'my_cache_table',
-    }
-}
-
-
-SESSION_ENGINE = "django.contrib.sessions.backends.db"
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
