@@ -98,7 +98,7 @@ DATABASES = {
 }  
 
 
-SESSION_ENGINE = "django.contrib.sessions.backends.cached_db"
+SESSION_ENGINE = "django.contrib.sessions.backends.signed_cookies"
 
 CACHES = {
     'default': {
