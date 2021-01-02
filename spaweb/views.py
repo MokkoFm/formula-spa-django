@@ -172,7 +172,7 @@ def add_to_cart(request, slug):
 
 def remove_cart_item(request, pk):
     cart = request.session['cart']
-    product_id = int(pk)
+    product_id = str(pk)
     cart.pop(product_id)
     request.session['cart'] = cart
     if request.method == 'POST':
@@ -187,7 +187,7 @@ def remove_cart_item(request, pk):
 
 def change_item_quantity(request, pk):
     cart = request.session['cart']
-    product_id = int(pk)
+    product_id = str(pk)
     if request.method == 'POST':
         quantity_button = request.POST.get('quantity')
         if quantity_button == 'minus':
