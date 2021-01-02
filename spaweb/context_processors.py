@@ -5,6 +5,7 @@ from spaweb.models import Product
 
 def get_cart(request):
     try:
+        request.session.modified = True
         cart = request.session['cart']
         cart_products = []
         total_price = 0

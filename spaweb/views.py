@@ -37,25 +37,6 @@ def product_detail(request, slug):
     return render(request, "product-detail.html", context)
 
 
-def add_to_cart(request, slug):
-    request.session.set_expiry(60 * 60)
-    product = get_object_or_404(Product, slug=slug)
-    cart = request.session.get('cart')
-    if cart:
-        quantity = cart.get(product.id)
-        if quantity:
-            cart[product.id] = quantity + 1
-        else:
-            cart[product.id] = 1
-    else:
-        cart = {}
-        cart[product.id] = 1
-
-    request.session['cart'] = cart
-
-    return redirect(reverse('product-detail', kwargs={'slug': slug}))
-
-
 def product_listing(request, slug):
     category = get_object_or_404(ProductCategory, slug=slug)
     categories = ProductCategory.objects.all()
@@ -138,6 +119,7 @@ def search(request):
 
 
 def cart(request):
+    request.session.modified = True
     try:
         cart = request.session['cart']
     except KeyError:
@@ -170,7 +152,28 @@ def cart(request):
     return render(request, "shop-cart.html", context)
 
 
+def add_to_cart(request, slug):
+    request.session.modified = True
+    request.session.set_expiry(60 * 60)
+    product = get_object_or_404(Product, slug=slug)
+    cart = request.session.get('cart')
+    if cart:
+        quantity = cart.get(product.id)
+        if quantity:
+            cart[product.id] = quantity + 1
+        else:
+            cart[product.id] = 1
+    else:
+        cart = {}
+        cart[product.id] = 1
+
+    request.session['cart'] = cart
+
+    return redirect(reverse('product-detail', kwargs={'slug': slug}))
+
+
 def remove_cart_item(request, pk):
+    request.session.modified = True
     cart = request.session['cart']
     product_id = int(pk)
     cart.pop(product_id)
@@ -186,6 +189,7 @@ def remove_cart_item(request, pk):
 
 
 def change_item_quantity(request, pk):
+    request.session.modified = True
     cart = request.session['cart']
     product_id = int(pk)
     if request.method == 'POST':
