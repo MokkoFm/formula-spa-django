@@ -119,7 +119,6 @@ def search(request):
 
 
 def cart(request):
-    request.session.modified = True
     try:
         cart = request.session['cart']
     except KeyError:
@@ -153,7 +152,6 @@ def cart(request):
 
 
 def add_to_cart(request, slug):
-    request.session.modified = True
     request.session.set_expiry(60 * 60)
     product = get_object_or_404(Product, slug=slug)
     cart = request.session.get('cart')
@@ -173,7 +171,6 @@ def add_to_cart(request, slug):
 
 
 def remove_cart_item(request, pk):
-    request.session.modified = True
     cart = request.session['cart']
     product_id = int(pk)
     cart.pop(product_id)
@@ -189,7 +186,6 @@ def remove_cart_item(request, pk):
 
 
 def change_item_quantity(request, pk):
-    request.session.modified = True
     cart = request.session['cart']
     product_id = int(pk)
     if request.method == 'POST':

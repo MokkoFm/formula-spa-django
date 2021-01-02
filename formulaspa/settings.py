@@ -151,5 +151,5 @@ STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 MEDIA_URL = "/media/"
 
-SESSION_SAVE_EVERY_REQUEST = True
-request.session.modified = True
+SESSION_COOKIE_DOMAIN = "104.248.23.29"
+SESSION_COOKIE_PATH = "/"
