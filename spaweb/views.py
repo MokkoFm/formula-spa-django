@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer
-import time
+from django.core.mail import send_mail
+from formulaspa.settings import EMAIL_HOST_USER
+from django.template.loader import render_to_string
 
 
 def index(request):
@@ -246,6 +248,22 @@ def checkout(request):
     return render(request, "checkout.html", context)
 
 
+def send_message_to_customer(request, email, firstname, lastname, payment_method, is_digital, order_items, order):
+    subject = "Формула SPA - новый заказ"
+    recepient = email
+    msg_plain = render_to_string('email.txt', {'firstname': firstname, 'lastname': lastname})
+    msg_html = render_to_string('message.html', {
+        'firstname': firstname,
+        'lastname': lastname,
+        'payment_method': payment_method,
+        'is_digital': is_digital,
+        'order_items': order_items,
+        'order': order})
+
+    return subject, recepient, msg_plain, msg_html
+
+
+
 def checkout_user_data(request):
     try:
         cart = request.session['cart']
@@ -268,18 +286,19 @@ def checkout_user_data(request):
             email=email,
             address=address,
         )
-        
+
         if is_digital:
             is_digital = True
         else:
             is_digital = False
         order = Order.objects.create(
             registrated_at=datetime.now(),
-            comment='We are still thinking...',
+            comment='Какой-то комментарий',
             is_digital=is_digital,
             payment_method=payment_method,
             customer=customer,
         )
+        order_items = []
         for product_id in cart:
             product = get_object_or_404(Product, pk=product_id)
             order_item = OrderItem(
@@ -287,13 +306,18 @@ def checkout_user_data(request):
                 order=order,
                 quantity=cart[product_id]
             )
+            order_items.append(order_item)
 
             order_item.save()
 
+    subject, recepient, msg_plain, msg_html = send_message_to_customer(
+        request, email, firstname, lastname, payment_method,
+        is_digital, order_items, order)
     if request.method == 'POST':
         if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
             return redirect(reverse("payment"))
         elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
+            send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
             return redirect(reverse("cash"))
 
 
