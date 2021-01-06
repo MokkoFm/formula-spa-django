@@ -2992,8 +2992,12 @@ textarea:focus{
    }
 
    .cart_table .shopping-product>img {
-       width: 150px !important;
-       max-height: 150px;
+        width: 150px !important;
+        max-height: 150px;
+   }
+
+   .btn-add-to-cart {
+        width: 100%;
    }
 
 
@@ -3166,6 +3170,11 @@ textarea:focus{
         width: 150px !important;
         max-height: 150px;
     }
+
+    .btn-add-to-cart {
+        width: 100%;
+    }
+ 
 }
 
 /*Medium devices (tablets, 768px and up)*/
@@ -3293,6 +3302,11 @@ textarea:focus{
         left: 40%;
     }
     /*End side search responsive sidebar*/
+
+    .btn-add-to-cart {
+        width: 100%;
+    }
+ 
 
 }
 

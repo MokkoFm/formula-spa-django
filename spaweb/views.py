@@ -299,4 +299,3 @@ def checkout_user_data(request):
 
 def cash_order(request):
     return render(request, "cash-order.html")
-    time.sleep(10)
