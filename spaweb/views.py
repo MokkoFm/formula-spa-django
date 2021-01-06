@@ -289,4 +289,8 @@ def checkout_user_data(request):
 
             order_item.save()
 
-    return redirect(reverse("payment"))
+    if request.method == 'POST':
+        if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
+            return redirect(reverse("payment"))
+        elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
+            return redirect(reverse("index"))

@@ -100,34 +100,4 @@
 
 </div>
 <!-- END HEADING SECTION -->
-{% comment %} <script>
-    function validateForm(){
-        var firstname = document.myform.firstName.value;
-        var lastname = document.forms["myForm"]["lastName"].value;
-        var email = document.forms["myForm"]["userEmail"].value;
-        var phonenumber = document.forms["myForm"]["tel"].value;
-        var city = document.forms["myForm"]["city"].value;
-        var address = document.forms["myForm"]["address"].value;
-
-        if (firstname==null || firstname=="") {
-            alert("Необходимо ввести имя");
-            return false;
-        } else if (lastname==null || lastname==""){
-            alert("Необходимо ввести фамилию");
-            return false;
-        }else if (email==null || email==""){
-            alert("Необходимо ввести email");
-            return false;
-        }else if (phonenumber==null || phonenumber==""){
-            alert("Необходимо ввести телефонный номер");
-            return false;
-        }else if (city==null || city==""){
-            alert("Необходимо ввести город");
-            return false;
-        }else if (address==null || address==""){
-            alert("Необходимо ввести адрес");
-            return false;
-        }
-    } 
-</script> {% endcomment %}
 {% endblock %}
