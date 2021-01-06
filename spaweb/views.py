@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect, reverse
 from django.shortcuts import get_object_or_404
 from django.db.models import Q
 from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Customer
+import time
 
 
 def index(request):
@@ -293,4 +294,9 @@ def checkout_user_data(request):
         if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
             return redirect(reverse("payment"))
         elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
-            return redirect(reverse("index"))
+            return redirect(reverse("cash"))
+
+
+def cash_order(request):
+    return render(request, "cash-order.html")
+    time.sleep(10)

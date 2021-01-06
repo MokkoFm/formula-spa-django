@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://3dsec.sberbank.ru/payment/docsite/assets/js/ipay.js"></script>
+    <script>
+        var ipay = new IPAY({api_token: '96uv59kh8j2k7depkf4lt3bg9e'});
+    </script>
+
+    <title>Формула SPA - оплата заказа наличными</title>
+  </head>
+  <body style="padding: 20px;">
+      <h1>Спасибо за заказ!</h1>
+      <p>Мы получили ваш заказ. Мы свяжемся с вами, чтобы подтвердить заказ и уточнить детали.<p>
+      <p>Сейчас вы будете автоматически перенаправлены на главную страницу.</p>
+      <a href="{% url 'index' %}"><p>Вернуться на главную страницу</p></a>
+  </body>
+  <!-- <script>
+      function redirect(){
+         window.location.href = "{% url 'index' %}";
+      }
+
+      setTimeout(redirect, 3000); //2000 is equivalent to 2 seconds
+  </script> -->
+</html>
