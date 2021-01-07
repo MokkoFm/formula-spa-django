@@ -263,6 +263,23 @@ def send_message_to_customer(request, email, firstname, lastname, payment_method
     return subject, recepient, msg_plain, msg_html
 
 
+def send_message_to_spa_center(request, email, firstname, lastname, payment_method, is_digital, order_items, order, phonenumber, address):
+    spa_subject = "Новый заказ"
+    spa_recepient = "mokkofmpoetry@gmail.com"
+    spa_msg_html = render_to_string('message-to-admin.html', {
+        'firstname': firstname,
+        'lastname': lastname,
+        'payment_method': payment_method,
+        'is_digital': is_digital,
+        'order_items': order_items,
+        'order': order,
+        'email': email,
+        'phonenumber': phonenumber,
+        'address': address
+    })
+
+    return spa_subject, spa_recepient, spa_msg_html
+
 
 def checkout_user_data(request):
     try:
@@ -313,11 +330,17 @@ def checkout_user_data(request):
     subject, recepient, msg_plain, msg_html = send_message_to_customer(
         request, email, firstname, lastname, payment_method,
         is_digital, order_items, order)
+
+    spa_subject, spa_recepient, spa_msg_html = send_message_to_spa_center(
+        request, email, firstname, lastname, payment_method,
+        is_digital, order_items, order, phonenumber, address)
+
     if request.method == 'POST':
         if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
             return redirect(reverse("payment"))
         elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
             send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
+            send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
             return redirect(reverse("cash"))
 
 
