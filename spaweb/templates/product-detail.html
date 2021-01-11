@@ -53,11 +53,7 @@
                                 
                                 <div class="col-12 text-left">
                                     <a href="{% url 'add_to_cart' product.slug %}" class="btn pink-gradient-btn-into-black btn-add-to-cart">ДОБАВИТЬ В КОРЗИНУ</a>
-                                    {% if product.id in cart %}
-                                        <a href="{% url 'cart' %}" class="btn pink-color-black-gradient-btn ">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
-                                    {% else %}
-                                        <a href="#" class="btn pink-color-black-gradient-btn " style="visibility: hidden;">УВЕЛИЧИТЬ КОЛИЧЕСТВО В КОРЗИНЕ</a>
-                                    {% endif %}
+                                    <p style="font-size: 10px">*Количество можно изменить в корзине после добавления товара</p>
                                 </div>
                             </div>
 
