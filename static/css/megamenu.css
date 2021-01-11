@@ -493,6 +493,12 @@ a.dropdown-toggle::after {
     -webkit-text-fill-color: transparent;
 }
 
+.nav-mega .dropdown-menu.megamenu .dropdown-item:active {
+    background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%) ;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
 
 .dropdown-menu .dropdown-title {
     margin: 1.5rem 0 0.5rem 1rem;
