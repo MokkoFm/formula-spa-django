@@ -490,13 +490,17 @@ a.dropdown-toggle::after {
 .nav-mega .dropdown-menu.megamenu .dropdown-item:hover {
     background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%) ;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #f11fad;
 }
 
+.nav-mega .navbar-nav .nav-link:active,
+.nav-mega .navbar-nav .nav-item:active .nav-link,
+.nav-mega .nav-item:hover a.dropdown-toggle::after,
+.nav-mega .dropdown-menu .dropdown-item:active,
 .nav-mega .dropdown-menu.megamenu .dropdown-item:active {
     background: linear-gradient(to right, #FC2548 -50%, #f11fad 93%) ;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-text-fill-color: #f11fad;
 }
 
 
