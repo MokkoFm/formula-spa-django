@@ -17,6 +17,6 @@ urlpatterns = [
     path('checkout/', views.checkout, name="checkout"),
     path('checkout_data/', views.checkout_user_data, name="checkout_data"),
     path('topic/<slug:slug>/', views.get_topic_listing, name="topic"),
-    path('payment', views.payment, name="payment"),
-    path('cash-order', views.cash_order, name="cash")
+    path('payment/', views.payment, name="payment"),
+    path('cash-order/', views.cash_order, name="cash")
 ]

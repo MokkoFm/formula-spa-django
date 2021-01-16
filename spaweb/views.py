@@ -6,6 +6,7 @@ from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Cus
 from django.core.mail import send_mail
 from formulaspa.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
+import requests
 
 
 def index(request):
@@ -218,6 +219,18 @@ def faq(request):
 
 
 def payment(request):
+    url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
+    token = '96uv59kh8j2k7depkf4lt3bg9e'
+    payload = {
+        'token': token,
+        'orderNumber': '14121',
+        'amount': 2900,
+        'returnUrl': 'http://127.0.0.1:8000/payment/'
+    }
+    response = requests.post(url, data=payload)
+    order_id = response.json()['orderId']
+    
+
     return render(request, "payment.html")
 
 
@@ -327,15 +340,14 @@ def checkout_user_data(request):
 
             order_item.save()
 
-    subject, recepient, msg_plain, msg_html = send_message_to_customer(
-        request, email, firstname, lastname, payment_method,
-        is_digital, order_items, order)
+        subject, recepient, msg_plain, msg_html = send_message_to_customer(
+            request, email, firstname, lastname, payment_method,
+            is_digital, order_items, order)
 
-    spa_subject, spa_recepient, spa_msg_html = send_message_to_spa_center(
-        request, email, firstname, lastname, payment_method,
-        is_digital, order_items, order, phonenumber, address)
+        spa_subject, spa_recepient, spa_msg_html = send_message_to_spa_center(
+            request, email, firstname, lastname, payment_method,
+            is_digital, order_items, order, phonenumber, address)
 
-    if request.method == 'POST':
         if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
             return redirect(reverse("payment"))
         elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
