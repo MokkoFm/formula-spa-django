@@ -341,14 +341,14 @@ def checkout_user_data(request):
             payload = {
                 'token': token,
                 'orderNumber': order.id,
-                'returnUrl': 'http://127.0.0.1:8000/',
+                'returnUrl': 'http://127.0.0.1:8000/payment',
                 'amount': int(order.cart_total),
             }
             response = requests.post(url, data=payload)
             print(response.json())
-            order_id =  response.json()['orderId']
             form_url = response.json()['formUrl']
             return redirect(form_url)
+
         elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
             send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
             send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
@@ -359,19 +359,17 @@ def cash_order(request):
     return render(request, "cash-order.html")
 
 
-def payment(request, **kwargs):
-    # # if request.method == 'POST':
-    # #     url = 'https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do'
-    # #     my_payload = {
-    # #         'token': token,
-    # #         'orderId': order_id,
-    # #     }
-    # #     r = requests.post(url, data=my_payload)
-    # #     if r.json()['errorMessage'] == 'Успешно':
-    # #         print('SUCCESS!')
-
-    # context = {
-    #     'order_number': payload['orderNumber']
-    # }
-
+def payment(request):
+    url = 'https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do'
+    my_payload = {
+        'token': env('SBER_TOKEN'),
+        'orderId': request.GET.get('orderId'),
+    }
+    response = requests.post(url, data=my_payload)
+    order_status = response.json()['orderStatus']
+    if order_status == 2:
+        print('SUCCESS! Send message!')
+        return redirect(reverse('index'))
+    else:
+        print('NO!')
     return render(request, "payment.html")
