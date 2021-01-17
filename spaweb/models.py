@@ -132,6 +132,7 @@ class Order(models.Model):
         max_length=4, choices=PAYMENT_METHOD,
         default='Неизвестно', verbose_name='способ оплаты')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='orders', verbose_name='Покупатель', null=True)
+    sber_id = models.TextField(verbose_name='ID заказа в сбербанке', blank=True, null=True)
 
     def __str__(self):
         return f" Order number - {self.id}"
