@@ -6,6 +6,7 @@ from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Cus
 from django.core.mail import send_mail
 from formulaspa.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
+from django.shortcuts import get_object_or_404
 import requests
 from environs import Env
 env = Env()
@@ -248,34 +249,33 @@ def checkout(request):
     return render(request, "checkout.html", context)
 
 
-def send_message_to_customer(request, email, firstname, lastname, payment_method, is_digital, order_items, order):
+def send_message_to_customer(request, customer, order_items, order):
     subject = "Формула SPA - новый заказ"
-    recepient = email
-    msg_plain = render_to_string('email.txt', {'firstname': firstname, 'lastname': lastname})
+    recepient = customer.email
     msg_html = render_to_string('message.html', {
-        'firstname': firstname,
-        'lastname': lastname,
-        'payment_method': payment_method,
-        'is_digital': is_digital,
+        'firstname': customer.firstname,
+        'lastname': customer.lastname,
+        'payment_method': order.payment_method,
+        'is_digital': order.is_digital,
         'order_items': order_items,
         'order': order})
 
-    return subject, recepient, msg_plain, msg_html
+    return subject, recepient, msg_html
 
 
-def send_message_to_spa_center(request, email, firstname, lastname, payment_method, is_digital, order_items, order, phonenumber, address):
+def send_message_to_spa_center(request, customer, order_items, order):
     spa_subject = "Новый заказ"
     spa_recepient = "mokkofmpoetry@gmail.com"
     spa_msg_html = render_to_string('message-to-admin.html', {
-        'firstname': firstname,
-        'lastname': lastname,
-        'payment_method': payment_method,
-        'is_digital': is_digital,
+        'firstname': customer.firstname,
+        'lastname': customer.lastname,
+        'payment_method': order.payment_method,
+        'is_digital': order.is_digital,
         'order_items': order_items,
         'order': order,
-        'email': email,
-        'phonenumber': phonenumber,
-        'address': address
+        'email': customer.email,
+        'phonenumber': customer.phonenumber,
+        'address': customer.address
     })
 
     return spa_subject, spa_recepient, spa_msg_html
@@ -314,6 +314,7 @@ def checkout_user_data(request):
             is_digital=is_digital,
             payment_method=payment_method,
             customer=customer,
+            sber_id='',
         )
         order_items = []
         for product_id in cart:
@@ -327,14 +328,6 @@ def checkout_user_data(request):
 
             order_item.save()
 
-        subject, recepient, msg_plain, msg_html = send_message_to_customer(
-            request, email, firstname, lastname, payment_method,
-            is_digital, order_items, order)
-
-        spa_subject, spa_recepient, spa_msg_html = send_message_to_spa_center(
-            request, email, firstname, lastname, payment_method,
-            is_digital, order_items, order, phonenumber, address)
-
         if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
             url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
@@ -346,13 +339,16 @@ def checkout_user_data(request):
             }
             response = requests.post(url, data=payload)
             print(response.json())
+            sber_id = response.json()['orderId']
+            order.sber_id = sber_id
+            order.save()
             form_url = response.json()['formUrl']
             return redirect(form_url)
 
-        elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
-            send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
-            send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
-            return redirect(reverse("cash"))
+        # elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
+        #     send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
+        #     send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
+        #     return redirect(reverse("cash"))
 
 
 def cash_order(request):
@@ -365,11 +361,21 @@ def payment(request):
         'token': env('SBER_TOKEN'),
         'orderId': request.GET.get('orderId'),
     }
+    order = get_object_or_404(Order, sber_id=my_payload['orderId'])
+    customer = order.customer
+    order_items = OrderItem.objects.filter(order=order)
+
     response = requests.post(url, data=my_payload)
     order_status = response.json()['orderStatus']
     if order_status == 2:
         print('SUCCESS! Send message!')
-        return redirect(reverse('index'))
+        print(customer.firstname)
+        print(order.is_digital)
+        print(order_items)
+        send_message_to_customer(request, customer, order_items, order)
+        print('1st message')
+        send_message_to_spa_center(request, customer, order_items, order)
+        print('2bd message')
     else:
         print('NO!')
     return render(request, "payment.html")
