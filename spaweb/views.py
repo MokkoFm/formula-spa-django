@@ -260,12 +260,12 @@ def send_message_to_customer(request, customer, order_items, order):
         'order_items': order_items,
         'order': order})
 
-    return subject, recepient, msg_html
+    send_mail(subject, '', EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
 
 
 def send_message_to_spa_center(request, customer, order_items, order):
     spa_subject = "Новый заказ"
-    spa_recepient = "mokkofmpoetry@gmail.com"
+    spa_recepient = "formulaspa11@mail.ru"
     spa_msg_html = render_to_string('message-to-admin.html', {
         'firstname': customer.firstname,
         'lastname': customer.lastname,
@@ -278,7 +278,7 @@ def send_message_to_spa_center(request, customer, order_items, order):
         'address': customer.address
     })
 
-    return spa_subject, spa_recepient, spa_msg_html
+    send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
 
 
 def checkout_user_data(request):
@@ -369,13 +369,8 @@ def payment(request):
     order_status = response.json()['orderStatus']
     if order_status == 2:
         print('SUCCESS! Send message!')
-        print(customer.firstname)
-        print(order.is_digital)
-        print(order_items)
         send_message_to_customer(request, customer, order_items, order)
-        print('1st message')
         send_message_to_spa_center(request, customer, order_items, order)
-        print('2bd message')
     else:
         print('NO!')
     return render(request, "payment.html")
