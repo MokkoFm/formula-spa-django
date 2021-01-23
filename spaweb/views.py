@@ -14,12 +14,12 @@ env.read_env()
 
 
 def index(request):
-    new_products = Product.objects.filter(is_new=True)
     bestsellers = Product.objects.filter(is_bestseller=True).prefetch_related('category')
+    certificates = Product.objects.filter(category__name='Сертификаты')
 
     context = {
-        "new_products": new_products,
         "bestsellers": bestsellers,
+        "certificates": certificates,
     }
     return render(request, "index.html", context)
 
