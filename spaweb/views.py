@@ -344,15 +344,6 @@ def checkout_user_data(request):
             form_url = response.json()['formUrl']
             return redirect(form_url)
 
-        # elif request.POST.get('payment') == "Cash" or request.POST.get('payment') == "Наличными":
-        #     send_mail(subject, msg_plain, EMAIL_HOST_USER, [recepient], html_message=msg_html, fail_silently=False)
-        #     send_mail(spa_subject, '', EMAIL_HOST_USER, [spa_recepient], html_message=spa_msg_html, fail_silently=False)
-        #     return redirect(reverse("cash"))
-
-
-def cash_order(request):
-    return render(request, "cash-order.html")
-
 
 def payment(request):
     url = 'https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do'
