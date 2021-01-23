@@ -20,33 +20,42 @@
     <tr>
       <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">Товар</th>
       <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">Количество</th>
-      <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">Цена</th>
+      {% if address %}
+        <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Цена</th>
+      {% else %}
+        <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">Цена</th>
+      {% endif %}
     </tr>
     {% for item in order_items %}
         <tr>
             <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">{{ item.product.name }}</th>
             <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">{{ item.quantity }}</th>
-            <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">{{ item.product.price }}</th>
+            {% if address %}
+              <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">{{ item.product.price }}</th>
+            {% else %}
+              <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">{{ item.product.price }}</th>
+            {% endif %}
         </tr>
     {% endfor %}
     <tr>
-      <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Способ оплаты</th>
-      {% if payment_method == "Cash" %}
-        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Наличными</td>
-      {% elif payment_method == "Card" %}
-        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">По карте</td>
-      {% endif %}
-    </tr>
-    <tr>
       <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Всего к оплате</th>
-      <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.cart_total }}</td>
+      {% if address %}
+        <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.cart_total }}</td>
+      {% else %}
+        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.cart_total }}</td>
+      {% endif %}
+
     </tr>
     <tr>
       <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Электронный сертификат</th>
       {% if is_digital %}
         <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Да</td>
       {% else %}
-        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Нет</td>
+        {% if address %}
+          <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Нет</td>
+        {% else %}
+          <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Нет</td>
+        {% endif %}
       {% endif %}
     </tr>
 </table>
