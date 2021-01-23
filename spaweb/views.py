@@ -295,6 +295,7 @@ def checkout_user_data(request):
         address = request.POST.get('address')
         is_digital = request.POST.get('scales')
         comment = request.POST.get('comment')
+        delivery = request.POST.get('delivery')
 
         customer, created = Customer.objects.get_or_create(
             firstname=firstname,
@@ -330,12 +331,20 @@ def checkout_user_data(request):
         if request.method == 'POST':
             url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
-            payload = {
-                'token': token,
-                'orderNumber': order.id,
-                'returnUrl': 'http://127.0.0.1:8000/payment',
-                'amount': int(order.cart_total),
-            }
+            if delivery:
+                payload = {
+                    'token': token,
+                    'orderNumber': order.id,
+                    'returnUrl': 'http://127.0.0.1:8000/payment',
+                    'amount': int(order.cart_total) + 300,
+                }
+            else:
+                payload = {
+                    'token': token,
+                    'orderNumber': order.id,
+                    'returnUrl': 'http://127.0.0.1:8000/payment',
+                    'amount': int(order.cart_total),
+                }
             response = requests.post(url, data=payload)
             print(response.json())
             sber_id = response.json()['orderId']
