@@ -48,18 +48,18 @@
 
                                
                                 <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
-                                    <input type="text" class="form-control" id="candidate_address" name="address" placeholder="Адрес (если доставка серт.)">
-                                </div>
-                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
-                                    <select type="text" class="form-control" id="payment" name="payment" style="padding: 0; padding-left: 15px;">
-                                        <option selected="selected">Способ оплаты</option>
-                                        <option value="Cash">Наличный расчет</option>
-                                        <option value="Card">Безналичный расчет</option>
+                                    <select type="text" class="form-control" id="get-online-offline" name="online-offline" style="padding: 0; padding-left: 15px;">
+                                        <option disabled selected>Нужна доставка?</option>
+                                        <option value="digital-cert" id="scales" name="scales">Электронный сертификат</option>
+                                        <option value="delivery" id="delivery" name="delivery">Доставка</option>
                                     </select>
                                 </div>
-                                <div class="col-12 col-md-6" style="padding-top: 15px;">
-                                    <label for="scales">Электронный сертификат</label>
-                                    <input type="checkbox" id="scales" name="scales">
+                                <div class="col-12 col-md-6" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="order_comment" name="comment" placeholder="Комментарий">
+                                </div>
+
+                                <div class="col-12 col-md-12" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Адрес доставки">
                                 </div>
                                 <button  class="btn pink-gradient-btn-into-black" style="margin: auto; margin-top: 15px">Оплатить</button>
                             </div>
