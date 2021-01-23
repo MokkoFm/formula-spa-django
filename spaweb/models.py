@@ -116,11 +116,6 @@ class Customer(models.Model):
 
 
 class Order(models.Model):
-    PAYMENT_METHOD = [
-        ('Cash', 'Наличными'),
-        ('Card', 'По карте'),
-    ]
-
     registrated_at = models.DateTimeField(
         default=timezone.now, verbose_name='дата регистрации')
     comment = models.TextField(verbose_name='комментарий', blank=True)
@@ -128,9 +123,6 @@ class Order(models.Model):
         default=False, db_index=True, verbose_name="эл. сертификат")
     is_complete = models.BooleanField(
         default=False, db_index=True, verbose_name="статус")
-    payment_method = models.CharField(
-        max_length=4, choices=PAYMENT_METHOD,
-        default='Неизвестно', verbose_name='способ оплаты')
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE, related_name='orders', verbose_name='Покупатель', null=True)
     sber_id = models.TextField(verbose_name='ID заказа в сбербанке', blank=True, null=True)
 

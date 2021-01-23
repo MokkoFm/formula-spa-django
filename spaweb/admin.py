@@ -18,7 +18,7 @@ class OrderItemInline(admin.TabularInline):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ['registrated_at','is_complete', 'is_digital', 'payment_method', 'customer']
+    list_display = ['registrated_at','is_complete', 'is_digital', 'customer']
     inlines = [OrderItemInline]
 
 
@@ -29,7 +29,7 @@ class ProductAdmin(admin.ModelAdmin):
 
 class OrderInline(admin.TabularInline):
     model = Order
-    list_display = ['registrated_at', 'is_complete', 'payment_method']
+    list_display = ['registrated_at', 'is_complete']
 
 
 @admin.register(Customer)
