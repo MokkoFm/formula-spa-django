@@ -255,7 +255,7 @@ def send_message_to_customer(request, customer, order_items, order):
     msg_html = render_to_string('message.html', {
         'firstname': customer.firstname,
         'lastname': customer.lastname,
-        'payment_method': order.payment_method,
+        'comment': order.comment,
         'is_digital': order.is_digital,
         'order_items': order_items,
         'order': order})
@@ -269,7 +269,7 @@ def send_message_to_spa_center(request, customer, order_items, order):
     spa_msg_html = render_to_string('message-to-admin.html', {
         'firstname': customer.firstname,
         'lastname': customer.lastname,
-        'payment_method': order.payment_method,
+        'comment': order.comment,
         'is_digital': order.is_digital,
         'order_items': order_items,
         'order': order,
@@ -294,7 +294,7 @@ def checkout_user_data(request):
         phonenumber = request.POST.get('tel')
         address = request.POST.get('address')
         is_digital = request.POST.get('scales')
-        payment_method = request.POST.get('payment')
+        comment = request.POST.get('comment')
 
         customer, created = Customer.objects.get_or_create(
             firstname=firstname,
@@ -310,9 +310,8 @@ def checkout_user_data(request):
             is_digital = False
         order = Order.objects.create(
             registrated_at=datetime.now(),
-            comment='Какой-то комментарий',
+            comment=comment,
             is_digital=is_digital,
-            payment_method=payment_method,
             customer=customer,
             sber_id='',
         )
@@ -328,7 +327,7 @@ def checkout_user_data(request):
 
             order_item.save()
 
-        if request.POST.get('payment') == "Card" or request.POST.get('payment') == "По карте":
+        if request.method == 'POST':
             url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
             payload = {
@@ -369,6 +368,7 @@ def payment(request):
     order_status = response.json()['orderStatus']
     if order_status == 2:
         print('SUCCESS! Send message!')
+        order.is_complete = True
         send_message_to_customer(request, customer, order_items, order)
         send_message_to_spa_center(request, customer, order_items, order)
     else:
