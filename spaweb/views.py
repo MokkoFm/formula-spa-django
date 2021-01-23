@@ -331,7 +331,7 @@ def checkout_user_data(request):
         if request.method == 'POST':
             url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
-            if delivery:
+            if delivery and int(order.cart_total) < 3000:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
