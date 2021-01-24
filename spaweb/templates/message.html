@@ -14,14 +14,6 @@
         </tr>
     {% endfor %}
     <tr>
-      <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Способ оплаты</th>
-      {% if payment_method == "Cash" %}
-        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Наличными</td>
-      {% elif payment_method == "Card" %}
-        <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">По карте</td>
-      {% endif %}
-    </tr>
-    <tr>
       <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Всего к оплате</th>
       <td style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.cart_total }}</td>
     </tr>
