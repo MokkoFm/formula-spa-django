@@ -335,14 +335,14 @@ def checkout_user_data(request):
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': reverse('payment'),
+                    'returnUrl': 'http://104.248.23.29:8000/payment',
                     'amount': int(str(order.cart_total) + '00') + 300,
                 }
             else:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': reverse('payment'),
+                    'returnUrl': 'http://104.248.23.29:8000/payment',
                     'amount': int(str(order.cart_total) + '00'),
                 }
             response = requests.post(url, data=payload)
