@@ -131,7 +131,7 @@ class Order(models.Model):
 
     @property
     def cart_total(self):
-        return sum([item.total for item in self.order_items.all()])
+        return int(sum([item.total for item in self.order_items.all()]))
 
     @property
     def cart_items_amount(self):
