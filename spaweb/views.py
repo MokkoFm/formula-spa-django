@@ -85,7 +85,7 @@ def get_topic_listing(request, slug):
                 price__range=(minprice, maxprice))
         else:
             minprice = "0"
-            maxprice = "10000"
+            maxprice = "15000"
             products_by_topic = Product.objects.filter(
                 category__in=categories_by_topic,
                 price__range=(minprice, maxprice))
