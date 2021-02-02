@@ -58,7 +58,7 @@ def product_listing(request, slug):
                 category=category, price__range=(minprice, maxprice))
         else:
             minprice = "0"
-            maxprice = "10000"
+            maxprice = "15000"
             products_by_category = products.filter(
                 category=category, price__range=(minprice, maxprice))
     else:
