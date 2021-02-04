@@ -545,9 +545,28 @@
                     {% endfor %}
                 </div>
             </div>
+            
+        </div>
+    </div>
+</div>
+<!--END LATEST ARRIVALS-->
+<div class="portfolio-section" style="padding-top: 0;">
+    <div class="container">
+        <div class="row">
+
+            <!-- START PORTFOLIO HEADING -->
+            <div class="col-12">
+                <div class="portfolioHeading text-center">
+                    <h1 class="high-lighted-heading">Сертификаты</h1>
+                    <p>Самые популярные программы в спа-центрах "Формула SPA"</p>
+                </div>
+            </div>
+            <!-- END PORTFOLIO HEADING -->
+
+                <!-- START PORTFOLIO IMAGES -->
             <div class="col-12">
                 <div id="js-grid-blog-posts-1" class="cbp">
-                    {% for certificate in certificates %}
+                    {% for certificate in certificate %}
                         <div class="cbp-item single couple others wow slideInUp">
                             <a class="portfolio-circle-cart" href="{% url 'product-detail' certificate.slug %}">
                                 <i class="fas fa-eye"></i>
@@ -567,9 +586,10 @@
                     {% endfor %}
                 </div>
             </div>
+                <!-- END PORTFOLIO IMAGES -->
+
         </div>
     </div>
 </div>
-<!--END LATEST ARRIVALS-->
 
 {% endblock %}
