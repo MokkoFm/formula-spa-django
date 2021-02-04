@@ -15,7 +15,8 @@ env.read_env()
 
 def index(request):
     bestsellers = Product.objects.filter(is_bestseller=True).prefetch_related('category')
-    certificates = Product.objects.filter(is_new=True)
+    certificates = Product.objects.filter(is_new=True).order_by('price')
+
     context = {
         "bestsellers": bestsellers,
         "certificates": certificates,
@@ -54,14 +55,14 @@ def product_listing(request, slug):
         maxprice = request.POST.get('maxprice')
         if minprice or maxprice:
             products_by_category = products.filter(
-                category=category, price__range=(minprice, maxprice))
+                category=category, price__range=(minprice, maxprice)).order_by('price')
         else:
             minprice = "0"
             maxprice = "15000"
             products_by_category = products.filter(
-                category=category, price__range=(minprice, maxprice))
+                category=category, price__range=(minprice, maxprice)).order_by('price')
     else:
-        products_by_category = products.filter(category=category)
+        products_by_category = products.filter(category=category).order_by('price')
 
     context = {
         'products_by_category': products_by_category,
@@ -81,16 +82,16 @@ def get_topic_listing(request, slug):
         if minprice or maxprice:
             products_by_topic = Product.objects.filter(
                 category__in=categories_by_topic,
-                price__range=(minprice, maxprice))
+                price__range=(minprice, maxprice)).order_by('price')
         else:
             minprice = "0"
             maxprice = "15000"
             products_by_topic = Product.objects.filter(
                 category__in=categories_by_topic,
-                price__range=(minprice, maxprice))
+                price__range=(minprice, maxprice)).order_by('price')
     else:
         products_by_topic = Product.objects.filter(
-            category__in=categories_by_topic)
+            category__in=categories_by_topic).order_by('price')
 
     context = {
         'topic': topic,
