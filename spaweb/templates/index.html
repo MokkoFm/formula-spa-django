@@ -545,6 +545,28 @@
                     {% endfor %}
                 </div>
             </div>
+            <div class="col-12">
+                <div id="js-grid-blog-posts-1" class="cbp">
+                    {% for certificate in certificates %}
+                        <div class="cbp-item single couple others wow slideInUp">
+                            <a class="portfolio-circle-cart" href="{% url 'product-detail' certificate.slug %}">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                            <div>
+                                <div class="item"> <a href="{% url 'product-detail' certificate.slug %}" class="cbp-caption"><img src="{{certificate.image_url}}" alt=""></a></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12 text-center">
+                                    <a href="{% url 'product-detail' certificate.slug %}" class="cbp-l-grid-blog-title portfolio-title">{{certificate.name}}</a>
+                                </div>
+                                <div class="col-12 text-center">
+                                    <div class="cbp-l-grid-blog-desc portfolio-des">₽{{certificate.price}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
     </div>
 </div>
