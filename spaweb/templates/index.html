@@ -430,6 +430,48 @@
     </div>
 </div>
 <!-- END PORTOLIO SECTION -->
+<!-- START LATEST ARRIVALS-->
+<div class="lastest_arrivals remove-margins" style="margin-top: 40px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-4">
+                <h1>Сертификаты</h1>
+            </div>
+
+            <div class="col-12">
+                <div class="lastest_featured_products owl-carousel owl-theme">
+                    {% for certificate in certificates %}
+                        <div class="lastest_arrival_items item">
+                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
+                            <div class="card">
+                                <span class="product-type">NEW</span>
+                                <div class="image-holder">
+                                    <a href="{% url 'product-detail' certificate.slug %}">
+                                        <img src="{{ certificate.image_url }}" class="card-img-top" alt="Lastest Arrivals 1">
+                                    </a>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 text-center">
+                                            <a href="{% url 'product-detail' certificate.slug %}">
+                                                <h5 class="card-title">{{certificate.name}}</h5>
+                                            </a>
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <p class="card-text"> ₽{{certificate.price}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--END LATEST ARRIVALS -->
 
 <!--START BANNER SECTION-->
 <div class="banner-section parallax-slide">
