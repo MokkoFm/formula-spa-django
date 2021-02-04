@@ -519,10 +519,12 @@
             </div>
 
             <div class="col-12">
-                <div class="certificates owl-carousel owl-theme">
+                <div class="lastest_featured_products owl-carousel owl-theme">
                     {% for certificate in certificates %}
-                        <div class="lastest_arrival_items item">
+                        <div class="lastest_arrival_items">
+                            <a href="#" class="lastest-addto-cart"><i class="fa fa-shopping-cart"></i></a>
                             <div class="card">
+                                <span class="product-type">NEW</span>
                                 <div class="image-holder">
                                     <a href="{% url 'product-detail' certificate.slug %}">
                                         <img src="{{ certificate.image_url }}" class="card-img-top" alt="Lastest Arrivals 1">
