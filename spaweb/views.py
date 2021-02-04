@@ -15,8 +15,7 @@ env.read_env()
 
 def index(request):
     bestsellers = Product.objects.filter(is_bestseller=True).prefetch_related('category')
-    certificates = Product.objects.filter(is_new=True).order_by('price')
-
+    certificates = Product.objects.filter(is_new=True)
     context = {
         "bestsellers": bestsellers,
         "certificates": certificates,

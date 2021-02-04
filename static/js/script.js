@@ -339,6 +339,7 @@ jQuery(function ($) {
     /*===================================
          LATEST ARRIVALS OWL CAROUSEL
     ======================================*/
+    console.log("owlCarouselstarts")
     $('.lastest_featured_products').owlCarousel({
         loop: true,
         margin: 10,
@@ -360,6 +361,8 @@ jQuery(function ($) {
             }
         }
     });
+    console.log("owlCarouselends")
+    debugger
 
 
     /*===================================
