@@ -45,7 +45,7 @@
                     <div class="product-add mt-4">
                         <div class="row no-gutters">
                             <div class="col-12">
-                                <a href="/category/certificates"><img src="{% static 'img/certificates-in-listing.jpg' %}" alt="images"></a>
+                                <a href="/category/certificates"><img src="{% static 'img/certificates-in-listing.jpg' %}" alt="Сертификаты"></a>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
                                     <div class="product-item owl-theme product-listing-carousel owl-carousel">
                                         <div class="item p-item-img">
                                                 <a href="{% url 'product-detail' product.slug %}">
-                                                    <img src="{{ product.image.url }}" alt="images">
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                                                 </a>
                                             <div class="text-center d-flex justify-content-center align-items-center">
                                                 <a class="listing-cart-icon" href="{% url 'product-detail' product.slug %}">

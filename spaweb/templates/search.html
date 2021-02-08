@@ -36,7 +36,7 @@
                                         <div class="product-item owl-theme product-listing-carousel owl-carousel">
                                             <div class="item p-item-img">
                                                 <a href="{% url 'product-detail' product.slug %}">
-                                                    <img src="{{ product.image.url }}" alt="images">
+                                                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
                                                 </a>
                                                 <div class="text-center d-flex justify-content-center align-items-center">
                                                     <a class="listing-cart-icon" href="{% url 'product-detail' product.slug %}">

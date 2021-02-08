@@ -33,7 +33,7 @@
                             <div class="wrapper">
                                 <div class="Gallery swiper-container img-magnifier-container">
                                     <div class="swiper-wrapper myimgs">
-                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="gallery"/></a></div>
+                                        <div class="swiper-slide"> <a href="{{ product.image.url }}" data-fancybox="1" title="Zoom In"><img class="myimage" src="{{ product.image.url }}" alt="{{ product.name }}"/></a></div>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@
                                     <span class="product-type">NEW</span>
                                     <div class="image-holder">
                                         <a href="{% url 'product-detail' related_product.slug %}">
-                                            <img src="{{ related_product.image_url }}" class="card-img-top" alt="Lastest Arrivals 1">
+                                            <img src="{{ related_product.image_url }}" class="card-img-top" alt="{{related_product.name}}">
                                         </a>
                                     </div>
                                     <div class="card-body">

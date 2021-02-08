@@ -51,7 +51,7 @@
                                             <div class="row no-gutters">
 
                                                 <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="Generic placeholder image"></a>
+                                                <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="{{ cart_product.product.name }}"></a>
                                                 </div>
 
                                                 <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
