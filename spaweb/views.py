@@ -218,6 +218,10 @@ def declarations(request):
     return render(request, "declarations.html")
 
 
+def security(request):
+    return render(request, "security.html")
+
+
 def faq(request):
     return render(request, "faq.html")
 
