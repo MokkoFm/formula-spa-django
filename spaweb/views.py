@@ -333,20 +333,20 @@ def checkout_user_data(request):
             order_item.save()
 
         if request.method == 'POST':
-            url = 'https://3dsec.sberbank.ru/payment/rest/register.do'
+            url = 'https://securepayments.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
             if delivery and int(order.cart_total) < 3000:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': 'http://104.248.23.29:8000/payment',
+                    'returnUrl': "{% url 'payment' %}",
                     'amount': int(str(order.cart_total) + '00') + 300,
                 }
             else:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': 'http://104.248.23.29:8000/payment',
+                    'returnUrl': "{% url 'payment' %}",
                     'amount': int(str(order.cart_total) + '00'),
                 }
             response = requests.post(url, data=payload)
@@ -359,7 +359,7 @@ def checkout_user_data(request):
 
 
 def payment(request):
-    url = 'https://3dsec.sberbank.ru/payment/rest/getOrderStatusExtended.do'
+    url = 'https://securepayments.sberbank.ru/payment/rest/getOrderStatusExtended.do'
     my_payload = {
         'token': env('SBER_TOKEN'),
         'orderId': request.GET.get('orderId'),
