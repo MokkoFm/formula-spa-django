@@ -339,14 +339,14 @@ def checkout_user_data(request):
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': "{% url 'payment' %}",
+                    'returnUrl': "https://formula-spa.herokuapp.com/payment/",
                     'amount': int(str(order.cart_total) + '00') + 300,
                 }
             else:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
-                    'returnUrl': "{% url 'payment' %}",
+                    'returnUrl': "https://formula-spa.herokuapp.com/payment/",
                     'amount': int(str(order.cart_total) + '00'),
                 }
             response = requests.post(url, data=payload)
