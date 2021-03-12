@@ -30,7 +30,7 @@ SECRET_KEY = env("SECRET_KEY", 'secret')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool("DEBUG")
 
-ALLOWED_HOSTS = ['104.248.23.29', 'formulaspacenter.herokuapp.com', '127.0.0.1', 'formula-spa.herokuapp.com']
+ALLOWED_HOSTS = ['104.248.23.29', 'formulaspacenter.herokuapp.com', '127.0.0.1', 'formula-spa.herokuapp.com', 'shariki11.ru', 'www.shariki11.ru']
 
 
 # Application definition
