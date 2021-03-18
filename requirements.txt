@@ -11,3 +11,4 @@ django_debug_toolbar==3.2
 python-memcached==1.59
 requests==2.25.1
 django-storages==1.11.1
+boto3==1.17.30
