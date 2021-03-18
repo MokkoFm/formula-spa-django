@@ -1,1 +1,1 @@
-web: gunicorn formulaspa.wsgi --log-file -
+web: python manage.py collectstatic --no-input; gunicorn formulaspa.wsgi --log-file -
