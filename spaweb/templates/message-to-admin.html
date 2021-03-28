@@ -58,4 +58,10 @@
         {% endif %}
       {% endif %}
     </tr>
+    {% if comment %}
+      <tr>
+        <th style="border: 1px solid #eee; display: table-cell; padding: 15px;">Комментарий</th>
+        <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ comment }}</td>
+      </tr>
+    {% endif %}
 </table>
