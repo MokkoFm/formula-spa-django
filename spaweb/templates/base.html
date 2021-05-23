@@ -178,9 +178,9 @@
                                                         {% for topic in calc_service.topics.all %}
                                                             <div class="col-lg-4 col-md-6 col-sm-12">
                                                                 <a href="{% url 'topic' topic.slug %}"><h5 class="dropdown-title">{{topic.title}}</h5></a>
-                                                                <ul style="display: flex; justify-content: space-between;">
+                                                                <ul style=>
                                                                     {% for category in topic.products_categories.all %}
-                                                                        <li style="padding-right: 50px"><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
+                                                                        <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
                                                                     {% endfor %}
                                                                 </ul>
                                                             </div>
