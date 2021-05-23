@@ -69,7 +69,7 @@ class Product(models.Model):
     city = models.ForeignKey(
         City, verbose_name='город', related_name='city_products', on_delete=models.CASCADE, null=True)
     price = models.DecimalField('цена', max_digits=8, decimal_places=2)
-    image = models.ImageField(upload_to="images", verbose_name="фото товара")
+    image = models.ImageField(upload_to="images", verbose_name="фото товара", blank=True)
     duration = models.CharField(
         verbose_name='Продолжительность', max_length=50, blank=True)
     is_bestseller = models.BooleanField(
