@@ -176,11 +176,7 @@
                                                 <div class="container">
                                                     <div class="row" style="width: 100%;">
                                                         {% for topic in calc_service.topics.all %}
-                                                            {% if topic.title != "Другие программы" %}
-                                                            <div class="col-lg-4 col-md-6 col-sm-12 mengmenu_border">
-                                                            {% else %}
                                                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                                            {% endif %}
                                                                 <a href="{% url 'topic' topic.slug %}"><h5 class="dropdown-title">{{topic.title}}</h5></a>
                                                                 <ul>
                                                                     {% for category in topic.products_categories.all %}
