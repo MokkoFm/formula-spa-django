@@ -192,6 +192,35 @@
                                     </li>
                                     {% endfor %}
                                     <li class="nav-item dropdown position-relative">
+                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            КАЛЬКУЛЯТОРЫ
+                                        </a>
+                                        <div class="dropdown-menu">
+                                            <ul>
+                                                <li>
+                                                    <i class="lni-angle-double-right right-arrow"></i>
+                                                    <a class="dropdown-item" href="{% url 'sauna' %}">Финская парная</a>
+                                                </li>
+                                                <li>
+                                                    <i class="lni-angle-double-right right-arrow"></i>
+                                                    <a class="dropdown-item" href="{% url 'hamam' %}">Хамам</a>
+                                                </li>
+                                                <li>
+                                                    <i class="lni-angle-double-right right-arrow"></i>
+                                                    <a class="dropdown-item" href="{% url 'bochka_odin' %}">Кедровая бочка для одного</a>
+                                                </li>
+                                                <li>
+                                                    <i class="lni-angle-double-right right-arrow"></i>
+                                                    <a class="dropdown-item" href="{% url 'bochka_dva' %}">Кедровая бочка для двоих</a>
+                                                </li>
+                                                <li>
+                                                    <i class="lni-angle-double-right right-arrow"></i>
+                                                    <a class="dropdown-item" href="{% url 'capsula' %}">Спа-капсула</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item dropdown position-relative">
                                         <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О НАС</a>
                                         <div class="dropdown-menu">
                                             <ul>
