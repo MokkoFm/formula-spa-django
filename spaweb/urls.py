@@ -19,4 +19,9 @@ urlpatterns = [
     path('checkout_data/', views.checkout_user_data, name="checkout_data"),
     path('topic/<slug:slug>/', views.get_topic_listing, name="topic"),
     path('payment/', views.payment, name="payment"),
+    path('calc-sauna', views.calc_sauna, name="sauna"),
+    path('calc-hamam', views.calc_hamam, name="hamam"),
+    path('calc-bochka-dlya-odnogo', views.calc_bochka_odin, name="bochka_odin"),
+    path('calc-bochka-dlya-dvoih', views.calc_bochka_dva, name="bochka_dva"),
+    path('calc-capsula', views.calc_capsula, name="capsula")
 ]

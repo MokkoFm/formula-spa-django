@@ -6,7 +6,6 @@ from spaweb.models import Product, ProductCategory, Topic, Order, OrderItem, Cus
 from django.core.mail import send_mail
 from formulaspa.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
-from django.shortcuts import get_object_or_404
 import requests
 from environs import Env
 env = Env()
@@ -210,6 +209,26 @@ def change_item_quantity(request, pk):
     return redirect(reverse('cart'))
 
 
+def calc_sauna(request):
+    return render(request, "sauna.html")
+
+
+def calc_hamam(request):
+    return render(request, "hamam.html")
+
+
+def calc_bochka_odin(request):
+    return render(request, "bochka_odin.html")
+
+
+def calc_bochka_dva(request):
+    return render(request, "bochka_dva.html")
+
+
+def calc_capsula(request):
+    return render(request, "capsula.html")
+
+
 def promo(request):
     return render(request, "promo.html")
 
@@ -350,7 +369,6 @@ def checkout_user_data(request):
                     'amount': int(str(order.cart_total) + '00'),
                 }
             response = requests.post(url, data=payload)
-            print(response.json())
             sber_id = response.json()['orderId']
             order.sber_id = sber_id
             order.save()
@@ -373,6 +391,8 @@ def payment(request):
     if order_status == 2:
         print('SUCCESS! Send message!')
         order.is_complete = True
+        print(order.is_complete)
+        print(order)
         send_message_to_customer(request, customer, order_items, order)
         send_message_to_spa_center(request, customer, order_items, order)
     else:

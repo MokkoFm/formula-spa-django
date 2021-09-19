@@ -243,6 +243,30 @@
                                     </li>
                                     {% endfor %}
                                     <li class="nav-item">
+                                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages3">
+                                            КАЛЬКУЛЯТОРЫ<i class="fas fa-chevron-down"></i>
+                                        </a>
+                                        <div id="sideNavPages3" class="collapse sideNavPages">
+                                            <ul class="navbar-nav">
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'sauna' %}">Финская парная</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'hamam' %}">Хамам</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'bochka_odin' %}">Кедровая бочка для одного</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'bochka_dva' %}">Кедровая бочка для двоих</a>
+                                                </li>
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="{% url 'capsula' %}">Спа-капсула</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </li>
+                                    <li class="nav-item">
                                         <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
                                             О НАС<i class="fas fa-chevron-down"></i>
                                         </a>
