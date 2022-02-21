@@ -356,12 +356,13 @@ def checkout_user_data(request):
             token = env('SBER_TOKEN')
             minimal_total_free_delivery = 5000
             delivery_price = 300
+            sberbank_amount_factor = 1000
             if delivery and int(order.cart_total) < minimal_total_free_delivery:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
                     'returnUrl': "https://formula-spa.herokuapp.com/payment/",
-                    'amount': int(str(order.cart_total) + '00') + delivery_price * 10,
+                    'amount': int(str(order.cart_total) + '00') + delivery_price * sberbank_amount_factor,
                 }
             else:
                 payload = {
