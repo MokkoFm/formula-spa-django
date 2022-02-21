@@ -354,12 +354,14 @@ def checkout_user_data(request):
         if request.method == 'POST':
             url = 'https://securepayments.sberbank.ru/payment/rest/register.do'
             token = env('SBER_TOKEN')
-            if delivery and int(order.cart_total) < 3000:
+            minimal_total_free_delivery = 5000
+            delivery_price = 300
+            if delivery and int(order.cart_total) < minimal_total_free_delivery:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
                     'returnUrl': "https://formula-spa.herokuapp.com/payment/",
-                    'amount': int(str(order.cart_total) + '00') + 300,
+                    'amount': int(str(order.cart_total) + '00') + delivery_price,
                 }
             else:
                 payload = {
