@@ -361,7 +361,7 @@ def checkout_user_data(request):
                     'token': token,
                     'orderNumber': order.id,
                     'returnUrl': "https://formula-spa.herokuapp.com/payment/",
-                    'amount': int(str(order.cart_total) + '00') + delivery_price,
+                    'amount': int(str(order.cart_total) + '00') + delivery_price * 10,
                 }
             else:
                 payload = {
