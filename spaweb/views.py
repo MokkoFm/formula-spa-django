@@ -357,7 +357,7 @@ def checkout_user_data(request):
             minimal_total_free_delivery = 5000
             delivery_price = 300
             sberbank_amount_factor = 100
-            if delivery and int(order.cart_total) < minimal_total_free_delivery:
+            if delivery and int(order.cart_total) < minimal_total_free_delivery and int(order.cart_total) != 1:
                 payload = {
                     'token': token,
                     'orderNumber': order.id,
@@ -392,10 +392,7 @@ def payment(request):
     response = requests.post(url, data=my_payload)
     order_status = response.json()['orderStatus']
     if order_status == 2:
-        print('SUCCESS! Send message!')
         order.is_complete = True
-        print(order.is_complete)
-        print(order)
         send_message_to_customer(request, customer, order_items, order)
         send_message_to_spa_center(request, customer, order_items, order)
     else:
