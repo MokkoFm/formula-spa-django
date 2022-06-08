@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
                 <h1 class="heading">Информация о заказе</h1>
-                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой. Отправляя свои личные данные Вы соглашаетесь с <a href="{% url 'security' %}" style="color: #f11fad;">Положением</a> об обработке и защите персональных данных</p>
+                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
             </div>
         </div>
     </div>
@@ -64,12 +64,16 @@
                                 <div class="col-12 col-md-12" style="padding-top: 5px; padding-bottom: 5px;">
                                     <input type="text" class="form-control" id="address" name="address" placeholder="Адрес доставки (если выбрали доставку)">
                                 </div>
+                                <div class="col-12 col-md-12" style="padding-top: 5px; padding-bottom: 5px;">
+                                    <div style="display: flex;">
+                                        <input type="checkbox" id="scales" name="scales" style="margin: 7px;" required><p class="para_text w-100 w-lg-75">Я согласен с <a href="{% url 'security' %}" style="color: #f11fad;">Положением</a> об обработке и защите персональных данных</p></input>
+                                    </div>
+                                </div>
                                 <div>
                                     <p style="padding: 15px; font-size: 14px;">Внимание! Если сумма заказа до 5000 рублей, цена доставки - 300 рублей. Она автоматически добавится к стоимости заказа.</p>
                                     <img src="{% static 'img/logos.webp' %}" style="width: 50%; margin-left: 25%;">
                                 </div>
                                 <button  class="btn pink-gradient-btn-into-black" style="margin: auto; margin-top: 15px">Оплатить</button>
-                                <p style="padding: 15px; font-size: 10px; padding-bottom: 0px; line-height: normal;">Нажимая кнопку "Оплатить" я соглашаюсь с <a href="{% url 'security' %}" style="color: #f11fad;">Положением</a> об обработке и защите персональных данных.</p>
                             </div>
                         </form>
                     </div>
