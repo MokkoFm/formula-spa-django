@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- Meta Tags For Seo + Page Optimization -->
     <meta charset="utf-8">
@@ -8,14 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="author" content="Themes Industry">
     <!-- description -->
-    <meta name="description" content="Формула SPA: спа-центры в Сыктывкаре и Ухте, массаж, подарочные сертификаты">
+    <meta name="description"
+        content="Формула SPA: спа-центры в Сыктывкаре и Ухте, массаж, подарочные сертификаты, школа массажа">
     <!-- keywords -->
-    <meta name="keywords" content="спа, формула спа, спа-центр, Сыктывкар, Ухта, массаж, сертификат, подарок, spa, похудение, велнесс, маникюр">
+    <meta name="keywords"
+        content="спа, формула спа, спа-центр, Сыктывкар, Ухта, массаж, сертификат, подарок, spa, похудение, велнесс, маникюр, школа массажа, обучение массажу">
     <!-- Page Title -->
     <title>Формула SPA | Спа-центры в Сыктывкаре и Ухте</title>
     <!-- Favicon -->
     <link rel="icon" href="{% static 'img/favicon.jpg' %}">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <!-- Bundle -->
@@ -40,36 +44,39 @@
     <link rel="stylesheet" href="{% static 'vendor/css/owl.carousel.min.css' %}">
 
 </head>
+
 <body>
 
-<a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
+    <a class="scroll-top-arrow" href="javascript:void(0);"><i class="fa fa-angle-up"></i></a>
 
-<!--START LOADER-->
-<div class="loader1">
-    <div class="loader-inner">
-        <div id="preloader">
-            <div id="loader"></div>
+    <!--START LOADER-->
+    <div class="loader1">
+        <div class="loader-inner">
+            <div id="preloader">
+                <div id="loader"></div>
+            </div>
         </div>
     </div>
-</div>
-<!--END LOADER-->
+    <!--END LOADER-->
 
-<!-- START HEADER NAVIGATION -->
-<div class="header-area">
-    <div class="container">
-        <div class="row upper-nav">
+    <!-- START HEADER NAVIGATION -->
+    <div class="header-area">
+        <div class="container">
+            <div class="row upper-nav">
 
-            <div class="col-3 nav-icon pt-3">
-                <ul class="social-icons-simple text-left">
-                    <li><a href="https://vk.com/clubformulaspa" class="facebook-bg-hvr"><i class="fab fa-vk" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="col-6 text-center nav-logo pt-3">
-                <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}" alt="img"></a>
-            </div>
+                <div class="col-3 nav-icon pt-3">
+                    <ul class="social-icons-simple text-left">
+                        <li><a href="https://vk.com/clubformulaspa" class="facebook-bg-hvr"><i class="fab fa-vk"
+                                    aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+                <div class="col-6 text-center nav-logo pt-3">
+                    <a href="{% url 'index' %}" class="navbar-brand"><img src="{% static 'img/logo.jpg' %}"
+                            alt="img"></a>
+                </div>
 
-            <div class="col-3 nav-utility text-right d-flex justify-content-end align-items-center pt-3">
-                <div class="manage-icons d-inline-block">
+                <div class="col-3 nav-utility text-right d-flex justify-content-end align-items-center pt-3">
+                    <div class="manage-icons d-inline-block">
                         <ul>
                             <li class="d-inline-block">
                                 <a id="add_search_box">
@@ -79,7 +86,7 @@
                             <li class="d-inline-block mini-menu-card" id="mini-menu-card">
                                 <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages4">
                                     <i class="fas fa-shopping-cart"></i>
-                                    <p class="cart-total-amount-dropdown">{{ cart_products_amount }}</p> 
+                                    <p class="cart-total-amount-dropdown">{{ cart_products_amount }}</p>
                                 </a>
                                 <div id="sideNavPages4" class="collapse sideNavPages shopping-cart">
                                     <i class="fas fa-caret-up mini-cart-caret"></i>
@@ -90,21 +97,27 @@
                                         <div class="inner-card">
                                             <!-- Start card -->
                                             {% for cart_product in cart_products %}
-                                                <div class="media">
-                                                    <div class="img-holder ml-1 mr-2">
-                                                        <a href="#"><img src="{{ cart_product.product.image.url }}" class="align-self-center" alt="cartitem"></a>
-                                                    </div>
-                                                    <div class="media-body mt-auto mb-auto">
-                                                        <h5 class="name"><a href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a></h5>
-                                                        <p class="category">{{ cart_product.product.category.topic }}</p>
-                                                        <p class="price">
-                                                            <span>{{ cart_product.product.price }}</span>
-                                                            (x{{ cart_product.quantity }}) 
-                                                                <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {% csrf_token %}
-                                                                    <button class="btn" type="submit" name="trash" value="header_trash"><i class="fa fa-trash dustbin"></i></button>
-                                                                </form>
-                                                    </div>
+                                            <div class="media">
+                                                <div class="img-holder ml-1 mr-2">
+                                                    <a href="#"><img src="{{ cart_product.product.image.url }}"
+                                                            class="align-self-center" alt="cartitem"></a>
                                                 </div>
+                                                <div class="media-body mt-auto mb-auto">
+                                                    <h5 class="name"><a
+                                                            href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a>
+                                                    </h5>
+                                                    <p class="category">{{ cart_product.product.category.topic }}</p>
+                                                    <p class="price">
+                                                        <span>{{ cart_product.product.price }}</span>
+                                                        (x{{ cart_product.quantity }})
+                                                        <form action="{% url 'remove_item' cart_product.product.id %}"
+                                                            method="post"> {% csrf_token %}
+                                                            <button class="btn" type="submit" name="trash"
+                                                                value="header_trash"><i
+                                                                    class="fa fa-trash dustbin"></i></button>
+                                                        </form>
+                                                </div>
+                                            </div>
                                             {% endfor %}
                                         </div>
                                     </div>
@@ -112,369 +125,425 @@
                                         <div class="subtotal text-center">
                                             <span class="total-title">Итого: </span>
                                             <span class="total-price">
-                                          <span class="Price-amount">
-                                          {{ total_price }}
-                                          </span>
-                                          </span>
+                                                <span class="Price-amount">
+                                                    {{ total_price }}
+                                                </span>
+                                            </span>
                                         </div>
                                         <div class="actions text-center">
-                                            <a href="{% url 'cart' %}" class="btn pink-gradient-btn-into-black">Посмотреть корзину</a>
-                                            <a href="{% url 'checkout' %}" class="btn pink-gradient-btn-into-transparent">Оплатить</a>
+                                            <a href="{% url 'cart' %}"
+                                                class="btn pink-gradient-btn-into-black">Посмотреть корзину</a>
+                                            <a href="{% url 'checkout' %}"
+                                                class="btn pink-gradient-btn-into-transparent">Оплатить</a>
                                         </div>
                                     </div>
                                 </div>
                             </li>
                         </ul>
-                 </div>
-            </div>
+                    </div>
+                </div>
 
-            <div class="col-12 nav-mega">
-                <header class="site-header" id="header">
-                    <nav class="navbar navbar-expand-md  static-nav">
-                        <div class="container position-relative megamenu-custom">
-                            <a class="navbar-brand center-brand" href="{% url 'index' %}">
-                                <img src="{% static 'img/logo.jpg' %}" alt="logo" class="logo-scrolled">
-                            </a>
-                            <div class="collapse navbar-collapse">
-                                <ul class="navbar-nav ml-auto mr-auto">
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'index' %}">ГЛАВНАЯ</a>
-                                    </li>
-                                    {% for program in programs %}
-                                    <li class="nav-item dropdown static">
-                                        <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{program.title}}</a>
-                                        <ul class="dropdown-menu megamenu flexable-megamenu">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row" style="width: 100%;">
-                                                        {% for topic in program.topics.all %}
+                <div class="col-12 nav-mega">
+                    <header class="site-header" id="header">
+                        <nav class="navbar navbar-expand-md  static-nav">
+                            <div class="container position-relative megamenu-custom">
+                                <a class="navbar-brand center-brand" href="{% url 'index' %}">
+                                    <img src="{% static 'img/logo.jpg' %}" alt="logo" class="logo-scrolled">
+                                </a>
+                                <div class="collapse navbar-collapse">
+                                    <ul class="navbar-nav ml-auto mr-auto">
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'index' %}">ГЛАВНАЯ</a>
+                                        </li>
+                                        {% for program in programs %}
+                                        <li class="nav-item dropdown static">
+                                            <a class="nav-link dropdown-toggle active" href="javascript:void(0)"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">{{program.title}}</a>
+                                            <ul class="dropdown-menu megamenu flexable-megamenu">
+                                                <li>
+                                                    <div class="container">
+                                                        <div class="row" style="width: 100%;">
+                                                            {% for topic in program.topics.all %}
                                                             {% if topic.title != "Другие программы" %}
                                                             <div class="col-lg-4 col-md-6 col-sm-12 mengmenu_border">
-                                                            {% else %}
-                                                            <div class="col-lg-4 col-md-6 col-sm-12">
-                                                            {% endif %}
-                                                                <a href="{% url 'topic' topic.slug %}"><h5 class="dropdown-title">{{topic.title}}</h5></a>
-                                                                <ul>
-                                                                    {% for category in topic.products_categories.all %}
-                                                                        <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
-                                                                    {% endfor %}
-                                                                </ul>
+                                                                {% else %}
+                                                                <div class="col-lg-4 col-md-6 col-sm-12">
+                                                                    {% endif %}
+                                                                    <a href="{% url 'topic' topic.slug %}">
+                                                                        <h5 class="dropdown-title">{{topic.title}}</h5>
+                                                                    </a>
+                                                                    <ul>
+                                                                        {% for category in topic.products_categories.all %}
+                                                                        <li><i
+                                                                                class="lni-angle-double-right right-arrow"></i><a
+                                                                                class="dropdown-item"
+                                                                                href="{% url 'category' category.slug %}">{{category.name}}</a>
+                                                                        </li>
+                                                                        {% endfor %}
+                                                                    </ul>
+                                                                </div>
+                                                                {% endfor %}
                                                             </div>
-                                                        {% endfor %}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    {% endfor %}
-                                    {% for calc_service in calc_services %}
-                                    <li class="nav-item dropdown static">
-                                        <a class="nav-link dropdown-toggle active" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{calc_service.title}}</a>
-                                        <ul class="dropdown-menu megamenu flexable-megamenu">
-                                            <li>
-                                                <div class="container">
-                                                    <div class="row" style="width: 100%;">
-                                                        {% for topic in calc_service.topics.all %}
+                                                        </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        {% endfor %}
+                                        {% for calc_service in calc_services %}
+                                        <li class="nav-item dropdown static">
+                                            <a class="nav-link dropdown-toggle active" href="javascript:void(0)"
+                                                data-toggle="dropdown" aria-haspopup="true"
+                                                aria-expanded="false">{{calc_service.title}}</a>
+                                            <ul class="dropdown-menu megamenu flexable-megamenu">
+                                                <li>
+                                                    <div class="container">
+                                                        <div class="row" style="width: 100%;">
+                                                            {% for topic in calc_service.topics.all %}
                                                             <div class="col-lg-4 col-md-6 col-sm-12">
-                                                                <a href="{% url 'topic' topic.slug %}"><h5 class="dropdown-title">{{topic.title}}</h5></a>
+                                                                <a href="{% url 'topic' topic.slug %}">
+                                                                    <h5 class="dropdown-title">{{topic.title}}</h5>
+                                                                </a>
                                                                 <ul style=>
                                                                     {% for category in topic.products_categories.all %}
-                                                                        <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
+                                                                    <li><i
+                                                                            class="lni-angle-double-right right-arrow"></i><a
+                                                                            class="dropdown-item"
+                                                                            href="{% url 'category' category.slug %}">{{category.name}}</a>
+                                                                    </li>
                                                                     {% endfor %}
                                                                 </ul>
                                                             </div>
-                                                        {% endfor %}
+                                                            {% endfor %}
+                                                        </div>
                                                     </div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    {% endfor %}
-                                    <li class="nav-item dropdown position-relative">
-                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            КАЛЬКУЛЯТОРЫ
-                                        </a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li>
-                                                    <i class="lni-angle-double-right right-arrow"></i>
-                                                    <a class="dropdown-item" href="{% url 'sauna' %}">Финская парная</a>
-                                                </li>
-                                                <li>
-                                                    <i class="lni-angle-double-right right-arrow"></i>
-                                                    <a class="dropdown-item" href="{% url 'hamam' %}">Хаммам</a>
-                                                </li>
-                                                <li>
-                                                    <i class="lni-angle-double-right right-arrow"></i>
-                                                    <a class="dropdown-item" href="{% url 'bochka_odin' %}">Кедр. бочка для одного</a>
-                                                </li>
-                                                <li>
-                                                    <i class="lni-angle-double-right right-arrow"></i>
-                                                    <a class="dropdown-item" href="{% url 'bochka_dva' %}">Кедр. бочка для двоих</a>
-                                                </li>
-                                                <li>
-                                                    <i class="lni-angle-double-right right-arrow"></i>
-                                                    <a class="dropdown-item" href="{% url 'capsula' %}">Спа-капсула</a>
                                                 </li>
                                             </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item dropdown position-relative">
-                                        <a class="nav-link dropdown-toggle" href="javascript:void(0)" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О НАС</a>
-                                        <div class="dropdown-menu">
-                                            <ul>
-                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'promo' %}">Акции</a></li>
-                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'declarations' %}">Юр. информация</a></li>
-                                                <li><i class="lni-angle-double-right right-arrow"></i><a class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'contact' %}">КОНТАКТЫ</a>
-                                    </li>
+                                        </li>
+                                        {% endfor %}
+                                        <li class="nav-item dropdown position-relative">
+                                            <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                КАЛЬКУЛЯТОРЫ
+                                            </a>
+                                            <div class="dropdown-menu">
+                                                <ul>
+                                                    <li>
+                                                        <i class="lni-angle-double-right right-arrow"></i>
+                                                        <a class="dropdown-item" href="{% url 'sauna' %}">Финская
+                                                            парная</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="lni-angle-double-right right-arrow"></i>
+                                                        <a class="dropdown-item" href="{% url 'hamam' %}">Хаммам</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="lni-angle-double-right right-arrow"></i>
+                                                        <a class="dropdown-item" href="{% url 'bochka_odin' %}">Кедр.
+                                                            бочка для одного</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="lni-angle-double-right right-arrow"></i>
+                                                        <a class="dropdown-item" href="{% url 'bochka_dva' %}">Кедр.
+                                                            бочка для двоих</a>
+                                                    </li>
+                                                    <li>
+                                                        <i class="lni-angle-double-right right-arrow"></i>
+                                                        <a class="dropdown-item"
+                                                            href="{% url 'capsula' %}">Спа-капсула</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item dropdown position-relative">
+                                            <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">О
+                                                НАС</a>
+                                            <div class="dropdown-menu">
+                                                <ul>
+                                                    <li><i class="lni-angle-double-right right-arrow"></i><a
+                                                            class="dropdown-item" href="{% url 'promo' %}">Акции</a>
+                                                    </li>
+                                                    <li><i class="lni-angle-double-right right-arrow"></i><a
+                                                            class="dropdown-item" href="{% url 'declarations' %}">Юр.
+                                                            информация</a></li>
+                                                    <li><i class="lni-angle-double-right right-arrow"></i><a
+                                                            class="dropdown-item" href="{% url 'faq' %}">FAQ</a></li>
+                                                    <li><i class="lni-angle-double-right right-arrow"></i><a
+                                                            class="dropdown-item"
+                                                            href="{% url 'massage_course' %}">Школа массажа</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'contact' %}">КОНТАКТЫ</a>
+                                        </li>
 
-                                </ul>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                        <!--side menu open button-->
-                        <a href="javascript:void(0)" class="d-inline-block sidemenu_btn d-lg-none d-md-block" id="sidemenu_toggle">
-                            <span></span> <span></span> <span></span>
-                        </a>
-                    </nav>
+                            <!--side menu open button-->
+                            <a href="javascript:void(0)" class="d-inline-block sidemenu_btn d-lg-none d-md-block"
+                                id="sidemenu_toggle">
+                                <span></span> <span></span> <span></span>
+                            </a>
+                        </nav>
 
 
-                    <!-- side menu -->
-                    <div class="side-menu opacity-0 gradient-bg hidden">
-                        <div class="inner-wrapper">
-                            <span class="btn-close btn-close-no-padding" id="btn_sideNavClose"><i></i><i></i></span>
-                            <nav class="side-nav w-100">
-                                <ul class="navbar-nav">
+                        <!-- side menu -->
+                        <div class="side-menu opacity-0 gradient-bg hidden">
+                            <div class="inner-wrapper">
+                                <span class="btn-close btn-close-no-padding" id="btn_sideNavClose"><i></i><i></i></span>
+                                <nav class="side-nav w-100">
+                                    <ul class="navbar-nav">
 
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'index' %}">ГЛАВНАЯ</a>
-                                    </li>
-                                    {% for program in programs %}
-                                    <li class="nav-item">
-                                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages1">
-                                            {{program.title}}<i class="fas fa-chevron-down"></i>
-                                        </a>
-                                        <div id="sideNavPages1" class="collapse sideNavPages">
-                                            {% for topic in program.topics.all %}
-                                            <a href="{% url 'topic' topic.slug %}"><h6 class="dropdown-title" style="margin-left: 20px; margin-top: 10px;">{{topic.title}}</h6></a>
-                                            <ul class="navbar-nav mt-2">
-                                                {% for category in topic.products_categories.all %}
-                                                    <li class="nav-item"><a class="nav-link" href="{% url 'category' category.slug %}">{{category.name}}</a></li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'index' %}">ГЛАВНАЯ</a>
+                                        </li>
+                                        {% for program in programs %}
+                                        <li class="nav-item">
+                                            <a class="nav-link collapsePagesSideMenu" data-toggle="collapse"
+                                                href="#sideNavPages1">
+                                                {{program.title}}<i class="fas fa-chevron-down"></i>
+                                            </a>
+                                            <div id="sideNavPages1" class="collapse sideNavPages">
+                                                {% for topic in program.topics.all %}
+                                                <a href="{% url 'topic' topic.slug %}">
+                                                    <h6 class="dropdown-title"
+                                                        style="margin-left: 20px; margin-top: 10px;">{{topic.title}}
+                                                    </h6>
+                                                </a>
+                                                <ul class="navbar-nav mt-2">
+                                                    {% for category in topic.products_categories.all %}
+                                                    <li class="nav-item"><a class="nav-link"
+                                                            href="{% url 'category' category.slug %}">{{category.name}}</a>
+                                                    </li>
+                                                    {% endfor %}
+                                                </ul>
                                                 {% endfor %}
-                                            </ul>
-                                            {% endfor %}
-                                        </div>
-                                    </li>
-                                    {% endfor %}
-                                    <li class="nav-item">
-                                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages3">
-                                            КАЛЬКУЛЯТОРЫ<i class="fas fa-chevron-down"></i>
-                                        </a>
-                                        <div id="sideNavPages3" class="collapse sideNavPages">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'sauna' %}">Финская парная</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'hamam' %}">Хаммам</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'bochka_odin' %}">Кедр. бочка для одного</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'bochka_dva' %}">Кедр. бочка для двоих</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'capsula' %}">Спа-капсула</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link collapsePagesSideMenu" data-toggle="collapse" href="#sideNavPages2">
-                                            О НАС<i class="fas fa-chevron-down"></i>
-                                        </a>
-                                        <div id="sideNavPages2" class="collapse sideNavPages">
-                                            <ul class="navbar-nav">
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'promo' %}">Акции</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'declarations' %}">Декларации</a>
-                                                </li>
-                                                <li class="nav-item">
-                                                    <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="{% url 'contact' %}">КОНТАКТЫ</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <div class="side-footer w-100">
-                                <ul class="social-icons-simple white top40">
-                                    <li><a class="facebook-bg-hvr" href="https://vk.com/clubformulaspa"><i class="fab fa-vk"></i> </a> </li>
-                                </ul>
-                                <p class="whitecolor">&copy; <span id="year"></span> Формула SPA</p>
+                                            </div>
+                                        </li>
+                                        {% endfor %}
+                                        <li class="nav-item">
+                                            <a class="nav-link collapsePagesSideMenu" data-toggle="collapse"
+                                                href="#sideNavPages3">
+                                                КАЛЬКУЛЯТОРЫ<i class="fas fa-chevron-down"></i>
+                                            </a>
+                                            <div id="sideNavPages3" class="collapse sideNavPages">
+                                                <ul class="navbar-nav">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'sauna' %}">Финская парная</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'hamam' %}">Хаммам</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'bochka_odin' %}">Кедр. бочка
+                                                            для одного</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'bochka_dva' %}">Кедр. бочка
+                                                            для двоих</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'capsula' %}">Спа-капсула</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link collapsePagesSideMenu" data-toggle="collapse"
+                                                href="#sideNavPages2">
+                                                О НАС<i class="fas fa-chevron-down"></i>
+                                            </a>
+                                            <div id="sideNavPages2" class="collapse sideNavPages">
+                                                <ul class="navbar-nav">
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'promo' %}">Акции</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link"
+                                                            href="{% url 'declarations' %}">Декларации</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'faq' %}">FAQ</a>
+                                                    </li>
+                                                    <li class="nav-item">
+                                                        <a class="nav-link" href="{% url 'massage_course' %}">Школа
+                                                            массажа</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="{% url 'contact' %}">КОНТАКТЫ</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="side-footer w-100">
+                                    <ul class="social-icons-simple white top40">
+                                        <li><a class="facebook-bg-hvr" href="https://vk.com/clubformulaspa"><i
+                                                    class="fab fa-vk"></i> </a> </li>
+                                    </ul>
+                                    <p class="whitecolor">&copy; <span id="year"></span> Формула SPA</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div id="close_side_menu" class="tooltip"></div>
-                    <!-- End side menu -->
-                </header>
+                        <div id="close_side_menu" class="tooltip"></div>
+                        <!-- End side menu -->
+                    </header>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- END HEADER NAVIGATION -->
+    <!-- END HEADER NAVIGATION -->
 
-{% block content %}
-{% endblock %}
+    {% block content %}
+    {% endblock %}
 
-<!--footer1 sec start-->
-<div class="footer">
-    <div class="container">
-        <div class="row footer-container">
-            <div class="col-sm-12 col-lg-4 f-sec1  text-center text-lg-left">
-                <h4 class="high-lighted-heading">О нас</h4>
-                <p>«Формула SPA» - это узкоспециализированный спа-центр в Сыктывкаре и Ухте. </p>
-                <a href="{% url 'contact' %}">Подробнее</a>
-                <h4>Мы в социальных сетях</h4>
-                <div class="s-icons">
-                    <ul class="social-icons-simple">
-                        <li><a href="https://vk.com/clubformulaspa" class="facebook-bg-hvr"><i class="fab fa-vk" aria-hidden="true"></i></a></li>
+    <!--footer1 sec start-->
+    <div class="footer">
+        <div class="container">
+            <div class="row footer-container">
+                <div class="col-sm-12 col-lg-4 f-sec1  text-center text-lg-left">
+                    <h4 class="high-lighted-heading">О нас</h4>
+                    <p>«Формула SPA» - это узкоспециализированный спа-центр в Сыктывкаре и Ухте. </p>
+                    <a href="{% url 'contact' %}">Подробнее</a>
+                    <h4>Мы в социальных сетях</h4>
+                    <div class="s-icons">
+                        <ul class="social-icons-simple">
+                            <li><a href="https://vk.com/clubformulaspa" class="facebook-bg-hvr"><i class="fab fa-vk"
+                                        aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-lg-4 f-sec2">
+                    <h4 class="text-center text-md-left">Информация</h4>
+                    <ul class="text-center text-md-left">
+                        <li><a href="{% url 'promo' %}">Акции</a></li>
+                        <li><a href="{% url 'declarations' %}">Юридическая информация</a></li>
+                        <li><a href="{% url 'faq' %}">FAQ - популярные вопросы</a></li>
+                        <li><a href="{% url 'contact' %}">Контакты</a></li>
+                        <li><a href="/category/certificates">Сертификаты</a></li>
+                        <li><a href="{% url 'security' %}">Положение об обработке и защите персональных данных</a></li>
                     </ul>
                 </div>
+                <div class="col-sm-12 col-lg-4 f-sec1  text-center text-lg-left">
+                    <h4 class="high-lighted-heading">Реквизиты</h4>
+                    <p>ИП ЧАЙКИНА ЕЛЕНА ГЕОРГИЕВНА.<br>
+                        ИНН: 110109736704,<br>
+                        ОГРН: 310112119300025,<br>
+                        Р/С: 40802810800001044022,<br>
+                        Банк: АО "ТИНЬКОФФ БАНК",<br>
+                        БИК: 044525974,<br>
+                        К/С: 30101810145250000974<br>
+                        Юр. адрес: 169210, Республика Коми,<br>
+                        Княжпогостский район, с. Серегово,<br>
+                        М. Запечье, д. 21
+                    </p>
+                </div>
             </div>
-            <div class="col-sm-12 col-lg-4 f-sec2">
-                <h4 class="text-center text-md-left">Информация</h4>
-                <ul class="text-center text-md-left">
-                    <li><a href="{% url 'promo' %}">Акции</a></li>
-                    <li><a href="{% url 'declarations' %}">Юридическая информация</a></li>
-                    <li><a href="{% url 'faq' %}">FAQ - популярные вопросы</a></li>
-                    <li><a href="{% url 'contact' %}">Контакты</a></li>
-                    <li><a href="/category/certificates">Сертификаты</a></li>
-                    <li><a href="{% url 'security' %}">Положение об обработке и защите персональных данных</a></li>
-                </ul>
-            </div>
-            <div class="col-sm-12 col-lg-4 f-sec1  text-center text-lg-left">
-                <h4 class="high-lighted-heading">Реквизиты</h4>
-                <p>ИП ЧАЙКИНА ЕЛЕНА ГЕОРГИЕВНА.<br>
-                    ИНН: 110109736704,<br>
-                    ОГРН: 310112119300025,<br>
-                    Р/С: 40802810800001044022,<br>
-                    Банк: АО "ТИНЬКОФФ БАНК",<br>
-                    БИК: 044525974,<br>
-                    К/С: 30101810145250000974<br>
-                    Юр. адрес: 169210, Республика Коми,<br>
-                    Княжпогостский район, с. Серегово,<br>
-                    М. Запечье, д. 21
-                </p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-12 footer_notes">
-                <p class="whitecolor text-center w-100 wow fadeInDown">&copy; 2020-2021 Формула SPA.</p>
+            <div class="row">
+                <div class="col-12 footer_notes">
+                    <p class="whitecolor text-center w-100 wow fadeInDown">&copy; 2020-2021 Формула SPA.</p>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!--foo0ter1 sec end-->
+    <!--foo0ter1 sec end-->
 
-<!--START SEARCH AREA-->
-<div class="search-box-overlay">
-    <a><i class="fas fa-times cross-sign" id="close-window"></i></a>
+    <!--START SEARCH AREA-->
+    <div class="search-box-overlay">
+        <a><i class="fas fa-times cross-sign" id="close-window"></i></a>
 
-    <div class="container">
-        <div class="row">
-            <div class="col-12 search-col">
-                <form method="post" action="/search/">
-                    {% csrf_token %}
-                            <input type="text" class="form-control" name="q" placeholder="Поиск по имени или описанию товара" aria-label="Search Here">
-                            <div class="input-group-prepend">
-                                <button class="input-group-text" type="submit" id="basic-addon1"><i class="fas fa-search"></i></button>
-                            </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12 search-col">
+                    <form method="post" action="/search/">
+                        {% csrf_token %}
+                        <input type="text" class="form-control" name="q"
+                            placeholder="Поиск по имени или описанию товара" aria-label="Search Here">
+                        <div class="input-group-prepend">
+                            <button class="input-group-text" type="submit" id="basic-addon1"><i
+                                    class="fas fa-search"></i></button>
                         </div>
+                </div>
                 </form>
                 <div class="row" style="margin-left: 0;">
-                    <a href="/category/certificates"><img class="mr-3" style="margin-top: 32px;" src="{% static 'img/certificates-in-search.jpg' %}" alt="Generic placeholder image"></a>
+                    <a href="/category/certificates"><img class="mr-3" style="margin-top: 32px;"
+                            src="{% static 'img/certificates-in-search.jpg' %}" alt="Generic placeholder image"></a>
                 </div>
             </div>
         </div>
     </div>
 
-</div>
-<!--END SEARCH AREA -->
+    </div>
+    <!--END SEARCH AREA -->
 
-<!-- JavaScript -->
-<script src="{% static 'vendor/js/bundle.min.js' %}"></script>
-<!-- Plugin Js -->
-<script src="{% static 'vendor/js/jquery.fancybox.min.js' %}"></script>
-<script src="{% static 'vendor/js/swiper.min.js' %}"></script>
-<script src="{% static 'vendor/js/jquery.cubeportfolio.min.js' %}"></script>
-<script src="{% static 'vendor/js/wow.min.js' %}"></script>
-<script src="{% static 'vendor/js/bootstrap-input-spinner.js' %}"></script>
-<script src="{% static 'vendor/js/parallaxie.min.js' %}"></script>
-<script src="{% static 'vendor/js/stickyfill.min.js' %}"></script>
-<script src="{% static 'js/nouislider.min.js' %}"></script>
+    <!-- JavaScript -->
+    <script src="{% static 'vendor/js/bundle.min.js' %}"></script>
+    <!-- Plugin Js -->
+    <script src="{% static 'vendor/js/jquery.fancybox.min.js' %}"></script>
+    <script src="{% static 'vendor/js/swiper.min.js' %}"></script>
+    <script src="{% static 'vendor/js/jquery.cubeportfolio.min.js' %}"></script>
+    <script src="{% static 'vendor/js/wow.min.js' %}"></script>
+    <script src="{% static 'vendor/js/bootstrap-input-spinner.js' %}"></script>
+    <script src="{% static 'vendor/js/parallaxie.min.js' %}"></script>
+    <script src="{% static 'vendor/js/stickyfill.min.js' %}"></script>
+    <script src="{% static 'js/nouislider.min.js' %}"></script>
 
-<script src="{% static 'vendor/js/jquery.themepunch.tools.min.js' %}"></script>
-<script src="{% static 'vendor/js/jquery.themepunch.revolution.min.js' %}"></script>
-<!-- SLIDER REVOLUTION EXTENSIONS -->
-<script src="{% static 'vendor/js/extensions/revolution.extension.actions.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.carousel.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.migration.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.navigation.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.parallax.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
-<script src="{% static 'vendor/js/extensions/revolution.extension.video.min.js' %}"></script>
+    <script src="{% static 'vendor/js/jquery.themepunch.tools.min.js' %}"></script>
+    <script src="{% static 'vendor/js/jquery.themepunch.revolution.min.js' %}"></script>
+    <!-- SLIDER REVOLUTION EXTENSIONS -->
+    <script src="{% static 'vendor/js/extensions/revolution.extension.actions.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.carousel.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.kenburn.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.layeranimation.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.migration.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.navigation.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.parallax.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.slideanims.min.js' %}"></script>
+    <script src="{% static 'vendor/js/extensions/revolution.extension.video.min.js' %}"></script>
 
-<!-- Custom Script -->
-<script src="{% static 'js/script.js' %}"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhrdEzlfpnsnfq4MgU1e1CCsrvVx2d59s"></script>
-<script src="{% static 'js/map.js' %}"></script>
-<!-- Custom Script -->
-<!--contact form-->
-<script src="{% static 'vendor/js/contact_us.js' %}"></script>
-<script>
-    const anchors = document.querySelectorAll('a[href*="#"]')
+    <!-- Custom Script -->
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAhrdEzlfpnsnfq4MgU1e1CCsrvVx2d59s"></script>
+    <script src="{% static 'js/map.js' %}"></script>
+    <!-- Custom Script -->
+    <!--contact form-->
+    <script src="{% static 'vendor/js/contact_us.js' %}"></script>
+    <script>
+        const anchors = document.querySelectorAll('a[href*="#"]')
 
-    for (let anchor of anchors) {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault()
-        
-        const blockID = anchor.getAttribute('href').substr(1)
-        
-        document.getElementById(blockID).scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-        })
-    })
-    }
-</script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-    $( function() {
-        $( "#slider-range" ).slider({
-        range: true,
-        min: 0,
-        max: 15000,
-        step: 10,
-        values: [ 0, 7500 ],
-        slide: function( event, ui ) {
-            $( "#min-p" ).val( ui.values[ 0 ]) + $( "#max-p" ).val( ui.values[ 1 ] );
+        for (let anchor of anchors) {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
+
+                const blockID = anchor.getAttribute('href').substr(1)
+
+                document.getElementById(blockID).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                })
+            })
         }
+    </script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#slider-range").slider({
+                range: true,
+                min: 0,
+                max: 15000,
+                step: 10,
+                values: [0, 7500],
+                slide: function (event, ui) {
+                    $("#min-p").val(ui.values[0]) + $("#max-p").val(ui.values[1]);
+                }
+            });
         });
-    } );
-</script>
-<script src="{% static 'vendor/js/owl.carousel.min.js' %}"></script>
+    </script>
+    <script src="{% static 'vendor/js/owl.carousel.min.js' %}"></script>
 </body>
+
 </html>

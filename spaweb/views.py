@@ -245,6 +245,10 @@ def faq(request):
     return render(request, "faq.html")
 
 
+def massage_course(request):
+    return render(request, "massage-course.html")
+
+
 def checkout(request):
     try:
         cart = request.session['cart']
