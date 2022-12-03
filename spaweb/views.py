@@ -312,7 +312,7 @@ def send_message_to_customer(request, customer, order_items, order):
     )
 
 
-def send_message_to_spa_center(request, customer, order_items, order):
+def send_message_to_spa_center(request, customer, order_items, order, discount):
     spa_subject = "Новый заказ - #" + str(order.id)
     spa_recepient = "formulaspa11@mail.ru"
     spa_msg_html = render_to_string(
@@ -327,6 +327,7 @@ def send_message_to_spa_center(request, customer, order_items, order):
             "email": customer.email,
             "phonenumber": customer.phonenumber,
             "address": customer.address,
+            "discount": discount
         },
     )
 
@@ -379,8 +380,13 @@ def checkout_user_data(request):
             sber_id="",
         )
         order_items = []
+        discount_rate = Decimal(0.8)
+        promocode = "счастье"
         for product_id in cart:
             product = get_object_or_404(Product, pk=product_id)
+            if discount_code == promocode and "Сертификат" not in product.name:
+                product.price = round(product.price * discount_rate, 2)
+            print("order_item", product.price)
             order_item = OrderItem(
                 product=product, order=order, quantity=cart[product_id]
             )
@@ -394,8 +400,8 @@ def checkout_user_data(request):
             minimal_total_free_delivery = 5000
             delivery_price = 300
             sberbank_amount_factor = 100
-            discount_rate = Decimal(0.8)
-            promocode = "счастье"
+            # discount_rate = Decimal(0.8)
+            # promocode = "счастье"
             if (
                 delivery
                 and int(order.cart_total) < minimal_total_free_delivery
@@ -407,7 +413,7 @@ def checkout_user_data(request):
                         "orderNumber": order.id,
                         "returnUrl": "https://formula-spa.herokuapp.com/payment/",
                         "amount": int(
-                            str(round(order.cart_total * discount_rate)) + "00"
+                            str(order.cart_total) + "00"
                         )
                         + delivery_price * sberbank_amount_factor,
                     }
@@ -425,7 +431,7 @@ def checkout_user_data(request):
                         "token": token,
                         "orderNumber": order.id,
                         "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(round(order.cart_total * discount_rate)) + "00"),
+                        "amount": int(str(order.cart_total) + "00"),
                     }
                 else:
                     payload = {
