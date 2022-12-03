@@ -8,7 +8,6 @@ from formulaspa.settings import EMAIL_HOST_USER
 from django.template.loader import render_to_string
 import requests
 from environs import Env
-from decimal import Decimal
 
 env = Env()
 env.read_env()
@@ -327,7 +326,7 @@ def send_message_to_spa_center(request, customer, order_items, order, discount):
             "email": customer.email,
             "phonenumber": customer.phonenumber,
             "address": customer.address,
-            "discount": discount
+            "promocode": order.promocode,
         },
     )
 
@@ -358,8 +357,6 @@ def checkout_user_data(request):
         delivery = request.POST.get("delivery")
         discount_code = request.POST.get("discount").lower()
 
-        print("CODE", discount_code)
-
         customer, created = Customer.objects.get_or_create(
             firstname=firstname,
             lastname=lastname,
@@ -378,68 +375,42 @@ def checkout_user_data(request):
             is_digital=is_digital,
             customer=customer,
             sber_id="",
+            promocode=discount_code,
         )
         order_items = []
-        discount_rate = Decimal(0.8)
-        promocode = "счастье"
         for product_id in cart:
             product = get_object_or_404(Product, pk=product_id)
-            if discount_code == promocode and "Сертификат" not in product.name:
-                product.price = round(product.price * discount_rate, 2)
-            print("order_item", product.price)
             order_item = OrderItem(
                 product=product, order=order, quantity=cart[product_id]
             )
             order_items.append(order_item)
 
             order_item.save()
-
         if request.method == "POST":
             url = "https://securepayments.sberbank.ru/payment/rest/register.do"
             token = env("SBER_TOKEN")
             minimal_total_free_delivery = 5000
             delivery_price = 300
             sberbank_amount_factor = 100
-            # discount_rate = Decimal(0.8)
-            # promocode = "счастье"
             if (
                 delivery
                 and int(order.cart_total) < minimal_total_free_delivery
                 and int(order.cart_total) != 1
             ):
-                if discount_code == promocode:
-                    payload = {
-                        "token": token,
-                        "orderNumber": order.id,
-                        "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(
-                            str(order.cart_total) + "00"
-                        )
-                        + delivery_price * sberbank_amount_factor,
-                    }
-                else:
-                    payload = {
-                        "token": token,
-                        "orderNumber": order.id,
-                        "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(order.cart_total) + "00")
-                        + delivery_price * sberbank_amount_factor,
-                    }
+                payload = {
+                    "token": token,
+                    "orderNumber": order.id,
+                    "returnUrl": "https://formula-spa.herokuapp.com/payment/",
+                    "amount": int(str(order.cart_total) + "00")
+                    + delivery_price * sberbank_amount_factor,
+                }
             else:
-                if discount_code == promocode:
-                    payload = {
-                        "token": token,
-                        "orderNumber": order.id,
-                        "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(order.cart_total) + "00"),
-                    }
-                else:
-                    payload = {
-                        "token": token,
-                        "orderNumber": order.id,
-                        "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(order.cart_total) + "00"),
-                    }
+                payload = {
+                    "token": token,
+                    "orderNumber": order.id,
+                    "returnUrl": "https://formula-spa.herokuapp.com/payment/",
+                    "amount": int(str(order.cart_total) + "00"),
+                }
             response = requests.post(url, data=payload)
             sber_id = response.json()["orderId"]
             order.sber_id = sber_id
