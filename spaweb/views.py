@@ -406,7 +406,9 @@ def checkout_user_data(request):
                         "token": token,
                         "orderNumber": order.id,
                         "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(order.cart_total * discount_rate) + "00")
+                        "amount": int(
+                            str(round(order.cart_total * discount_rate)) + "00"
+                        )
                         + delivery_price * sberbank_amount_factor,
                     }
                 else:
@@ -423,7 +425,7 @@ def checkout_user_data(request):
                         "token": token,
                         "orderNumber": order.id,
                         "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                        "amount": int(str(order.cart_total * discount_rate) + "00"),
+                        "amount": int(str(round(order.cart_total * discount_rate)) + "00"),
                     }
                 else:
                     payload = {
