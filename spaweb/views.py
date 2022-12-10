@@ -311,7 +311,7 @@ def send_message_to_customer(request, customer, order_items, order):
     )
 
 
-def send_message_to_spa_center(request, customer, order_items, order, discount):
+def send_message_to_spa_center(request, customer, order_items, order):
     spa_subject = "Новый заказ - #" + str(order.id)
     spa_recepient = "formulaspa11@mail.ru"
     spa_msg_html = render_to_string(
