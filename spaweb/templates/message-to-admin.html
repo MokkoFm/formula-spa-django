@@ -64,10 +64,8 @@
         <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ comment }}</td>
       </tr>
     {% endif %}
-    {% if promocode %}
-      <tr>
-        <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Промокод</th>
-        <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ promocode }}</td>
-      </tr>
-    {% endif %}
+    <tr>
+      <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Промокод</th>
+      <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.promocode }}</td>
+    </tr>
 </table>

@@ -325,8 +325,7 @@ def send_message_to_spa_center(request, customer, order_items, order):
             "order": order,
             "email": customer.email,
             "phonenumber": customer.phonenumber,
-            "address": customer.address,
-            "promocode": order.promocode,
+            "address": customer.address
         },
     )
 
@@ -432,9 +431,11 @@ def payment(request):
     response = requests.post(url, data=my_payload)
     order_status = response.json()["orderStatus"]
     if order_status == 2:
-        order.is_complete = True
-        send_message_to_customer(request, customer, order_items, order)
-        send_message_to_spa_center(request, customer, order_items, order)
+        if not order.is_complete:
+            order.is_complete = True
+            send_message_to_customer(request, customer, order_items, order)
+            send_message_to_spa_center(request, customer, order_items, order)
+            order.save()
     else:
         print("NO!")
     return render(request, "payment.html")
