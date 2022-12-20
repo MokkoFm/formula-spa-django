@@ -354,7 +354,7 @@ def checkout_user_data(request):
         is_digital = request.POST.get("scales")
         comment = request.POST.get("comment")
         delivery = request.POST.get("delivery")
-        discount_code = request.POST.get("discount").lower()
+        # discount_code = request.POST.get("discount").lower()
 
         customer, created = Customer.objects.get_or_create(
             firstname=firstname,
@@ -374,7 +374,7 @@ def checkout_user_data(request):
             is_digital=is_digital,
             customer=customer,
             sber_id="",
-            promocode=discount_code,
+            promocode="",
         )
         order_items = []
         for product_id in cart:

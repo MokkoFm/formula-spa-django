@@ -156,19 +156,20 @@ class Order(models.Model):
 
     @property
     def cart_total(self):
-        discount_rate = Decimal(0.8)
-        promocode = "счастье"
-        if self.promocode == promocode:
-            return int(
-                sum(
-                    [
-                        round(item.total * discount_rate, 2)
-                        if "Сертификат" not in item.product.name
-                        else item.total
-                        for item in self.order_items.all()
-                    ]
-                )
-            )
+        # Get back if new promocode will be requested
+        # discount_rate = Decimal(0.8)
+        # promocode = "счастье"
+        # if self.promocode == promocode:
+        #     return int(
+        #         sum(
+        #             [
+        #                 round(item.total * discount_rate, 2)
+        #                 if "Сертификат" not in item.product.name
+        #                 else item.total
+        #                 for item in self.order_items.all()
+        #             ]
+        #         )
+        #     )
         return int(sum([item.total for item in self.order_items.all()]))
 
     @property
