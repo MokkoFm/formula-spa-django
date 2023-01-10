@@ -104,18 +104,19 @@
                                                 </div>
                                                 <div class="media-body mt-auto mb-auto">
                                                     <h5 class="name"><a
-                                                            href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a>
+                                                            href="{% url 'product-detail' cart_product.product.slug %}">{{
+                                                            cart_product.product.name }}</a>
                                                     </h5>
                                                     <p class="category">{{ cart_product.product.category.topic }}</p>
                                                     <p class="price">
                                                         <span>{{ cart_product.product.price }}</span>
                                                         (x{{ cart_product.quantity }})
-                                                        <form action="{% url 'remove_item' cart_product.product.id %}"
-                                                            method="post"> {% csrf_token %}
-                                                            <button class="btn" type="submit" name="trash"
-                                                                value="header_trash"><i
-                                                                    class="fa fa-trash dustbin"></i></button>
-                                                        </form>
+                                                    <form action="{% url 'remove_item' cart_product.product.id %}"
+                                                        method="post"> {% csrf_token %}
+                                                        <button class="btn" type="submit" name="trash"
+                                                            value="header_trash"><i
+                                                                class="fa fa-trash dustbin"></i></button>
+                                                    </form>
                                                 </div>
                                             </div>
                                             {% endfor %}
@@ -174,7 +175,8 @@
                                                                         <h5 class="dropdown-title">{{topic.title}}</h5>
                                                                     </a>
                                                                     <ul>
-                                                                        {% for category in topic.products_categories.all %}
+                                                                        {% for category in topic.products_categories.all
+                                                                        %}
                                                                         <li><i
                                                                                 class="lni-angle-double-right right-arrow"></i><a
                                                                                 class="dropdown-item"
@@ -430,22 +432,21 @@
                 </div>
                 <div class="col-sm-12 col-lg-4 f-sec1  text-center text-lg-left">
                     <h4 class="high-lighted-heading">Реквизиты</h4>
-                    <p>ИП ЧАЙКИНА ЕЛЕНА ГЕОРГИЕВНА.<br>
-                        ИНН: 110109736704,<br>
-                        ОГРН: 310112119300025,<br>
-                        Р/С: 40802810800001044022,<br>
-                        Банк: АО "ТИНЬКОФФ БАНК",<br>
-                        БИК: 044525974,<br>
-                        К/С: 30101810145250000974<br>
-                        Юр. адрес: 169210, Республика Коми,<br>
-                        Княжпогостский район, с. Серегово,<br>
-                        М. Запечье, д. 21
+                    <p>ИП АФАНАСЬЕВА НАДЕЖДА ВАСИЛЬЕВНА,<br>
+                        ИНН: 110108479194,<br>
+                        Р/С: 40802810429190009597,<br>
+                        Банк: ФИЛИАЛ "НИЖЕГОРОДСКИЙ" АО "АЛЬФА-БАНК",<br>
+                        БИК: 042202824,<br>
+                        К/С: 30101810200000000824<br>
+                        Юр. адрес: 167000, Республика Коми,<br>
+                        г. Сыктывкар, улица Бабушкина, д. 31,<br>
+                        кв./оф. кв. 59
                     </p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-12 footer_notes">
-                    <p class="whitecolor text-center w-100 wow fadeInDown">&copy; 2020-2021 Формула SPA.</p>
+                    <p class="whitecolor text-center w-100 wow fadeInDown">&copy; 2020-2023 Формула SPA.</p>
                 </div>
             </div>
         </div>
