@@ -104,19 +104,18 @@
                                                 </div>
                                                 <div class="media-body mt-auto mb-auto">
                                                     <h5 class="name"><a
-                                                            href="{% url 'product-detail' cart_product.product.slug %}">{{
-                                                            cart_product.product.name }}</a>
+                                                            href="{% url 'product-detail' cart_product.product.slug %}">{{ cart_product.product.name }}</a>
                                                     </h5>
                                                     <p class="category">{{ cart_product.product.category.topic }}</p>
                                                     <p class="price">
                                                         <span>{{ cart_product.product.price }}</span>
                                                         (x{{ cart_product.quantity }})
-                                                    <form action="{% url 'remove_item' cart_product.product.id %}"
-                                                        method="post"> {% csrf_token %}
-                                                        <button class="btn" type="submit" name="trash"
-                                                            value="header_trash"><i
-                                                                class="fa fa-trash dustbin"></i></button>
-                                                    </form>
+                                                        <form action="{% url 'remove_item' cart_product.product.id %}"
+                                                            method="post"> {% csrf_token %}
+                                                            <button class="btn" type="submit" name="trash"
+                                                                value="header_trash"><i
+                                                                    class="fa fa-trash dustbin"></i></button>
+                                                        </form>
                                                 </div>
                                             </div>
                                             {% endfor %}
@@ -175,8 +174,7 @@
                                                                         <h5 class="dropdown-title">{{topic.title}}</h5>
                                                                     </a>
                                                                     <ul>
-                                                                        {% for category in topic.products_categories.all
-                                                                        %}
+                                                                        {% for category in topic.products_categories.all %}
                                                                         <li><i
                                                                                 class="lni-angle-double-right right-arrow"></i><a
                                                                                 class="dropdown-item"
