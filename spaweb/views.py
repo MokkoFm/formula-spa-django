@@ -413,7 +413,6 @@ def checkout_user_data(request):
                     "amount": int(order.cart_total) * amount_factor,
                 }
             response = requests.post(url, data=payload)
-            print("response", response.json())
             sber_id = response.json()["orderId"]
             order.sber_id = sber_id
             order.save()
@@ -440,6 +439,4 @@ def payment(request):
             send_message_to_customer(request, customer, order_items, order)
             send_message_to_spa_center(request, customer, order_items, order)
             order.save()
-    else:
-        print("NO!")
     return render(request, "payment.html")
