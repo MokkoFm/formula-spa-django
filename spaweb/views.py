@@ -386,31 +386,34 @@ def checkout_user_data(request):
 
             order_item.save()
         if request.method == "POST":
-            url = "https://securepayments.sberbank.ru/payment/rest/register.do"
-            token = env("SBER_TOKEN")
+            url = "	https://payment.alfabank.ru/payment/rest/register.do"
+            # token = env("SBER_TOKEN")
             minimal_total_free_delivery = 5000
             delivery_price = 300
-            sberbank_amount_factor = 100
+            amount_factor = 100
             if (
                 delivery
                 and int(order.cart_total) < minimal_total_free_delivery
                 and int(order.cart_total) != 1
             ):
                 payload = {
-                    "token": token,
+                    "userName": env("ALPHA_USERNAME"),
+                    "password": env("ALPHA_PASSWORD"),
                     "orderNumber": order.id,
-                    "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                    "amount": int(str(order.cart_total) + "00")
-                    + delivery_price * sberbank_amount_factor,
+                    "returnUrl": "https://formula-spa.ru/payment/",
+                    "amount": int(order.cart_total) * amount_factor
+                    + delivery_price * amount_factor,
                 }
             else:
                 payload = {
-                    "token": token,
+                    "userName": env("ALPHA_USERNAME"),
+                    "password": env("ALPHA_PASSWORD"),
                     "orderNumber": order.id,
-                    "returnUrl": "https://formula-spa.herokuapp.com/payment/",
-                    "amount": int(str(order.cart_total) + "00"),
+                    "returnUrl": "https://formula-spa.ru/payment/",
+                    "amount": int(order.cart_total) * amount_factor,
                 }
             response = requests.post(url, data=payload)
+            print("response", response.json())
             sber_id = response.json()["orderId"]
             order.sber_id = sber_id
             order.save()
@@ -419,9 +422,10 @@ def checkout_user_data(request):
 
 
 def payment(request):
-    url = "https://securepayments.sberbank.ru/payment/rest/getOrderStatusExtended.do"
+    url = "https://payment.alfabank.ru/payment/rest/getOrderStatusExtended.do"
     my_payload = {
-        "token": env("SBER_TOKEN"),
+        "userName": env("ALPHA_USERNAME"),
+        "password": env("ALPHA_PASSWORD"),
         "orderId": request.GET.get("orderId"),
     }
     order = get_object_or_404(Order, sber_id=my_payload["orderId"])
