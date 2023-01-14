@@ -400,7 +400,7 @@ def checkout_user_data(request):
                     "userName": env("ALPHA_USERNAME"),
                     "password": env("ALPHA_PASSWORD"),
                     "orderNumber": order.id,
-                    "returnUrl": "https://formula-spa.ru/payment",
+                    "returnUrl": "https://www.formula-spa.ru/payment",
                     "amount": int(order.cart_total) * amount_factor
                     + delivery_price * amount_factor,
                 }
@@ -409,7 +409,7 @@ def checkout_user_data(request):
                     "userName": env("ALPHA_USERNAME"),
                     "password": env("ALPHA_PASSWORD"),
                     "orderNumber": order.id,
-                    "returnUrl": "https://formula-spa.ru/payment",
+                    "returnUrl": "https://www.formula-spa.ru/payment",
                     "amount": int(order.cart_total) * amount_factor,
                 }
             response = requests.post(url, data=payload)
@@ -417,23 +417,22 @@ def checkout_user_data(request):
             order.sber_id = sber_id
             order.save()
             form_url = response.json()["formUrl"]
-            print("form_url", form_url)
             return redirect(form_url)
 
 
 def payment(request):
     url = "https://payment.alfabank.ru/payment/rest/getOrderStatusExtended.do"
+    orderId = request.GET.get("orderId")
     my_payload = {
         "userName": env("ALPHA_USERNAME"),
         "password": env("ALPHA_PASSWORD"),
-        "orderId": request.GET.get("orderId"),
+        "orderId": orderId,
     }
-    order = get_object_or_404(Order, sber_id=my_payload["orderId"])
+    order = get_object_or_404(Order, sber_id=orderId)
     customer = order.customer
     order_items = OrderItem.objects.filter(order=order)
 
     response = requests.post(url, data=my_payload)
-    print("response.json()", response.json())
     order_status = response.json()["orderStatus"]
     if order_status == 2:
         if not order.is_complete:
