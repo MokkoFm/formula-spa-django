@@ -14,9 +14,9 @@
             <div class="col-12  text-center text-lg-left wow slideInUp" data-wow-duration="2s">
                 <h1 class="heading">Ваша корзина</h1>
                 {% if is_cities_correct %}
-                    <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
+                <p class="para_text w-100 w-lg-75">Пожалуйста, проверьте содержимое Вашей корзины перед оплатой.</p>
                 {% else %}
-                    <p class="para_text w-100 w-lg-75">Пожалуйста, выберите товары в одном городе.</p>
+                <p class="para_text w-100 w-lg-75">Пожалуйста, выберите товары в одном городе.</p>
                 {% endif %}
             </div>
         </div>
@@ -28,69 +28,87 @@
         <div class="container">
             <!-- START SHOP CART TABLE -->
             <div class="row pt-5">
-                <div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                <div class="col-12 col-md-12  cart_table wow fadeInUp animated" data-wow-delay="300ms"
+                    style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
                     <div class="table-responsive">
                         <table class="table table-bordered border-radius">
                             <thead>
-                            <tr>
-                                <th class="darkcolor">Товар</th>
-                                <th class="darkcolor">Город</th>
-                                <th class="darkcolor">Цена</th>
-                                <th class="darkcolor">Количество</th>
-                                <th class="darkcolor">Сумма</th>
-                                <th></th>
-                            </tr>
+                                <tr>
+                                    <th class="darkcolor">Товар</th>
+                                    <th class="darkcolor">Город</th>
+                                    <th class="darkcolor">Цена</th>
+                                    <th class="darkcolor">Количество</th>
+                                    <th class="darkcolor">Сумма</th>
+                                    <th></th>
+                                </tr>
                             </thead>
                             <tbody>
-                            {% for cart_product in cart_products %}
-                            <tr>
-                                <td data-label="Товар">
-                                    <div class="d-table product-detail-cart">
+                                {% for cart_product in cart_products %}
+                                <tr>
+                                    <td data-label="Товар">
+                                        <div class="d-table product-detail-cart">
 
-                                        <div class="media">
-                                            <div class="row no-gutters">
+                                            <div class="media">
+                                                <div class="row no-gutters">
 
-                                                <div class="col-12 col-lg-2 product-detail-cart-image">
-                                                <a class="shopping-product" href="{% url 'product-detail' cart_product.product.slug %}"><img src="{{ cart_product.product.image_url }}" alt="{{ cart_product.product.name }}"></a>
-                                                </div>
+                                                    <div class="col-12 col-lg-2 product-detail-cart-image">
+                                                        <a class="shopping-product"
+                                                            href="{% url 'product-detail' cart_product.product.slug %}"><img
+                                                                src="{{ cart_product.product.image_url }}"
+                                                                alt="{{ cart_product.product.name }}"></a>
+                                                    </div>
 
-                                                <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
-                                                    <div class="media-body ml-lg-3" style="margin-bottom: 20px; margin-top: 20px;">
-                                                        <a href="{% url 'product-detail' cart_product.product.slug %}"><h4 class="product-name">{{ cart_product.product.name }}</h4></a>
-                                                        <p class="product-des">{{ cart_product.product.category.topic }}</p>
+                                                    <div class="col-12 col-lg-10 mt-auto product-detail-cart-data">
+                                                        <div class="media-body ml-lg-3"
+                                                            style="margin-bottom: 20px; margin-top: 20px;">
+                                                            <a
+                                                                href="{% url 'product-detail' cart_product.product.slug %}">
+                                                                <h4 class="product-name">{{ cart_product.product.name }}
+                                                                </h4>
+                                                            </a>
+                                                            <p class="product-des">{{
+                                                                cart_product.product.category.topic }}</p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
-                                <td data-label="Город">
-                                    <h4 class="text-center amount">{{cart_product.product.city}}</h4>
-                                </td>
-                                <td data-label="Цена">
-                                    <h4 class="text-center amount">{{cart_product.product.price}}</h4>
-                                </td>
-                                <td class="text-center" data-label="Количество">
-                                    <div style="display: inline-flex;">
-                                        <form action="{% url 'change_quantity' cart_product.product.id %}" method="post"> {% csrf_token %}
-                                            <button class="minus" type="submit" name="quantity" value="minus" style="padding-right: 7px; border: none; background-color: white; font-size: 12px;"><i class="lni-minus"></i></button>
-                                        </form>
+                                    </td>
+                                    <td data-label="Город">
+                                        <h4 class="text-center amount">{{cart_product.product.city}}</h4>
+                                    </td>
+                                    <td data-label="Цена">
+                                        <h4 class="text-center amount">{{cart_product.product.price}}</h4>
+                                    </td>
+                                    <td class="text-center" data-label="Количество">
+                                        <div style="display: inline-flex;">
+                                            <form action="{% url 'change_quantity' cart_product.product.id %}"
+                                                method="post"> {% csrf_token %}
+                                                <button class="minus" type="submit" name="quantity" value="minus"
+                                                    style="padding-right: 7px; border: none; background-color: white; font-size: 12px;"><i
+                                                        class="lni-minus" style="color: black !important;"></i></button>
+                                            </form>
                                             <h4 class="text-center amount">{{cart_product.quantity}}</h4>
-                                        <form action="{% url 'change_quantity' cart_product.product.id %}" method="post"> {% csrf_token %}
-                                            <button class="plus" type="submit" name="quantity" value="plus" style="padding-left: 7px; border: none; background-color: white; font-size: 12px;"><i class="lni-plus"></i></button>
+                                            <form action="{% url 'change_quantity' cart_product.product.id %}"
+                                                method="post"> {% csrf_token %}
+                                                <button class="plus" type="submit" name="quantity" value="plus"
+                                                    style="padding-left: 7px; border: none; background-color: white; font-size: 12px;"><i
+                                                        class="lni-plus" style="color: black !important;"></i></button>
+                                            </form>
+                                        </div>
+                                    </td>
+                                    <td data-label="Сумма товара">
+                                        <h4 class="text-center amount">{{cart_product.product_cost}}</h4>
+                                    </td>
+                                    <td class="text-center">
+                                        <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {%
+                                            csrf_token %}
+                                            <button class="btn" type="submit" name="trash" value="cart_trash"><i
+                                                    class="fa fa-trash dustbin"></i></button>
                                         </form>
-                                    </div>
-                                </td>
-                                <td data-label="Сумма товара">
-                                    <h4 class="text-center amount">{{cart_product.product_cost}}</h4>
-                                </td>
-                                <td class="text-center">
-                                    <form action="{% url 'remove_item' cart_product.product.id %}" method="post"> {% csrf_token %}
-                                        <button class="btn" type="submit" name="trash" value="cart_trash"><i class="fa fa-trash dustbin"></i></button>
-                                    </form>
-                                </td>
-                            </tr>
-                            {% endfor %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
@@ -98,15 +116,16 @@
                     <div class="apply_coupon">
                         <div class="row">
                             <div class="col-12 text-left">
-                                <a href="{% url 'index' %}" class="btn  pink-gradient-btn-into-black">ВЕРНУТЬСЯ К ПОКУПКАМ</a>
+                                <a href="{% url 'index' %}" class="btn  pink-gradient-btn-into-black">ВЕРНУТЬСЯ К
+                                    ПОКУПКАМ</a>
                                 {% if cart_products %}
-                                    {% if is_cities_correct %}
-                                        <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
-                                    {% else %}
-                                        <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
-                                    {% endif %}
+                                {% if is_cities_correct %}
+                                <a href="{% url 'checkout' %}" class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
                                 {% else %}
-                                    <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
+                                {% endif %}
+                                {% else %}
+                                <a href=# class="btn pink-color-black-gradient-btn ">ОПЛАТИТЬ</a>
                                 {% endif %}
                                 <h4 style="float: right;">Итого к оплате: {{total_price}}</h4>
                             </div>
