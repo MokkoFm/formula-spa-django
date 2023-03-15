@@ -325,7 +325,8 @@ def send_message_to_spa_center(request, customer, order_items, order):
             "order": order,
             "email": customer.email,
             "phonenumber": customer.phonenumber,
-            "address": customer.address
+            "address": order.delivery_address,
+            "isPaidDelivery": order.delivery_address and order.cart_total < 5000
         },
     )
 
@@ -375,6 +376,7 @@ def checkout_user_data(request):
             customer=customer,
             sber_id="",
             promocode="",
+            delivery_address=delivery
         )
         order_items = []
         for product_id in cart:

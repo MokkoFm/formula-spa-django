@@ -68,4 +68,10 @@
       <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Промокод</th>
       <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">{{ order.promocode }}</td>
     </tr>
+    {% if isPaidDelivery %}
+      <tr>
+        <th colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 15px;">Доставка оплачена</th>
+        <td colspan="2" style="border: 1px solid #eee; display: table-cell; padding: 10px; text-align: center;">Оплачено</td>
+      </tr>
+    {% endif %}
 </table>

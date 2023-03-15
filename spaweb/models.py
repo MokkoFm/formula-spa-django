@@ -150,6 +150,7 @@ class Order(models.Model):
         verbose_name="ID заказа в сбербанке", blank=True, null=True
     )
     promocode = models.TextField(verbose_name="Промокод", blank=True, null=True)
+    delivery_address = models.TextField(verbose_name="Адрес доставки", blank=True, null=True)
 
     def __str__(self):
         return f" Order number - {self.id}"
