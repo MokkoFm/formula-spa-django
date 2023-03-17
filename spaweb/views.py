@@ -314,6 +314,7 @@ def send_message_to_customer(request, customer, order_items, order):
 def send_message_to_spa_center(request, customer, order_items, order):
     spa_subject = "Новый заказ - #" + str(order.id)
     spa_recepient = "formulaspa11@mail.ru"
+    is_paid_delivery = order.delivery_address and order.cart_total < 5000 and not order.is_digital
     spa_msg_html = render_to_string(
         "message-to-admin.html",
         {
@@ -326,7 +327,7 @@ def send_message_to_spa_center(request, customer, order_items, order):
             "email": customer.email,
             "phonenumber": customer.phonenumber,
             "address": order.delivery_address,
-            "isPaidDelivery": order.delivery_address and order.cart_total < 5000
+            "isPaidDelivery": is_paid_delivery
         },
     )
 
@@ -355,7 +356,6 @@ def checkout_user_data(request):
         is_digital = request.POST.get("scales")
         comment = request.POST.get("comment")
         delivery = request.POST.get("delivery")
-        print("delivery", delivery)
         # discount_code = request.POST.get("discount").lower()
 
         customer, created = Customer.objects.get_or_create(
