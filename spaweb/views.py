@@ -286,6 +286,28 @@ def checkout(request):
     return render(request, "checkout.html", context)
 
 
+def send_order_check_to_customer(request, customer, orderId):
+    subject = "Формула SPA - заказ создан и ожидает оплаты"
+    recepient = customer.email
+    msg_html = render_to_string(
+        "message-to-check-order.html",
+        {
+            "firstname": customer.firstname,
+            "lastname": customer.lastname,
+            "order_id": orderId,
+        },
+    )
+
+    send_mail(
+        subject,
+        "",
+        EMAIL_HOST_USER,
+        [recepient],
+        html_message=msg_html,
+        fail_silently=False,
+    )
+
+
 def send_message_to_customer(request, customer, order_items, order):
     subject = "Формула SPA - новый заказ"
     recepient = customer.email
@@ -420,6 +442,7 @@ def checkout_user_data(request):
             order.sber_id = sber_id
             order.save()
             form_url = response.json()["formUrl"]
+            send_order_check_to_customer(request, customer, sber_id)
             return redirect(form_url)
 
 
@@ -443,4 +466,7 @@ def payment(request):
             send_message_to_customer(request, customer, order_items, order)
             send_message_to_spa_center(request, customer, order_items, order)
             order.save()
-    return render(request, "payment.html")
+    context = {
+        "is_complete": order.is_complete,
+    }
+    return render(request, "payment.html", context)
